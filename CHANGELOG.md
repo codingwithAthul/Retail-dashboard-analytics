@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 (2026-11-03)
+
+Quality and accessibility release.
+
+- Shareable links: each store and tab has its own address (`#/store/2273/sales`), and Back/Forward work
+- "Show data" tables under every chart, for exact values and screen readers
+- Map pins are keyboard and screen-reader friendly, with clear names and selected state
+- Phone layout: map pins stay visible above the panel, no sideways scrolling, tables scroll inside their card
+- End-to-end browser tests (Playwright) on desktop and phone, run in CI alongside 70 unit tests
+
 ## 1.0.0 (2026-11-03)
 
 First version, covering SDM #2247 Wesbrook Village and SDM #2273 University of BC.
