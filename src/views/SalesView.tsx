@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { ChartData } from '../components/ChartData';
 import { KpiTile } from '../components/KpiTile';
 import { SampleDataNotice } from '../components/SampleDataNotice';
 import { categorySales, pharmacySplit, salesKpis, topItems, yearOverYear } from '../data/sales';
@@ -66,6 +67,11 @@ export function SalesView({ store }: { store: Store }) {
               </LineChart>
             </ResponsiveContainer>
           </div>
+          <ChartData
+            caption="Monthly sales, last 12 months and year before"
+            headers={['Month', 'Last 12 months', 'Year before']}
+            rows={yoy.map((p) => [p.label, money(p.current), money(p.previous)])}
+          />
         </section>
 
         <section className="card span-4" aria-labelledby="mix-title">
@@ -83,6 +89,11 @@ export function SalesView({ store }: { store: Store }) {
               </BarChart>
             </ResponsiveContainer>
           </div>
+          <ChartData
+            caption="Sales by category"
+            headers={['Category', 'Sales', 'Share']}
+            rows={categories.map((c) => [c.category, money(c.sales), percent(c.share)])}
+          />
         </section>
 
         <section className="card span-12" aria-labelledby="items-title">
