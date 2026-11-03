@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Census for every Vancouver store**: each directory store's panel shows the 2021 census for its postal area (FSA) next to Metro Vancouver, with residents by age and a link to the Statistics Canada page. Pulled by the new pipeline command `python -m etl census` (`Research/09-census-by-postal-area.md`)
+
 ## 2.2.0 (unreleased)
 
 Map fix, the 2021 census, and the first step of v3.0: every Vancouver store on the map.

@@ -12,14 +12,18 @@ export interface CensusProfile {
   year: 2021;
   /** Census subdivision name as Statistics Canada publishes it. */
   area: string;
-  /** Census subdivision code (CSD). */
+  /** Statistics Canada geography code: a census subdivision (CSD) or postal area (FSA). */
   code: string;
+  /** The kind of census area, in plain words, e.g. "Census subdivision 5915020". */
+  geography: string;
   /** What the census area covers, in plain words. */
   coverage: string;
   measures: CensusMeasure[];
   /** Population by age, from 100% data. Shares add up to 1. */
   ageBands: Segment[];
   sources: string[];
+  /** A caveat on how to read the figures, shown under the table. */
+  note?: string;
 }
 
 /**
@@ -33,6 +37,7 @@ export const UBC_CENSUS: CensusProfile = {
   year: 2021,
   area: 'Metro Vancouver A',
   code: '5915020',
+  geography: 'Census subdivision 5915020',
   coverage: 'UBC campus and the University Endowment Lands, plus mostly unpopulated rural land',
   measures: [
     { label: 'Population (2021)', area: '18,612', metro: '2,642,825' },
@@ -52,4 +57,5 @@ export const UBC_CENSUS: CensusProfile = {
     { name: '65+', share: 2145 / 18610 },
   ],
   sources: ['census5915020', 'census933'],
+  note: 'Low income counts students with little reported income.',
 };

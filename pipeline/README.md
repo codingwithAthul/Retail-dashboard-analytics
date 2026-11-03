@@ -42,6 +42,14 @@ python -m etl run               # sample data → validate → src/data/generate
 
 The summary file holds, for each store: 24 months of sales and transactions, last-12-month sales by category, the eight best-selling front-store items by units, average sales by weekday, and the pharmacy share. Only full calendar months are used; a partial first or last month is dropped. At least 12 full months are needed.
 
+## Census by postal area
+
+```bash
+python -m etl census            # needs internet → src/data/generated/fsaCensus.json
+```
+
+Reads the store table (`Research/data/vancouver-sdm-stores.csv`), takes each store's postal area (the first three characters of its postal code) and downloads its 2021 Census Profile from the Statistics Canada API. Rerun it when stores are added. Method and figures: [Research/09-census-by-postal-area.md](../Research/09-census-by-postal-area.md).
+
 ## Real store data
 
 `python -m etl run --input <folder>` uses real exports instead of sample data. Templates are in [`templates/`](templates); the full guide is [Using real store data](../docs/importing-real-data.md).

@@ -1,0 +1,647 @@
+{
+  "year": 2021,
+  "source": "Statistics Canada, Census Profile, 2021 Census of Population, forward sortation areas",
+  "page": "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&DGUIDlist=2021A0011{fsa}&GENDERlist=1&STATISTIClist=1,4&HEADERlist=0",
+  "areas": {
+    "V5K": {
+      "population": 23431,
+      "medianAge": 42,
+      "medianHouseholdIncome": 92000,
+      "renters": 39.4,
+      "immigrants": 38.8,
+      "nonPermanentResidents": 3.2,
+      "lowIncome": 9.2,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 3070
+        },
+        {
+          "name": "15–24",
+          "count": 2420
+        },
+        {
+          "name": "25–44",
+          "count": 7195
+        },
+        {
+          "name": "45–64",
+          "count": 6615
+        },
+        {
+          "name": "65+",
+          "count": 4130
+        }
+      ],
+      "ageTotal": 23430
+    },
+    "V5L": {
+      "population": 19473,
+      "medianAge": 38.8,
+      "medianHouseholdIncome": 69500,
+      "renters": 65,
+      "immigrants": 25.8,
+      "nonPermanentResidents": 2.4,
+      "lowIncome": 14.2,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2200
+        },
+        {
+          "name": "15–24",
+          "count": 1360
+        },
+        {
+          "name": "25–44",
+          "count": 8380
+        },
+        {
+          "name": "45–64",
+          "count": 5045
+        },
+        {
+          "name": "65+",
+          "count": 2510
+        }
+      ],
+      "ageTotal": 19475
+    },
+    "V5N": {
+      "population": 35843,
+      "medianAge": 38.4,
+      "medianHouseholdIncome": 82000,
+      "renters": 53.3,
+      "immigrants": 39.2,
+      "nonPermanentResidents": 5.1,
+      "lowIncome": 11.5,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 4300
+        },
+        {
+          "name": "15–24",
+          "count": 3845
+        },
+        {
+          "name": "25–44",
+          "count": 13320
+        },
+        {
+          "name": "45–64",
+          "count": 8940
+        },
+        {
+          "name": "65+",
+          "count": 5440
+        }
+      ],
+      "ageTotal": 35845
+    },
+    "V5R": {
+      "population": 48150,
+      "medianAge": 39.2,
+      "medianHouseholdIncome": 82000,
+      "renters": 44,
+      "immigrants": 55.5,
+      "nonPermanentResidents": 7.7,
+      "lowIncome": 11.2,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 5330
+        },
+        {
+          "name": "15–24",
+          "count": 5940
+        },
+        {
+          "name": "25–44",
+          "count": 16235
+        },
+        {
+          "name": "45–64",
+          "count": 12860
+        },
+        {
+          "name": "65+",
+          "count": 7790
+        }
+      ],
+      "ageTotal": 48150
+    },
+    "V5S": {
+      "population": 32940,
+      "medianAge": 42.4,
+      "medianHouseholdIncome": 90000,
+      "renters": 42.7,
+      "immigrants": 48.8,
+      "nonPermanentResidents": 3.5,
+      "lowIncome": 10,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 4425
+        },
+        {
+          "name": "15–24",
+          "count": 3690
+        },
+        {
+          "name": "25–44",
+          "count": 9425
+        },
+        {
+          "name": "45–64",
+          "count": 8925
+        },
+        {
+          "name": "65+",
+          "count": 6475
+        }
+      ],
+      "ageTotal": 32940
+    },
+    "V5T": {
+      "population": 26340,
+      "medianAge": 36.4,
+      "medianHouseholdIncome": 79500,
+      "renters": 61.6,
+      "immigrants": 28.3,
+      "nonPermanentResidents": 4.3,
+      "lowIncome": 10.8,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2430
+        },
+        {
+          "name": "15–24",
+          "count": 1845
+        },
+        {
+          "name": "25–44",
+          "count": 13495
+        },
+        {
+          "name": "45–64",
+          "count": 5970
+        },
+        {
+          "name": "65+",
+          "count": 2600
+        }
+      ],
+      "ageTotal": 26340
+    },
+    "V5V": {
+      "population": 24288,
+      "medianAge": 39.2,
+      "medianHouseholdIncome": 103000,
+      "renters": 39.5,
+      "immigrants": 36.3,
+      "nonPermanentResidents": 3.7,
+      "lowIncome": 7.3,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 3645
+        },
+        {
+          "name": "15–24",
+          "count": 2505
+        },
+        {
+          "name": "25–44",
+          "count": 8240
+        },
+        {
+          "name": "45–64",
+          "count": 6360
+        },
+        {
+          "name": "65+",
+          "count": 3540
+        }
+      ],
+      "ageTotal": 24285
+    },
+    "V5W": {
+      "population": 20828,
+      "medianAge": 40.8,
+      "medianHouseholdIncome": 91000,
+      "renters": 45.3,
+      "immigrants": 44.2,
+      "nonPermanentResidents": 5.7,
+      "lowIncome": 9.8,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2680
+        },
+        {
+          "name": "15–24",
+          "count": 2705
+        },
+        {
+          "name": "25–44",
+          "count": 6205
+        },
+        {
+          "name": "45–64",
+          "count": 5600
+        },
+        {
+          "name": "65+",
+          "count": 3630
+        }
+      ],
+      "ageTotal": 20825
+    },
+    "V5X": {
+      "population": 31095,
+      "medianAge": 38,
+      "medianHouseholdIncome": 84000,
+      "renters": 49.3,
+      "immigrants": 54.5,
+      "nonPermanentResidents": 10.3,
+      "lowIncome": 11.9,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 3760
+        },
+        {
+          "name": "15–24",
+          "count": 4810
+        },
+        {
+          "name": "25–44",
+          "count": 9845
+        },
+        {
+          "name": "45–64",
+          "count": 7455
+        },
+        {
+          "name": "65+",
+          "count": 5240
+        }
+      ],
+      "ageTotal": 31095
+    },
+    "V5Z": {
+      "population": 24957,
+      "medianAge": 40.4,
+      "medianHouseholdIncome": 88000,
+      "renters": 49.1,
+      "immigrants": 39.5,
+      "nonPermanentResidents": 5.7,
+      "lowIncome": 13.1,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2865
+        },
+        {
+          "name": "15–24",
+          "count": 2115
+        },
+        {
+          "name": "25–44",
+          "count": 9135
+        },
+        {
+          "name": "45–64",
+          "count": 5905
+        },
+        {
+          "name": "65+",
+          "count": 4935
+        }
+      ],
+      "ageTotal": 24955
+    },
+    "V6B": {
+      "population": 32375,
+      "medianAge": 36,
+      "medianHouseholdIncome": 81000,
+      "renters": 63.6,
+      "immigrants": 40,
+      "nonPermanentResidents": 12.5,
+      "lowIncome": 17.3,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2075
+        },
+        {
+          "name": "15–24",
+          "count": 2535
+        },
+        {
+          "name": "25–44",
+          "count": 17670
+        },
+        {
+          "name": "45–64",
+          "count": 7045
+        },
+        {
+          "name": "65+",
+          "count": 3035
+        }
+      ],
+      "ageTotal": 32375
+    },
+    "V6C": {
+      "population": 2846,
+      "medianAge": 40,
+      "medianHouseholdIncome": 88000,
+      "renters": 56.8,
+      "immigrants": 52.6,
+      "nonPermanentResidents": 6.5,
+      "lowIncome": 19.4,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 230
+        },
+        {
+          "name": "15–24",
+          "count": 285
+        },
+        {
+          "name": "25–44",
+          "count": 1085
+        },
+        {
+          "name": "45–64",
+          "count": 750
+        },
+        {
+          "name": "65+",
+          "count": 500
+        }
+      ],
+      "ageTotal": 2845
+    },
+    "V6E": {
+      "population": 27482,
+      "medianAge": 37.6,
+      "medianHouseholdIncome": 66500,
+      "renters": 76.4,
+      "immigrants": 41.3,
+      "nonPermanentResidents": 12,
+      "lowIncome": 17.5,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 1505
+        },
+        {
+          "name": "15–24",
+          "count": 1850
+        },
+        {
+          "name": "25–44",
+          "count": 13905
+        },
+        {
+          "name": "45–64",
+          "count": 6390
+        },
+        {
+          "name": "65+",
+          "count": 3840
+        }
+      ],
+      "ageTotal": 27480
+    },
+    "V6G": {
+      "population": 28013,
+      "medianAge": 41.6,
+      "medianHouseholdIncome": 66000,
+      "renters": 79.8,
+      "immigrants": 38.7,
+      "nonPermanentResidents": 10.1,
+      "lowIncome": 17.3,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 1620
+        },
+        {
+          "name": "15–24",
+          "count": 1475
+        },
+        {
+          "name": "25–44",
+          "count": 12405
+        },
+        {
+          "name": "45–64",
+          "count": 7185
+        },
+        {
+          "name": "65+",
+          "count": 5330
+        }
+      ],
+      "ageTotal": 28015
+    },
+    "V6H": {
+      "population": 17742,
+      "medianAge": 39.6,
+      "medianHouseholdIncome": 79000,
+      "renters": 62.7,
+      "immigrants": 32.4,
+      "nonPermanentResidents": 5.1,
+      "lowIncome": 12.2,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 1440
+        },
+        {
+          "name": "15–24",
+          "count": 1420
+        },
+        {
+          "name": "25–44",
+          "count": 7300
+        },
+        {
+          "name": "45–64",
+          "count": 4325
+        },
+        {
+          "name": "65+",
+          "count": 3255
+        }
+      ],
+      "ageTotal": 17740
+    },
+    "V6J": {
+      "population": 23044,
+      "medianAge": 40,
+      "medianHouseholdIncome": 84000,
+      "renters": 56.9,
+      "immigrants": 32,
+      "nonPermanentResidents": 5.7,
+      "lowIncome": 13.4,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2010
+        },
+        {
+          "name": "15–24",
+          "count": 1905
+        },
+        {
+          "name": "25–44",
+          "count": 9235
+        },
+        {
+          "name": "45–64",
+          "count": 5725
+        },
+        {
+          "name": "65+",
+          "count": 4165
+        }
+      ],
+      "ageTotal": 23045
+    },
+    "V6K": {
+      "population": 27146,
+      "medianAge": 38.8,
+      "medianHouseholdIncome": 89000,
+      "renters": 56.1,
+      "immigrants": 29.5,
+      "nonPermanentResidents": 6.9,
+      "lowIncome": 10.7,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2685
+        },
+        {
+          "name": "15–24",
+          "count": 2595
+        },
+        {
+          "name": "25–44",
+          "count": 10605
+        },
+        {
+          "name": "45–64",
+          "count": 6795
+        },
+        {
+          "name": "65+",
+          "count": 4470
+        }
+      ],
+      "ageTotal": 27145
+    },
+    "V6M": {
+      "population": 16421,
+      "medianAge": 46.8,
+      "medianHouseholdIncome": 83000,
+      "renters": 45.6,
+      "immigrants": 50.7,
+      "nonPermanentResidents": 6,
+      "lowIncome": 17.1,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 1890
+        },
+        {
+          "name": "15–24",
+          "count": 2190
+        },
+        {
+          "name": "25–44",
+          "count": 3805
+        },
+        {
+          "name": "45–64",
+          "count": 4560
+        },
+        {
+          "name": "65+",
+          "count": 3980
+        }
+      ],
+      "ageTotal": 16420
+    },
+    "V6S": {
+      "population": 15711,
+      "medianAge": 36.4,
+      "medianHouseholdIncome": 84000,
+      "renters": 45.9,
+      "immigrants": 45.3,
+      "nonPermanentResidents": 11.7,
+      "lowIncome": 23.5,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 2425
+        },
+        {
+          "name": "15–24",
+          "count": 3390
+        },
+        {
+          "name": "25–44",
+          "count": 3640
+        },
+        {
+          "name": "45–64",
+          "count": 4270
+        },
+        {
+          "name": "65+",
+          "count": 2000
+        }
+      ],
+      "ageTotal": 15710
+    },
+    "V6Z": {
+      "population": 20683,
+      "medianAge": 38.8,
+      "medianHouseholdIncome": 80000,
+      "renters": 56,
+      "immigrants": 42.2,
+      "nonPermanentResidents": 11.7,
+      "lowIncome": 17.9,
+      "ageBands": [
+        {
+          "name": "0–14",
+          "count": 1480
+        },
+        {
+          "name": "15–24",
+          "count": 1600
+        },
+        {
+          "name": "25–44",
+          "count": 9340
+        },
+        {
+          "name": "45–64",
+          "count": 5115
+        },
+        {
+          "name": "65+",
+          "count": 3145
+        }
+      ],
+      "ageTotal": 20685
+    }
+  }
+}
