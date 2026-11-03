@@ -125,3 +125,8 @@
 .notice--estimate {
   background: color-mix(in srgb, var(--indigo) 8%, var(--surface));
 }
+
+.kpi__value--text {
+  font-size: 22px;
+  line-height: 1.2;
+}
