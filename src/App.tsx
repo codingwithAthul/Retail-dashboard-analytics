@@ -62,7 +62,7 @@ export default function App() {
             selectedId={storeId}
             onSelect={select}
             leftInset={phone ? 0 : 416}
-            topInset={phone ? 180 : 96}
+            topInset={phone ? 130 : 96}
             bottomInset={phone ? Math.round(window.innerHeight * 0.55) : 0}
           />
           <aside className="panel glass" aria-label={`${(listing ?? store).name} details`}>
