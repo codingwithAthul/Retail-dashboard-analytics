@@ -82,3 +82,84 @@ export const WESBROOK: Store = {
   ],
   sources: ['sdm2247', 'liveAtUbc', 'cortico', 'uel', 'ubcFacts'],
 };
+
+export const UNIVERSITY: Store = {
+  id: '2273',
+  number: '#2273',
+  name: 'Shoppers Drug Mart University of BC',
+  shortName: 'University Blvd',
+  banner: 'Shoppers Drug Mart',
+  division: 'Pharmacy',
+  format: 'Urban / mixed-use',
+  address: '5940 University Blvd, Vancouver, BC V6T 1Z3',
+  phone: '604-228-1533',
+  hours: '8 AM – 10 PM daily',
+  coords: [49.2658, -123.246],
+  services: [
+    'Strep throat assessment and test',
+    'A1C blood glucose test',
+    'Vaccines and injections',
+    'Minor ailment assessments',
+    'Passport photos',
+  ],
+  summary: [
+    'Campus-core store on University Blvd, closest SDM to the academic buildings and student residences.',
+    'Serves undergraduates first; demand follows the academic calendar.',
+    'Mass and value beauty brands; adds walk-in clinical tests (strep, A1C).',
+    'Competes with University Pharmacy and the UBC Pharmacists Clinic for prescriptions.',
+  ],
+  leadership: leadership(),
+  differentiators: [
+    { label: 'Store format', value: 'Urban / mixed-use, street level on the campus main street', confidence: 'inferred', sources: ['sdmFormats'] },
+    { label: 'Most present demographic', value: 'Undergraduate students (residence and commuters)', confidence: 'inferred' },
+    { label: 'Second most present demographic', value: 'Faculty, staff and campus visitors', confidence: 'inferred' },
+    { label: 'Nearby institutions', value: 'UBC academic core and student residences', confidence: 'verified', sources: ['liveAtUbc'] },
+    { label: 'Repeat-visit driver', value: 'Daily convenience between classes', confidence: 'inferred' },
+    { label: 'International students (UBC Vancouver)', value: '25.4%', confidence: 'verified', sources: ['ubcFacts'] },
+    { label: 'Sister store', value: 'Wesbrook Village #2247, about 1.5 km south, same Associate-Owner', confidence: 'verified', sources: ['sdm2247', 'sdm2273'] },
+  ],
+  demographics: {
+    segments: [
+      { name: 'Undergraduate students', share: 0.52 },
+      { name: 'Faculty and staff', share: 0.18 },
+      { name: 'Graduate students', share: 0.14 },
+      { name: 'Visitors', share: 0.1 },
+      { name: 'Neighbourhood residents', share: 0.06 },
+    ],
+    ageBands: [
+      { name: 'Under 18', share: 0.02 },
+      { name: '18–24', share: 0.58 },
+      { name: '25–44', share: 0.26 },
+      { name: '45–64', share: 0.11 },
+      { name: '65+', share: 0.03 },
+    ],
+    incomeTier: { label: 'Income tier', value: 'Mixed; student budgets, about a quarter international', confidence: 'inferred' },
+    drivers: ['Snacks and drinks between classes', 'Cold, flu and pain relief', 'Value personal care', 'Back-to-school and exam essentials'],
+    seasonality: 'Follows the academic year: peaks in September and exam months, drops sharply from May to August.',
+    nearby: [
+      { name: 'UBC academic core', kind: 'University', note: '60,309 students on the Vancouver campus' },
+      { name: 'Student residences', kind: 'Housing', note: 'Gage, Brock Commons and others within walking distance' },
+      { name: 'University Village shops', kind: 'Retail', note: 'Restaurants, gym, dental and optical clinics' },
+    ],
+    facts: [
+      { label: 'UBC Vancouver students', value: '60,309', confidence: 'verified', sources: ['ubcFacts'] },
+      { label: 'Undergraduate / graduate', value: '49,165 / 11,144', confidence: 'verified', sources: ['ubcFacts'] },
+      { label: 'International share', value: '25.4%', confidence: 'verified', sources: ['ubcFacts'] },
+    ],
+  },
+  categoryCalls: [
+    { category: 'Convenience food', rival: 'Campus food outlets', decision: 'Compete', reason: 'Highest-traffic SDM on campus; students buy between classes.' },
+    { category: 'Pharmacy', rival: 'University Pharmacy, UBC Pharmacists Clinic', decision: 'Differentiate', reason: 'Win on walk-in tests, minor ailments and long hours.' },
+    { category: 'Personal care', rival: 'Limited', decision: 'Compete', reason: 'Student budgets favour Life Brand and no name value lines.' },
+    { category: 'Beauty', rival: 'Limited', decision: 'Differentiate', reason: 'Mass beauty first; small prestige range for international students.' },
+    { category: 'Fresh grocery', rival: 'Save-On-Foods (1.5 km)', decision: 'Avoid', reason: 'Students with time to cook shop at the grocery store.' },
+    { category: 'Seasonal', rival: 'None', decision: 'Compete', reason: 'Stationery, energy drinks, cold and flu in September and exam months.' },
+  ],
+  sources: ['sdm2273', 'liveAtUbc', 'cortico', 'ubcFacts'],
+};
+
+export const STORES: Store[] = [WESBROOK, UNIVERSITY];
+
+export function getStore(id: string): Store | undefined {
+  return STORES.find((s) => s.id === id);
+}
