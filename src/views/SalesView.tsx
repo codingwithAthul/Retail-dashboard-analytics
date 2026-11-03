@@ -11,6 +11,14 @@ const axis = { stroke: 'var(--text-3)', fontSize: 12, tickLine: false, axisLine:
 const DAY_NAMES: Record<string, string> = {
   Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
 };
+/** Round axis ticks (0, 5K, 10K…) so short money labels never round to odd values like $17K. */
+function roundTicks(max: number, count = 4): number[] {
+  const raw = max / count;
+  const magnitude = 10 ** Math.floor(Math.log10(raw));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * magnitude).find((s) => s >= raw)!;
+  return Array.from({ length: Math.ceil(max / step) + 1 }, (_, i) => i * step);
+}
+
 const tooltipStyle = { background: 'var(--surface)', border: '1px solid var(--separator)', borderRadius: 10, fontSize: 13 };
 
 export function SalesView({ store }: { store: Store }) {
@@ -31,6 +39,7 @@ export function SalesView({ store }: { store: Store }) {
   const busiest = weekdays.reduce((a, b) => (b.averageSales > a.averageSales ? b : a));
   const quietest = weekdays.reduce((a, b) => (b.averageSales < a.averageSales ? b : a));
   const mean = (xs: typeof weekdays) => xs.reduce((a, d) => a + d.averageSales, 0) / xs.length;
+  const weekdayTicks = roundTicks(busiest.averageSales);
   const weekendGap = mean(weekdays.slice(5)) / mean(weekdays.slice(0, 5)) - 1;
 
   return (
@@ -142,7 +151,7 @@ export function SalesView({ store }: { store: Store }) {
               <BarChart data={weekdays} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
                 <CartesianGrid vertical={false} stroke="var(--separator)" />
                 <XAxis dataKey="day" {...axis} />
-                <YAxis {...axis} tickFormatter={moneyShort} width={56} domain={[0, 'auto']} />
+                <YAxis {...axis} tickFormatter={moneyShort} width={56} ticks={weekdayTicks} domain={[0, weekdayTicks[weekdayTicks.length - 1]]} />
                 <Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} cursor={{ fill: 'var(--surface-2)' }} />
                 <Bar dataKey="averageSales" name="Average sales" fill="var(--blue)" radius={[6, 6, 0, 0]} barSize={20} isAnimationActive={false} />
               </BarChart>
