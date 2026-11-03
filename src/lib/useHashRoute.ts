@@ -9,7 +9,11 @@ export function useHashRoute(validStoreIds: string[], fallback: Route) {
   useEffect(() => {
     const onChange = () => setRoute(read());
     window.addEventListener('hashchange', onChange);
-    return () => window.removeEventListener('hashchange', onChange);
+    window.addEventListener('popstate', onChange);
+    return () => {
+      window.removeEventListener('hashchange', onChange);
+      window.removeEventListener('popstate', onChange);
+    };
   }, [read]);
 
   const navigate = useCallback((next: Route) => {
