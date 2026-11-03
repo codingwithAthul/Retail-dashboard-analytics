@@ -106,3 +106,27 @@
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+
+.sources {
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.sources a {
+  color: var(--blue);
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+.notice--estimate {
+  background: color-mix(in srgb, var(--indigo) 8%, var(--surface));
+}
+
+.kpi__value--text {
+  font-size: 22px;
+  line-height: 1.2;
+}
