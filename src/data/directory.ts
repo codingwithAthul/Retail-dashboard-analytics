@@ -1,5 +1,6 @@
 import { STORES } from './stores';
 import type { Store, StoreListing } from './types';
+import { VANCOUVER_LISTINGS } from './vancouverListings';
 
 /** A profiled store as a map listing. */
 export function toListing(store: Store): StoreListing {
@@ -18,7 +19,7 @@ export function toListing(store: Store): StoreListing {
 }
 
 /** Stores known only from public directories. Added once each address has a checked map position. */
-export const DIRECTORY_ONLY: StoreListing[] = [];
+export const DIRECTORY_ONLY: StoreListing[] = VANCOUVER_LISTINGS;
 
 /** Every store on the map: profiled stores first, then directory listings by name. */
 export const DIRECTORY: StoreListing[] = [
