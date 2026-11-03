@@ -6,12 +6,9 @@ import { KpiTile } from '../components/KpiTile';
 import { SampleDataNotice } from '../components/SampleDataNotice';
 import { categorySales, IS_SAMPLE, pharmacySplit, salesKpis, topItems, weekdaySales, yearOverYear } from '../data/sales';
 import type { Store } from '../data/types';
-import { count, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
+import { count, DAY_NAMES, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
 
 const axis = { stroke: 'var(--text-3)', fontSize: 12, tickLine: false, axisLine: false } as const;
-const DAY_NAMES: Record<string, string> = {
-  Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
-};
 /** Round axis ticks (0, 5K, 10K…) so short money labels never round to odd values like $17K. */
 function roundTicks(max: number, count = 4): number[] {
   const raw = max / count;
