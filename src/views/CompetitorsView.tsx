@@ -55,7 +55,7 @@ export function CompetitorsView({ store }: { store: Store }) {
                     </div>
                   </td>
                   <td className="muted">{c.kind}</td>
-                  <td className="num">{formatDistance(c.km)}</td>
+                  <td className="num">{c.approximate ? "≈ " : ""}{formatDistance(c.km)}</td>
                 </tr>
               ))}
             </tbody>
