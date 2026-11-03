@@ -1,0 +1,121 @@
+.panel h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 2px 0 4px;
+}
+
+.section {
+  border-top: 1px solid var(--separator);
+  padding-top: var(--space-4);
+}
+
+.section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.section h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rows {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.row dt {
+  color: var(--text-2);
+}
+
+.row dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+.row--stacked {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row--stacked dd {
+  text-align: left;
+}
+
+.placeholder {
+  color: var(--text-3);
+  font-style: italic;
+  font-weight: 400 !important;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-2);
+}
+
+.chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.bullets li + li {
+  margin-top: 6px;
+}
+
+.entry-cards {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.entry-card {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  border: 0;
+  padding: var(--space-3) var(--space-5) var(--space-3) var(--space-4);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease);
+}
+
+.entry-card:hover {
+  transform: translateY(-1px);
+}
+
+.entry-card span {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.entry-card__chevron {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px !important;
+  color: var(--text-3) !important;
+}
