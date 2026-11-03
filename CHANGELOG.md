@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.0 (2026-11-03)
+
+Store comparison, a printable brief, and an accessibility gate in CI.
+
+- Compare page (`#/compare`): both stores side by side with headline numbers, where each should specialise (categories where one store's share is 3+ points higher), category mix, main customers, weekly rhythm and competitors
+- One-page store brief (`#/store/2247/brief`): headline numbers, summary, differentiators, customers, top categories, where to compete, nearby competitors and leadership on a single printable Letter page, with "Print or save as PDF"
+- Accessibility: text, badges, KPI changes and links now meet WCAG AA contrast in light and dark; map pins are named by their visible label; source links are underlined
+- Lighthouse runs in CI on every page and fails the build if accessibility drops below 100
+- Printing always uses the light appearance
+- Favicon
+
 ## 2.0.0 (2026-11-03)
 
 End-to-end data pipeline: raw daily sales in, dashboard numbers out.

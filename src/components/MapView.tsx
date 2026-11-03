@@ -24,7 +24,7 @@ const tileUrl = () =>
 function storeIcon(store: Store, selected: boolean) {
   return L.divIcon({
     className: '',
-    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}" aria-hidden="true"><span>Rx</span></div><div class="pin-label" aria-hidden="true">${store.shortName}</div>`,
+    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}" aria-hidden="true"></div><div class="pin-label" aria-hidden="true">${store.shortName}</div>`,
     iconSize: [36, 36],
     iconAnchor: [18, 18],
   });
@@ -80,7 +80,8 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
         .addTo(layer);
       // Give keyboard and screen-reader users a clear name and state for each pin.
       const el = marker.getElement();
-      el?.setAttribute('aria-label', s.name);
+      // The name must include the visible label so voice control users can say what they see.
+      el?.setAttribute('aria-label', s.name.includes(s.shortName) ? s.name : `${s.name}, ${s.shortName}`);
       el?.setAttribute('aria-pressed', String(s.id === selectedId));
     }
   }, [stores, competitors, selectedId, onSelect]);

@@ -1,16 +1,14 @@
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { ChartData } from '../components/ChartData';
+import { weekendGap } from '../data/compare';
 import { KpiTile } from '../components/KpiTile';
 import { SampleDataNotice } from '../components/SampleDataNotice';
 import { categorySales, IS_SAMPLE, pharmacySplit, salesKpis, topItems, weekdaySales, yearOverYear } from '../data/sales';
 import type { Store } from '../data/types';
-import { count, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
+import { count, DAY_NAMES, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
 
 const axis = { stroke: 'var(--text-3)', fontSize: 12, tickLine: false, axisLine: false } as const;
-const DAY_NAMES: Record<string, string> = {
-  Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
-};
 /** Round axis ticks (0, 5K, 10K…) so short money labels never round to odd values like $17K. */
 function roundTicks(max: number, count = 4): number[] {
   const raw = max / count;
@@ -38,9 +36,8 @@ export function SalesView({ store }: { store: Store }) {
   const low = yoy.reduce((a, b) => (b.current < a.current ? b : a));
   const busiest = weekdays.reduce((a, b) => (b.averageSales > a.averageSales ? b : a));
   const quietest = weekdays.reduce((a, b) => (b.averageSales < a.averageSales ? b : a));
-  const mean = (xs: typeof weekdays) => xs.reduce((a, d) => a + d.averageSales, 0) / xs.length;
   const weekdayTicks = roundTicks(busiest.averageSales);
-  const weekendGap = mean(weekdays.slice(5)) / mean(weekdays.slice(0, 5)) - 1;
+  const weekendDiff = weekendGap(store.id);
 
   return (
     <>
@@ -143,8 +140,8 @@ export function SalesView({ store }: { store: Store }) {
         <section className="card span-4" aria-labelledby="weekday-title">
           <h3 id="weekday-title">Average sales by weekday</h3>
           <p className="takeaway">
-            Busiest on {DAY_NAMES[busiest.day]}, quietest on {DAY_NAMES[quietest.day]}. Weekends run {percent(Math.abs(weekendGap))}{' '}
-            {weekendGap < 0 ? 'below' : 'above'} weekdays.
+            Busiest on {DAY_NAMES[busiest.day]}, quietest on {DAY_NAMES[quietest.day]}. Weekends run {percent(Math.abs(weekendDiff))}{' '}
+            {weekendDiff < 0 ? 'below' : 'above'} weekdays.
           </p>
           <div className="chart" role="img" aria-label={`Bar chart of average daily sales by weekday. Busiest ${DAY_NAMES[busiest.day]}, quietest ${DAY_NAMES[quietest.day]}.`}>
             <ResponsiveContainer width="100%" height={240}>

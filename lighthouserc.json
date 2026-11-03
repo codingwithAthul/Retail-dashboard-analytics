@@ -1,0 +1,27 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx vite preview --port 4174 --strictPort",
+      "startServerReadyPattern": "Local",
+      "url": [
+        "http://localhost:4174/Retail-dashboard-analytics/?page=overview",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=demographics#/store/2247/demographics",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=sales#/store/2247/sales",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=competitors#/store/2273/competitors",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=compare#/compare",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=brief#/store/2247/brief"
+      ],
+      "numberOfRuns": 1,
+      "settings": { "preset": "desktop" }
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.9 }],
+        "categories:performance": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": { "target": "filesystem", "outputDir": ".lighthouseci" }
+  }
+}

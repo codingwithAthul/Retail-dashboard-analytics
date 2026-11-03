@@ -19,10 +19,16 @@ Version 1 covers two Shoppers Drug Mart stores at the University of British Colu
 | **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources. |
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
+| **Compare** | Both stores side by side: headline numbers, where each should specialise, category mix, main customers, weekly rhythm, competitors. |
+| **Store brief** | One printable page per store for a meeting or a store visit. Prints or saves as PDF on a single Letter sheet. |
 
 Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the Competitors tab recommends **avoiding fresh grocery** there and putting the space into beauty and health services instead.
 
 ![Demographics tab, dark appearance](docs/screenshots/demographics.png)
+
+![Compare page](docs/screenshots/compare.png)
+
+![Store brief](docs/screenshots/brief.png)
 
 ## Data policy
 
@@ -54,6 +60,7 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 | Charts | Recharts | Declarative charts for React |
 | Data | Python, pandas | Standard tools for data cleaning and aggregation |
 | Tests | Vitest, Testing Library, Playwright, pytest | Unit, component, browser (desktop and phone) and data tests in CI |
+| Quality | Lighthouse CI | Every page must score 100 for accessibility, or CI fails |
 | Hosting | GitHub Pages via GitHub Actions | Anyone can open a link, no licence needed |
 
 ## Run locally
@@ -63,6 +70,7 @@ npm install
 npm run dev        # http://localhost:5173/Retail-dashboard-analytics/
 npm test           # unit and component tests
 npm run e2e        # browser tests, desktop and phone
+npx @lhci/cli@0.15.1 autorun   # Lighthouse on every page (after a build)
 npm run build      # type check and production build
 ```
 

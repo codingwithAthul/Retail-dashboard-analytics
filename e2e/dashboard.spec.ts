@@ -44,6 +44,32 @@ test.describe('analytics tabs', () => {
   });
 });
 
+test.describe('compare', () => {
+  test('opens from the switcher and returns to a store', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('tab', { name: 'Compare' }).click();
+    await expect(page).toHaveURL(/#\/compare$/);
+    await expect(page.getByRole('heading', { level: 2, name: 'Compare stores' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Where each store should specialise' })).toBeVisible();
+    await page.getByRole('tab', { name: 'University Blvd' }).click();
+    await expect(page.getByRole('heading', { level: 2, name: 'University Blvd' })).toBeVisible();
+  });
+});
+
+test.describe('store brief', () => {
+  test('opens from the store panel and prints on one page', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('button', { name: /One-page brief/ }).click();
+    await expect(page).toHaveURL(/#\/store\/2247\/brief$/);
+    await expect(page.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeVisible();
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.topbar')).toBeHidden();
+    await expect(page.getByRole('button', { name: 'Print or save as PDF' })).toBeHidden();
+    const pdf = (await page.pdf({ format: 'Letter', preferCSSPageSize: true })).toString('latin1');
+    expect(pdf.match(/\/Type\s*\/Page[^s]/g)).toHaveLength(1);
+  });
+});
+
 test('dark appearance follows the system setting', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('./');
@@ -57,4 +83,7 @@ test('analytics pages never scroll sideways', async ({ page }) => {
     const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
     expect(scroll, tab).toBeLessThanOrEqual(client);
   }
+  await page.goto('./#/compare');
+  const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
+  expect(scroll, 'compare').toBeLessThanOrEqual(client);
 });

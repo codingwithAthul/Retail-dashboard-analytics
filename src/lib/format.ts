@@ -14,3 +14,14 @@ export function moneyShort(n: number): string {
   if (Math.abs(n) >= 1_000) return `$${Math.round(n / 1_000)}K`;
   return `$${Math.round(n)}`;
 }
+
+/** Full weekday names for the short labels used in the data ("Mon" → "Monday"). */
+export const DAY_NAMES: Record<string, string> = {
+  Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
+};
+
+/** "2026-10" as "October 2026". */
+export function monthYear(key: string): string {
+  const [y, m] = key.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('en-CA', { month: 'long', year: 'numeric' });
+}
