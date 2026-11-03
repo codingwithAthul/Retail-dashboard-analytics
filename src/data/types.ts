@@ -22,3 +22,31 @@ export interface Source {
   title: string;
   url: string;
 }
+
+export interface Fact {
+  label: string;
+  value: string;
+  confidence: Confidence;
+  sources?: string[];
+}
+
+export interface LeadershipRole {
+  role: string;
+  /** Left empty on purpose: names are filled in later by the store team. */
+  name: string | null;
+}
+
+export interface Segment {
+  name: string;
+  share: number; // 0..1
+}
+
+export interface Demographics {
+  segments: Segment[];
+  ageBands: Segment[];
+  incomeTier: Fact;
+  drivers: string[];
+  seasonality: string;
+  nearby: { name: string; kind: string; note: string }[];
+  facts: Fact[];
+}
