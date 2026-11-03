@@ -9,7 +9,8 @@
         "http://localhost:4174/Retail-dashboard-analytics/?page=sales#/store/2247/sales",
         "http://localhost:4174/Retail-dashboard-analytics/?page=competitors#/store/2273/competitors",
         "http://localhost:4174/Retail-dashboard-analytics/?page=compare#/compare",
-        "http://localhost:4174/Retail-dashboard-analytics/?page=brief#/store/2247/brief"
+        "http://localhost:4174/Retail-dashboard-analytics/?page=brief#/store/2247/brief",
+        "http://localhost:4174/Retail-dashboard-analytics/?page=listing#/store/2246"
       ],
       "numberOfRuns": 1,
       "settings": { "preset": "desktop" }
