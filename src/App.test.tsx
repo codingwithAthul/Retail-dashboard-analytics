@@ -73,3 +73,51 @@ describe('App deep links', () => {
     expect(window.location.hash).toBe('#/store/2247/sales');
   });
 });
+
+describe('Vancouver directory stores', () => {
+  it('finds a store by street and opens its listing panel', async () => {
+    render(<App />);
+    await userEvent.type(screen.getByRole('combobox', { name: /find a store/i }), 'denman');
+    await userEvent.click(screen.getByRole('option', { name: /Denman Place Mall/ }));
+    expect(screen.getByRole('heading', { level: 2, name: 'Denman Place Mall' })).toBeInTheDocument();
+    expect(screen.getByRole('note')).toHaveTextContent(/public directory listing/i);
+    expect(window.location.hash).toBe('#/store/201');
+  });
+
+  it('chooses the highlighted match with the keyboard', async () => {
+    render(<App />);
+    await userEvent.type(screen.getByRole('combobox', { name: /find a store/i }), '2294{Enter}');
+    expect(screen.getByRole('heading', { level: 2, name: 'Hastings & Slocan' })).toBeInTheDocument();
+  });
+
+  it('says when nothing matches', async () => {
+    render(<App />);
+    await userEvent.type(screen.getByRole('combobox', { name: /find a store/i }), 'zzz');
+    expect(screen.getByText(/No store matches/)).toBeInTheDocument();
+  });
+
+  it('opens a deep link to a listing on its overview, even for an analytics tab', () => {
+    window.history.replaceState(null, '', '/#/store/2279/sales');
+    render(<App />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Vancouver General Hospital' })).toBeInTheDocument();
+    expect(screen.getByText(/map position is approximate/i)).toBeInTheDocument();
+  });
+
+  it('links a listing to the nearest profiled store', async () => {
+    window.history.replaceState(null, '', '/#/store/238');
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /Wesbrook Village/ }));
+    expect(screen.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeInTheDocument();
+  });
+});
+
+describe('Compare page store choice', () => {
+  it('opens a chosen pair from the link and keeps it in the link when swapped', async () => {
+    window.history.replaceState(null, '', '/#/compare/2273/2247');
+    render(<App />);
+    const first = screen.getByRole('combobox', { name: 'Store' });
+    expect(first).toHaveValue('2273');
+    await userEvent.click(screen.getByRole('button', { name: 'Swap stores' }));
+    expect(window.location.hash).toBe('#/compare/2247/2273');
+  });
+});
