@@ -34,7 +34,7 @@ def store_days(profile: StoreProfile, start: date, end: date, rng: np.random.Gen
     years = (days["date"] - pd.Timestamp(start)).dt.days / 365.25
     trend = (1 + profile.growth) ** years
     season = days["date"].dt.month.map(lambda m: profile.seasonality[m - 1])
-    weekday = days["date"].dt.dayofweek.map(lambda d: profile.weekday[d]) / np.mean(profile.weekday)
+    weekday = days["date"].dt.day_of_week.map(lambda d: profile.weekday[d]) / np.mean(profile.weekday)
     holiday = [REDUCED_HOURS.get((d.month, d.day), 1.0) for d in days["date"]]
     noise = rng.lognormal(0, DAILY_NOISE, len(days))
     days["expected_sales"] = profile.base_monthly * 12 / 365.25 * trend * season * weekday * holiday * noise
