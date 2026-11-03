@@ -59,6 +59,17 @@
   text-decoration: underline;
 }
 
+/* Calm, low-contrast base map behind the pins (Apple Maps-like muted look). */
+.map .leaflet-tile-pane {
+  filter: grayscale(0.85) brightness(1.04) contrast(0.92);
+}
+
+@media (prefers-color-scheme: dark) {
+  .map .leaflet-tile-pane {
+    filter: grayscale(0.9) invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85);
+  }
+}
+
 .pin--listing {
   width: 18px;
   height: 18px;

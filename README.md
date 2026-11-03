@@ -56,7 +56,7 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 | Part | Choice | Why |
 |---|---|---|
 | App | React 19, TypeScript (strict), Vite | Typed, fast, standard |
-| Map | Leaflet with OpenStreetMap / CARTO tiles | Free, no API key |
+| Map | Leaflet with OpenStreetMap tiles | Free, no API key |
 | Charts | Recharts | Declarative charts for React |
 | Data | Python, pandas | Standard tools for data cleaning and aggregation |
 | Tests | Vitest, Testing Library, Playwright, pytest | Unit, component, browser (desktop and phone) and data tests in CI |
