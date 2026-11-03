@@ -14,12 +14,16 @@
 .pin--store {
   width: 36px;
   height: 36px;
-  background: var(--red);
+  background: color-mix(in srgb, var(--red) 80%, #000);
   color: #fff;
   font: 700 13px var(--font);
   border: 3px solid #fff;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
   cursor: pointer;
+}
+
+.pin--store::before {
+  content: 'Rx';
 }
 
 .pin--store.is-selected {
@@ -48,4 +52,9 @@
 
 .leaflet-container {
   font-family: var(--font);
+}
+
+.leaflet-control-attribution a {
+  color: inherit;
+  text-decoration: underline;
 }

@@ -69,8 +69,8 @@
   font-weight: 600;
 }
 
-.kpi__delta.is-up { color: color-mix(in srgb, var(--green) 70%, var(--text)); }
-.kpi__delta.is-down { color: color-mix(in srgb, var(--red) 70%, var(--text)); }
+.kpi__delta.is-up { color: color-mix(in srgb, var(--green) 55%, var(--text)); }
+.kpi__delta.is-down { color: color-mix(in srgb, var(--red) 55%, var(--text)); }
 
 .kpi__note {
   margin: 2px 0 0;
@@ -124,8 +124,9 @@
 }
 
 .sources a {
-  color: var(--blue);
-  text-decoration: none;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
   margin-left: 2px;
 }
 
@@ -160,7 +161,7 @@
 }
 
 .tick {
-  color: var(--blue);
+  color: var(--link);
   font-weight: 700;
 }
 
@@ -180,7 +181,7 @@
 
 .chart-data summary {
   cursor: pointer;
-  color: var(--blue);
+  color: var(--link);
   font-weight: 500;
 }
 
