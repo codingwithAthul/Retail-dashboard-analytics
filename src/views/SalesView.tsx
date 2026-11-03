@@ -3,7 +3,7 @@ import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContai
 import { ChartData } from '../components/ChartData';
 import { KpiTile } from '../components/KpiTile';
 import { SampleDataNotice } from '../components/SampleDataNotice';
-import { categorySales, pharmacySplit, salesKpis, topItems, weekdaySales, yearOverYear } from '../data/sales';
+import { categorySales, IS_SAMPLE, pharmacySplit, salesKpis, topItems, weekdaySales, yearOverYear } from '../data/sales';
 import type { Store } from '../data/types';
 import { count, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
 
@@ -35,7 +35,7 @@ export function SalesView({ store }: { store: Store }) {
 
   return (
     <>
-      <SampleDataNotice />
+      {IS_SAMPLE && <SampleDataNotice />}
 
       <div className="grid">
         <div className="span-3">
