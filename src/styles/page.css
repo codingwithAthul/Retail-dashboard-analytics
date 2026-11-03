@@ -69,8 +69,8 @@
   font-weight: 600;
 }
 
-.kpi__delta.is-up { color: color-mix(in srgb, var(--green) 70%, var(--text)); }
-.kpi__delta.is-down { color: color-mix(in srgb, var(--red) 70%, var(--text)); }
+.kpi__delta.is-up { color: color-mix(in srgb, var(--green) 55%, var(--text)); }
+.kpi__delta.is-down { color: color-mix(in srgb, var(--red) 55%, var(--text)); }
 
 .kpi__note {
   margin: 2px 0 0;
