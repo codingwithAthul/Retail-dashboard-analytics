@@ -44,6 +44,18 @@ test.describe('analytics tabs', () => {
   });
 });
 
+test.describe('compare', () => {
+  test('opens from the switcher and returns to a store', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('tab', { name: 'Compare' }).click();
+    await expect(page).toHaveURL(/#\/compare$/);
+    await expect(page.getByRole('heading', { level: 2, name: 'Compare stores' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Where each store should specialise' })).toBeVisible();
+    await page.getByRole('tab', { name: 'University Blvd' }).click();
+    await expect(page.getByRole('heading', { level: 2, name: 'University Blvd' })).toBeVisible();
+  });
+});
+
 test('dark appearance follows the system setting', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('./');
@@ -57,4 +69,7 @@ test('analytics pages never scroll sideways', async ({ page }) => {
     const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
     expect(scroll, tab).toBeLessThanOrEqual(client);
   }
+  await page.goto('./#/compare');
+  const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
+  expect(scroll, 'compare').toBeLessThanOrEqual(client);
 });
