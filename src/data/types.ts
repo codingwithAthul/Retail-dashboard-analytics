@@ -50,3 +50,43 @@ export interface Demographics {
   nearby: { name: string; kind: string; note: string }[];
   facts: Fact[];
 }
+
+export interface CategoryCall {
+  category: Category;
+  rival: string;
+  decision: Decision;
+  reason: string;
+}
+
+export interface Store {
+  id: string;
+  number: string;
+  name: string;
+  shortName: string;
+  banner: string;
+  division: string;
+  format: StoreFormat;
+  address: string;
+  phone: string;
+  hours: string;
+  coords: LatLng;
+  services: string[];
+  summary: string[];
+  leadership: LeadershipRole[];
+  differentiators: Fact[];
+  demographics: Demographics;
+  categoryCalls: CategoryCall[];
+  sources: string[];
+}
+
+export interface Competitor {
+  id: string;
+  name: string;
+  kind: string;
+  address: string;
+  coords: LatLng;
+  /** True when the pin is placed from the street address, not a surveyed point. */
+  approximate: boolean;
+  categories: Category[];
+  sources: string[];
+}
