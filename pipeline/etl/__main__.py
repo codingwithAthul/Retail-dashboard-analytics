@@ -4,11 +4,15 @@ import argparse
 import sys
 from pathlib import Path
 
+from .census import build as build_census
 from .generate import generate
 from .transform import transform, write_summary
 from .validate import Report, validate
 
-APP_DATA = Path(__file__).parent.parent.parent / "src" / "data" / "generated" / "sales.json"
+ROOT = Path(__file__).parent.parent.parent
+APP_DATA = ROOT / "src" / "data" / "generated" / "sales.json"
+CENSUS_DATA = ROOT / "src" / "data" / "generated" / "fsaCensus.json"
+STORES_CSV = ROOT / "Research" / "data" / "vancouver-sdm-stores.csv"
 
 
 def print_report(report: Report) -> None:
@@ -32,6 +36,9 @@ def main(argv: list[str] | None = None) -> None:
     run.add_argument("--input", type=Path, help="folder with real store exports; omit to use sample data")
     run.add_argument("--out", type=Path, default=APP_DATA, help="summary file (default: the app's data file)")
 
+    census = commands.add_parser("census", help="fetch 2021 census profiles for each store's postal area (needs internet)")
+    census.add_argument("--out", type=Path, default=CENSUS_DATA, help="profile file (default: the app's census file)")
+
     args = parser.parse_args(argv)
     if args.command == "generate":
         generate(args.out)
@@ -42,6 +49,9 @@ def main(argv: list[str] | None = None) -> None:
         if not report.ok:
             sys.exit(1)
         print(f"{args.input}: valid")
+    elif args.command == "census":
+        areas = build_census(STORES_CSV, args.out)
+        print(f"Census profiles for {len(areas)} postal areas written to {args.out}")
     elif args.command == "run":
         folder = args.input
         if folder is None:
