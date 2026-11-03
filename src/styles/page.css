@@ -125,7 +125,8 @@
 
 .sources a {
   color: var(--link);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   margin-left: 2px;
 }
 
