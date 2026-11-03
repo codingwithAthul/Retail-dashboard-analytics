@@ -33,6 +33,12 @@ test.describe('overview', () => {
     await expect(page.locator('.pin--cluster')).toHaveCount(0);
   });
 
+  test('shows the postal-area census for a directory store', async ({ page }) => {
+    await page.goto('./#/store/201');
+    await expect(page.getByRole('heading', { name: /2021 census, postal area V6G/ })).toBeVisible();
+    await expect(page.getByRole('rowheader', { name: 'Households that rent' })).toBeVisible();
+  });
+
   test('finds a store from the search field', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('combobox', { name: /find a store/i }).fill('kingsway');
