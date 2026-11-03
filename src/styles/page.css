@@ -121,3 +121,7 @@
 .sources a:hover {
   text-decoration: underline;
 }
+
+.notice--estimate {
+  background: color-mix(in srgb, var(--indigo) 8%, var(--surface));
+}
