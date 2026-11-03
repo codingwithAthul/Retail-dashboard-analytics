@@ -19,10 +19,16 @@ Version 1 covers two Shoppers Drug Mart stores at the University of British Colu
 | **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources. |
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
+| **Compare** | Both stores side by side: headline numbers, where each should specialise, category mix, main customers, weekly rhythm, competitors. |
+| **Store brief** | One printable page per store for a meeting or a store visit. Prints or saves as PDF on a single Letter sheet. |
 
 Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the Competitors tab recommends **avoiding fresh grocery** there and putting the space into beauty and health services instead.
 
 ![Demographics tab, dark appearance](docs/screenshots/demographics.png)
+
+![Compare page](docs/screenshots/compare.png)
+
+![Store brief](docs/screenshots/brief.png)
 
 ## Data policy
 
