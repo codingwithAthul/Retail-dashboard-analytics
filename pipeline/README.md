@@ -33,3 +33,11 @@ python -m etl validate          # checks data/raw; --input <folder> for another 
 ```
 
 Errors stop the pipeline (exit code 1): missing files or columns, values of the wrong type, empty required values, negative units or sales, duplicate keys, products or stores that are not in the reference tables, and days with sales but no transaction count. Warnings are printed but do not stop it: average baskets outside $1–$500, or sales above shelf price.
+
+## Build the dashboard data
+
+```bash
+python -m etl run               # sample data → validate → src/data/generated/sales.json
+```
+
+The summary file holds, for each store: 24 months of sales and transactions, last-12-month sales by category, the eight best-selling front-store items by units, average sales by weekday, and the pharmacy share. Only full calendar months are used; a partial first or last month is dropped. At least 12 full months are needed.

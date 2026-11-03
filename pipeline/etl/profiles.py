@@ -52,10 +52,14 @@ PROFILES: dict[str, StoreProfile] = {
             "P009": 2.4,  # Prestige moisturiser
             "P010": 1.8,  # Prestige foundation
             "P011": 1.3,  # Sunscreen
+            "P013": 0.6,  # Lip balm
             "P015": 2.2,  # Baby wipes: young families
             "P021": 3.0,  # Milk
             "P022": 0.4,  # Energy drink
+            "P023": 0.5,  # Bottled water
             "P024": 0.3,  # Instant noodles
+            "P025": 0.6,  # Chocolate bar
+            "P030": 0.7,  # Dish soap
             "P031": 1.8,  # Greeting cards
             "P032": 0.3,  # Ruled notebook
         },
