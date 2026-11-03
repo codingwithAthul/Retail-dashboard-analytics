@@ -1,0 +1,38 @@
+/* Design tokens based on Apple Human Interface Guidelines (see Research/05). */
+:root {
+  color-scheme: light dark;
+
+  /* System colours (HIG colour table, light) */
+  --blue: rgb(0 136 255);
+  --green: rgb(52 199 89);
+  --red: rgb(255 56 60);
+  --orange: rgb(255 141 40);
+  --indigo: rgb(97 85 245);
+  --teal: rgb(0 195 208);
+  --gray: rgb(142 142 147);
+
+  /* Surfaces and text */
+  --bg: #f2f2f7;
+  --surface: #ffffff;
+  --surface-2: #f2f2f7;
+  --glass: rgb(255 255 255 / 0.72);
+  --separator: rgb(60 60 67 / 0.12);
+  --text: #1d1d1f;
+  --text-2: rgb(60 60 67 / 0.78);
+  --text-3: rgb(60 60 67 / 0.55);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.08);
+
+  /* Shape, spacing, type */
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 18px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
