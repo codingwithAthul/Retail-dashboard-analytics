@@ -79,3 +79,46 @@ button {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
+
+/* Segmented control */
+.segmented {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 9px;
+  background: var(--surface-2);
+  gap: 2px;
+}
+
+.segmented button {
+  border: 0;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+
+.segmented button[aria-selected='true'] {
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+  font-weight: 600;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--badge, var(--gray)) 16%, transparent);
+  color: var(--badge, var(--text-2));
+}
+
+.badge--sample { --badge: var(--orange); }
+.badge--estimate { --badge: var(--indigo); }
+.badge--verified { --badge: var(--green); }
