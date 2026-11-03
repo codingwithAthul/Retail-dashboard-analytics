@@ -73,6 +73,14 @@
   color: var(--text-2);
 }
 
+.chip--small {
+  margin-left: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 .bullets {
   margin: 0;
   padding-left: 18px;

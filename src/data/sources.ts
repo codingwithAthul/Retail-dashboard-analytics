@@ -1,3 +1,4 @@
+import { FSA_CODES, fsaPageUrl, fsaSourceId } from './fsaCensus';
 import type { Source } from './types';
 
 /** Public sources referenced by facts in the dashboard. Full notes live in /Research. */
@@ -43,6 +44,12 @@ export const SOURCES: Record<string, Source> = {
     title: 'Research: SDM store formats',
     url: 'https://github.com/codingwithAthul/Retail-dashboard-analytics/blob/main/Research/02-sdm-store-formats.md',
   },
+  ...Object.fromEntries(
+    FSA_CODES.map((fsa) => [
+      fsaSourceId(fsa),
+      { id: fsaSourceId(fsa), title: `Statistics Canada, 2021 Census Profile: postal area ${fsa}`, url: fsaPageUrl(fsa) },
+    ]),
+  ),
 };
 
 export function getSource(id: string): Source {
