@@ -1,7 +1,7 @@
 {
   "name": "retail-dashboard-analytics",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Store analytics dashboard for Shoppers Drug Mart locations in Vancouver (portfolio project).",
   "type": "module",
   "scripts": {
