@@ -12,6 +12,8 @@ export interface MapViewProps {
   leftInset?: number;
   /** Extra space (px) at the top, kept clear for the top bar. */
   topInset?: number;
+  /** Extra space (px) at the bottom, kept clear for a bottom sheet on phones. */
+  bottomInset?: number;
   className?: string;
 }
 
@@ -30,7 +32,7 @@ function storeIcon(store: Store, selected: boolean) {
 
 const competitorIcon = L.divIcon({ className: '', html: '<div class="pin pin--competitor"></div>', iconSize: [14, 14], iconAnchor: [7, 7] });
 
-export function MapView({ stores, competitors = [], selectedId, onSelect, leftInset = 0, topInset = 96, className }: MapViewProps) {
+export function MapView({ stores, competitors = [], selectedId, onSelect, leftInset = 0, topInset = 96, bottomInset = 0, className }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const layerRef = useRef<L.LayerGroup | null>(null);
@@ -59,8 +61,8 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
     if (!map) return;
     const points: LatLng[] = [...stores.map((s) => s.coords), ...competitors.map((c) => c.coords)];
     if (points.length === 0) return;
-    map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, topInset], paddingBottomRight: [48, 48], maxZoom: 16 });
-  }, [stores, competitors, leftInset, topInset]);
+    map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, topInset], paddingBottomRight: [48, bottomInset + 48], maxZoom: 16 });
+  }, [stores, competitors, leftInset, topInset, bottomInset]);
 
   // Draw pins whenever the data or the selection changes.
   useEffect(() => {
