@@ -15,12 +15,6 @@ PRICE_TOLERANCE = 1.25  # net sales above units × price × this are suspicious
 MIN_BASKET, MAX_BASKET = 1.0, 500.0  # plausible average basket per store-day, CAD
 
 
-class ValidationError(Exception):
-    def __init__(self, report: "Report"):
-        super().__init__("\n".join(report.errors))
-        self.report = report
-
-
 @dataclass
 class Report:
     errors: list[str] = field(default_factory=list)
