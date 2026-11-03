@@ -50,3 +50,11 @@ test('dark appearance follows the system setting', async ({ page }) => {
   const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
   expect(bg).toBe('rgb(0, 0, 0)');
 });
+
+test('analytics pages never scroll sideways', async ({ page }) => {
+  for (const tab of ['demographics', 'sales', 'competitors']) {
+    await page.goto(`./#/store/2247/${tab}`);
+    const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
+    expect(scroll, tab).toBeLessThanOrEqual(client);
+  }
+});
