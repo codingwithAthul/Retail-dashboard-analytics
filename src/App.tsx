@@ -5,6 +5,7 @@ import { StoreSwitcher } from './components/StoreSwitcher';
 import type { Tab } from './components/TabNav';
 import { DIRECTORY, hasProfile } from './data/directory';
 import { STORES, getStore } from './data/stores';
+import type { Store } from './data/types';
 import { AnalyticsPage } from './views/AnalyticsPage';
 import { ComparePage } from './views/ComparePage';
 import { ListingOverview } from './views/ListingOverview';
@@ -19,7 +20,7 @@ const PINS: MapPin[] = DIRECTORY.map((s) => ({ ...s, profiled: hasProfile(s) }))
 const DEFAULT_ROUTE = { storeId: STORES[0].id, tab: 'overview' as Tab };
 
 export default function App() {
-  const [{ storeId, tab }, navigate] = useHashRoute(STORE_IDS, DEFAULT_ROUTE);
+  const [{ storeId, tab, compare: pair }, navigate] = useHashRoute(STORE_IDS, DEFAULT_ROUTE);
   const profile = getStore(storeId);
   // Stores known only from public directories have no analytics tabs or brief yet.
   const listing = profile ? undefined : DIRECTORY.find((s) => s.id === storeId);
@@ -31,6 +32,12 @@ export default function App() {
     [navigate, tab],
   );
   const compare = useCallback(() => navigate({ storeId, tab: 'compare' }), [navigate, storeId]);
+  const pick = useCallback((a: string, b: string) => navigate({ storeId, tab: 'compare', compare: [a, b] }), [navigate, storeId]);
+  // Only profiled stores have the data to compare; anything else falls back to the first two.
+  const [compareA, compareB] = (pair && pair.every((id) => getStore(id)) ? pair.map((id) => getStore(id)!) : STORES.slice(0, 2)) as [
+    Store,
+    Store,
+  ];
   const setTab = useCallback((next: Tab) => navigate({ storeId, tab: next }), [navigate, storeId]);
   const brief = useCallback(() => navigate({ storeId, tab: 'brief' }), [navigate, storeId]);
 
@@ -45,7 +52,7 @@ export default function App() {
       </header>
 
       {view === 'compare' ? (
-        <ComparePage a={STORES[0]} b={STORES[1]} />
+        <ComparePage a={compareA} b={compareB} stores={STORES} onChange={pick} notComparable={DIRECTORY.length - STORES.length} />
       ) : view === 'brief' ? (
         <StoreBrief store={store} onBack={() => setTab('overview')} />
       ) : view === 'overview' ? (

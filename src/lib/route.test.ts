@@ -34,4 +34,14 @@ describe('route', () => {
       expect(parseHash(toHash(r), ids, fallback)).toEqual(r);
     }
   });
+
+  it('opens the compare page with two chosen stores', () => {
+    expect(parseHash('#/compare/2273/2247', ids, fallback)).toEqual({ storeId: '2247', tab: 'compare', compare: ['2273', '2247'] });
+    expect(toHash({ storeId: '2247', tab: 'compare', compare: ['2273', '2247'] })).toBe('#/compare/2273/2247');
+  });
+
+  it('ignores a compare pair that repeats a store or names an unknown one', () => {
+    expect(parseHash('#/compare/2247/2247', ids, fallback)).toEqual({ storeId: '2247', tab: 'compare' });
+    expect(parseHash('#/compare/2247/9999', ids, fallback)).toEqual({ storeId: '2247', tab: 'compare' });
+  });
 });
