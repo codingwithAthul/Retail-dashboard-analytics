@@ -119,3 +119,8 @@
   font-size: 22px !important;
   color: var(--text-3) !important;
 }
+
+.brief-link {
+  margin-top: var(--space-2);
+  padding-left: 0;
+}

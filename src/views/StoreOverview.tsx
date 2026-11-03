@@ -7,9 +7,10 @@ import type { Store } from '../data/types';
 interface Props {
   store: Store;
   onOpen: (tab: Tab) => void;
+  onBrief: () => void;
 }
 
-export function StoreOverview({ store, onOpen }: Props) {
+export function StoreOverview({ store, onOpen, onBrief }: Props) {
   return (
     <>
       <header>
@@ -23,6 +24,9 @@ export function StoreOverview({ store, onOpen }: Props) {
           <span className="chip">{store.hours}</span>
           <span className="chip">{store.phone}</span>
         </div>
+        <button type="button" className="button button--plain brief-link" onClick={onBrief}>
+          One-page brief <span aria-hidden="true">›</span>
+        </button>
       </header>
 
       <Section title="Summary">
