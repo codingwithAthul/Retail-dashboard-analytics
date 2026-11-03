@@ -26,4 +26,14 @@ describe('DemographicsView', () => {
     expect(screen.getByRole('img', { name: /^Customer segments:/ })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /^Age profile:/ })).toBeInTheDocument();
   });
+
+  it('shows the 2021 census next to Metro Vancouver, with sources', () => {
+    render(<DemographicsView store={UNIVERSITY} />);
+    const table = screen.getByRole('table', { name: /2021 census, Metro Vancouver A/ });
+    expect(table).toHaveTextContent('Median age31.440.8');
+    expect(screen.getByRole('heading', { name: /2021 census: Metro Vancouver A/ })).toHaveTextContent('Verified');
+    const links = screen.getAllByRole('link').map((a) => a.getAttribute('href'));
+    expect(links.some((h) => h?.includes('2021A00055915020'))).toBe(true);
+    expect(screen.getByRole('img', { name: /^Residents by age, 2021 census:/ })).toBeInTheDocument();
+  });
 });

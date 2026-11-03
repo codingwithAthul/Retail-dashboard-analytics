@@ -14,6 +14,46 @@ test.describe('overview', () => {
     await expect(page).toHaveURL(/#\/store\/2273$/);
   });
 
+  test('groups close directory stores and zooms in to open one', async ({ page }) => {
+    await page.goto('./');
+    const clusters = page.locator('.pin--cluster');
+    await expect(clusters.first()).toBeVisible();
+    const shown = await page.locator('.pin--listing').count();
+    const grouped = await clusters.evaluateAll((els) => els.reduce((n, el) => n + Number(el.textContent), 0));
+    expect(shown + grouped).toBe(29);
+    await page.getByRole('button', { name: /stores: .*Yaletown/ }).click();
+    await page.getByRole('button', { name: 'Shoppers Drug Mart Yaletown' }).click();
+    await expect(page.getByRole('heading', { level: 2, name: 'Yaletown' })).toBeVisible();
+    await expect(page).toHaveURL(/#\/store\/2246$/);
+  });
+
+  test('zooms to a directory store opened by link, with no pins grouped', async ({ page }) => {
+    await page.goto('./#/store/2246');
+    await expect(page.locator('.pin--listing.is-selected')).toBeVisible();
+    await expect(page.locator('.pin--cluster')).toHaveCount(0);
+  });
+
+  test('shows the postal-area census for a directory store', async ({ page }) => {
+    await page.goto('./#/store/201');
+    await expect(page.getByRole('heading', { name: /2021 census, postal area V6G/ })).toBeVisible();
+    await expect(page.getByRole('rowheader', { name: 'Households that rent' })).toBeVisible();
+  });
+
+  test('shows pharmacies and supermarkets within a 10-minute walk of a directory store', async ({ page }) => {
+    await page.goto('./#/store/2246');
+    await expect(page.getByRole('heading', { name: 'Within a 10-minute walk' })).toBeVisible();
+    await expect(page.locator('.pin--competitor').first()).toBeVisible();
+    await page.goto('./#/store/2247');
+    await expect(page.locator('.pin--competitor')).toHaveCount(0);
+  });
+
+  test('finds a store from the search field', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('combobox', { name: /find a store/i }).fill('kingsway');
+    await page.getByRole('option', { name: /El Dorado/ }).click();
+    await expect(page.getByRole('heading', { level: 2, name: 'El Dorado' })).toBeVisible();
+  });
+
   test('shows Store Leadership placeholders, not names', async ({ page }) => {
     await page.goto('./');
     await expect(page.getByText('Not yet added')).toHaveCount(4);

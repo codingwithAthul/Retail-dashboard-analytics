@@ -10,6 +10,10 @@ Background research that shapes the dashboard. Every fact is tied to a source li
 | [04-competitor-landscape.md](04-competitor-landscape.md) | Nearby competitors and assortment implications |
 | [05-apple-design-language.md](05-apple-design-language.md) | Apple Human Interface Guidelines applied to a web dashboard |
 | [06-analytics-scope.md](06-analytics-scope.md) | What the Demographic, Sales and Competitor tabs contain, and why |
+| [07-census-2021-ubc.md](07-census-2021-ubc.md) | 2021 census for Metro Vancouver A (UBC) against Metro Vancouver |
+| [08-vancouver-sdm-stores.md](08-vancouver-sdm-stores.md) | Shoppers Drug Mart stores in the City of Vancouver: positions and cross-checks |
+| [09-census-by-postal-area.md](09-census-by-postal-area.md) | 2021 census for the postal area of each Vancouver store, and what stands out |
+| [10-nearby-pharmacies-and-supermarkets.md](10-nearby-pharmacies-and-supermarkets.md) | Pharmacies, supermarkets and Loblaw banners within a 10-minute walk of each Vancouver store |
 
 ## Confidence labels
 

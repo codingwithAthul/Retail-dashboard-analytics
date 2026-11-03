@@ -1,3 +1,4 @@
+import { FSA_CODES, fsaPageUrl, fsaSourceId } from './fsaCensus';
 import type { Source } from './types';
 
 /** Public sources referenced by facts in the dashboard. Full notes live in /Research. */
@@ -28,11 +29,27 @@ export const SOURCES: Record<string, Source> = {
     title: 'Cortico: pharmacies in University Endowment Lands',
     url: 'https://cortico.health/pharmacies/university-endowment-lands-bc',
   },
+  census5915020: {
+    id: 'census5915020',
+    title: 'Statistics Canada, Census Profile 2021: Metro Vancouver A (CSD 5915020)',
+    url: 'https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&DGUIDlist=2021A00055915020&GENDERlist=1&STATISTIClist=1,4&HEADERlist=0',
+  },
+  census933: {
+    id: 'census933',
+    title: 'Statistics Canada, Census Profile 2021: Vancouver CMA (933)',
+    url: 'https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&DGUIDlist=2021S0503933&GENDERlist=1&STATISTIClist=1,4&HEADERlist=0',
+  },
   sdmFormats: {
     id: 'sdmFormats',
     title: 'Research: SDM store formats',
     url: 'https://github.com/codingwithAthul/Retail-dashboard-analytics/blob/main/Research/02-sdm-store-formats.md',
   },
+  ...Object.fromEntries(
+    FSA_CODES.map((fsa) => [
+      fsaSourceId(fsa),
+      { id: fsaSourceId(fsa), title: `Statistics Canada, 2021 Census Profile: postal area ${fsa}`, url: fsaPageUrl(fsa) },
+    ]),
+  ),
 };
 
 export function getSource(id: string): Source {
