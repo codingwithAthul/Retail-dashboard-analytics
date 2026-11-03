@@ -1,0 +1,35 @@
+product_id,product_name,category_id,unit_price
+P001,New prescription,C01,42.00
+P002,Prescription refill,C01,36.00
+P003,Vitamin D3 1000 IU,C02,12.00
+P004,Allergy relief tablets,C02,18.00
+P005,Ibuprofen 200 mg,C02,11.00
+P006,Cold and flu capsules,C02,13.00
+P007,Antacid tablets,C02,9.00
+P008,Multivitamin,C02,16.00
+P009,Prestige moisturiser,C03,42.00
+P010,Prestige foundation,C03,52.00
+P011,Sunscreen SPF 50,C03,21.00
+P012,Mascara (mass),C03,14.00
+P013,Lip balm,C03,5.00
+P014,Face cleanser,C03,15.00
+P015,Baby wipes,C04,9.00
+P016,Life Brand shampoo,C04,7.00
+P017,Toothpaste,C04,5.00
+P018,Deodorant,C04,7.00
+P019,Razor cartridges,C04,24.00
+P020,Body wash,C04,8.00
+P021,Milk 2% (2 L),C05,6.00
+P022,Energy drink 473 mL,C05,3.50
+P023,Bottled water 500 mL,C05,2.00
+P024,Instant noodles,C05,2.50
+P025,Chocolate bar,C05,2.25
+P026,Granola bars,C05,5.00
+P027,Paper towels,C07,8.00
+P028,Laundry detergent,C07,14.00
+P029,AA batteries,C07,12.00
+P030,Dish soap,C07,4.00
+P031,Greeting cards,C08,5.00
+P032,Ruled notebook,C08,4.00
+P033,Gift wrap,C08,7.00
+P034,Boxed chocolates,C08,15.00
