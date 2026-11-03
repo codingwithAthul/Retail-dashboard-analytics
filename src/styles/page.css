@@ -14,6 +14,7 @@
 
 .page__head {
   display: flex;
+  min-width: 0;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
@@ -171,4 +172,17 @@
   cursor: pointer;
   color: var(--blue);
   font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .page__head .segmented {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .notice {
+    align-items: flex-start;
+  }
+  .table {
+    font-size: 13px;
+  }
 }
