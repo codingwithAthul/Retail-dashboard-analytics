@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0 (2026-11-03)
+
+End-to-end data pipeline: raw daily sales in, dashboard numbers out.
+
+- Python and pandas pipeline in `/pipeline`: generate (or import) → validate → transform → `src/data/generated/sales.json`
+- Star schema with daily sales by store and product, daily transactions, and store, product, category and date dimensions; documented in `docs/data-dictionary.md`
+- Seeded sample-data generator with seasonality, UBC academic calendar, weekday pattern, growth, promotions and holiday hours
+- Validation with clear errors: missing files or columns, wrong types, empty values, negative numbers, duplicate keys, unknown stores or products, days with sales but no transactions
+- Real store exports can replace the sample data with no code changes (`python -m etl run --input <folder>`); see `docs/importing-real-data.md`
+- The dashboard reads the pipeline's output instead of generating numbers in the browser
+- New chart on the Sales tab: average sales by weekday
+- CI runs 68 pipeline tests, rebuilds the data and fails if the committed data file is out of date
+
 ## 1.1.0 (2026-11-03)
 
 Quality and accessibility release.

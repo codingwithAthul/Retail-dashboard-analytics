@@ -27,3 +27,9 @@ Thumbs.db
 # Playwright
 test-results/
 playwright-report/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+pipeline/data/

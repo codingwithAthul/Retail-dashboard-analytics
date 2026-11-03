@@ -30,12 +30,19 @@ describe('SalesView', () => {
     render(<SalesView store={UNIVERSITY} />);
     expect(screen.getByRole('img', { name: /line chart of monthly sales/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /bar chart of sales by category/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /bar chart of average daily sales by weekday/i })).toBeInTheDocument();
+  });
+
+  it('calls out the busiest day and the weekend gap on campus', () => {
+    render(<SalesView store={UNIVERSITY} />);
+    const section = screen.getByRole('region', { name: 'Average sales by weekday' });
+    expect(within(section).getByText(/weekends run \d+% below weekdays/i)).toBeInTheDocument();
   });
 });
 
 describe('SalesView data tables', () => {
-  it('offers the numbers behind both charts', () => {
+  it('offers the numbers behind every chart', () => {
     render(<SalesView store={WESBROOK} />);
-    expect(screen.getAllByText('Show data')).toHaveLength(2);
+    expect(screen.getAllByText('Show data')).toHaveLength(3);
   });
 });

@@ -17,7 +17,7 @@ Version 1 covers two Shoppers Drug Mart stores at the University of British Colu
 |---|---|
 | **Overview** | Map of the stores. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. |
 | **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources. |
-| **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items. |
+| **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
 
 Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the Competitors tab recommends **avoiding fresh grocery** there and putting the space into beauty and health services instead.
@@ -28,10 +28,18 @@ Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the 
 
 - **Store facts** (address, hours, services) come from public store pages. **Area facts** come from UBC and census sources. Each is marked *Verified* and linked to its source.
 - **Customer segment shares** are *Estimates* built from public research.
-- **Sales figures are synthetic sample data**, generated with a fixed seed so they are the same on every load. They are labelled *Sample data* on screen and are **not** real store sales.
+- **Sales figures are synthetic sample data**, built by the [data pipeline](pipeline/README.md) from a fixed seed so they are the same on every run. They are labelled *Sample data* on screen and are **not** real store sales. Real store exports can replace them without code changes.
 - **No employee names** are published. Store Leadership fields are placeholders.
 
 Full research notes and sources are in [`/Research`](Research/README.md).
+
+## Data pipeline
+
+```
+raw CSVs ──► validate ──► transform ──► src/data/generated/sales.json ──► dashboard
+```
+
+A Python and pandas pipeline in [`/pipeline`](pipeline/README.md) builds every sales number in the dashboard from daily, product-level data in a star schema ([data dictionary](docs/data-dictionary.md)). It checks the data before using it: types, keys, ranges, and totals that must reconcile. Real store exports can replace the sample data: see [Using real store data](docs/importing-real-data.md).
 
 ## Design
 
@@ -44,7 +52,8 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 | App | React 19, TypeScript (strict), Vite | Typed, fast, standard |
 | Map | Leaflet with OpenStreetMap / CARTO tiles | Free, no API key |
 | Charts | Recharts | Declarative charts for React |
-| Tests | Vitest, Testing Library, Playwright | Unit, component and browser tests (desktop and phone) in CI |
+| Data | Python, pandas | Standard tools for data cleaning and aggregation |
+| Tests | Vitest, Testing Library, Playwright, pytest | Unit, component, browser (desktop and phone) and data tests in CI |
 | Hosting | GitHub Pages via GitHub Actions | Anyone can open a link, no licence needed |
 
 ## Run locally
@@ -61,11 +70,13 @@ npm run build      # type check and production build
 
 ```
 src/
-  data/        store profiles, competitors, sources, sample sales generator
+  data/        store profiles, competitors, sources, sales data from the pipeline
   components/  map, badges, KPI tiles, sections
   views/       overview, demographics, sales, competitors
-  lib/         geo, formatting, seeded random
+  lib/         geo, formatting, routing
   styles/      design tokens and layout
+pipeline/      Python data pipeline: schema, generator, validation, transform
+docs/          data dictionary, screenshots
 Research/      sourced research notes
 ```
 
