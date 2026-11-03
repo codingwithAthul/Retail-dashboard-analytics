@@ -5,6 +5,7 @@ import type { Tab } from './components/TabNav';
 import { STORES, getStore } from './data/stores';
 import { AnalyticsPage } from './views/AnalyticsPage';
 import { ComparePage } from './views/ComparePage';
+import { StoreBrief } from './views/StoreBrief';
 import { StoreOverview } from './views/StoreOverview';
 import { renderAnalytics } from './views/registry';
 import { useHashRoute } from './lib/useHashRoute';
@@ -20,6 +21,7 @@ export default function App() {
   const select = useCallback((id: string) => navigate({ storeId: id, tab: tab === 'compare' ? 'overview' : tab }), [navigate, tab]);
   const compare = useCallback(() => navigate({ storeId, tab: 'compare' }), [navigate, storeId]);
   const setTab = useCallback((next: Tab) => navigate({ storeId, tab: next }), [navigate, storeId]);
+  const brief = useCallback(() => navigate({ storeId, tab: 'brief' }), [navigate, storeId]);
 
   return (
     <div className="app">
@@ -32,6 +34,8 @@ export default function App() {
 
       {tab === 'compare' ? (
         <ComparePage a={STORES[0]} b={STORES[1]} />
+      ) : tab === 'brief' ? (
+        <StoreBrief store={store} onBack={() => setTab('overview')} />
       ) : tab === 'overview' ? (
         <div className="stage">
           <MapView
@@ -43,7 +47,7 @@ export default function App() {
             bottomInset={phone ? Math.round(window.innerHeight * 0.55) : 0}
           />
           <aside className="panel glass" aria-label={`${store.name} details`}>
-            <StoreOverview store={store} onOpen={setTab} />
+            <StoreOverview store={store} onOpen={setTab} onBrief={brief} />
           </aside>
         </div>
       ) : (
