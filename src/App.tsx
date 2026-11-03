@@ -1,9 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { MapView, type MapPin } from './components/MapView';
 import { StoreSearch } from './components/StoreSearch';
 import { StoreSwitcher } from './components/StoreSwitcher';
 import type { Tab } from './components/TabNav';
 import { DIRECTORY, hasProfile } from './data/directory';
+import { nearbyFor, nearbyPins } from './data/nearby';
 import { STORES, getStore } from './data/stores';
 import type { Store } from './data/types';
 import { AnalyticsPage } from './views/AnalyticsPage';
@@ -27,6 +28,8 @@ export default function App() {
   const store = profile ?? STORES[0];
   const view = listing && tab !== 'compare' ? 'overview' : tab;
   const phone = useMediaQuery('(max-width: 760px)');
+  // A directory store shows the pharmacies and supermarkets within a 10-minute walk.
+  const nearby = useMemo(() => (listing ? nearbyPins(nearbyFor(listing.id)) : undefined), [listing]);
   const select = useCallback(
     (id: string) => navigate({ storeId: id, tab: tab === 'compare' || !getStore(id) ? 'overview' : tab }),
     [navigate, tab],
@@ -59,6 +62,7 @@ export default function App() {
         <div className="stage">
           <MapView
             stores={PINS}
+            competitors={nearby}
             selectedId={storeId}
             onSelect={select}
             leftInset={phone ? 0 : 416}

@@ -50,6 +50,14 @@ python -m etl census            # needs internet → src/data/generated/fsaCensu
 
 Reads the store table (`Research/data/vancouver-sdm-stores.csv`), takes each store's postal area (the first three characters of its postal code) and downloads its 2021 Census Profile from the Statistics Canada API. Rerun it when stores are added. Method and figures: [Research/09-census-by-postal-area.md](../Research/09-census-by-postal-area.md).
 
+## Nearby pharmacies and supermarkets
+
+```bash
+python -m etl nearby            # needs internet → src/data/generated/nearby.json
+```
+
+Searches OpenStreetMap (Nominatim, one request a second) for pharmacies and supermarkets within 800 m of each store in the store table, and marks Loblaw banners. Method and limits: [Research/10-nearby-pharmacies-and-supermarkets.md](../Research/10-nearby-pharmacies-and-supermarkets.md).
+
 ## Real store data
 
 `python -m etl run --input <folder>` uses real exports instead of sample data. Templates are in [`templates/`](templates); the full guide is [Using real store data](../docs/importing-real-data.md).

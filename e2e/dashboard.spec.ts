@@ -39,6 +39,14 @@ test.describe('overview', () => {
     await expect(page.getByRole('rowheader', { name: 'Households that rent' })).toBeVisible();
   });
 
+  test('shows pharmacies and supermarkets within a 10-minute walk of a directory store', async ({ page }) => {
+    await page.goto('./#/store/2246');
+    await expect(page.getByRole('heading', { name: 'Within a 10-minute walk' })).toBeVisible();
+    await expect(page.locator('.pin--competitor').first()).toBeVisible();
+    await page.goto('./#/store/2247');
+    await expect(page.locator('.pin--competitor')).toHaveCount(0);
+  });
+
   test('finds a store from the search field', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('combobox', { name: /find a store/i }).fill('kingsway');

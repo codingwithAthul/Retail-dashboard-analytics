@@ -10,7 +10,7 @@ describe('ListingOverview', () => {
     expect(screen.getByRole('heading', { name: /2021 census, postal area V6G/ })).toBeInTheDocument();
     expect(screen.getByRole('columnheader', { name: 'Metro Vancouver' })).toBeInTheDocument();
     expect(screen.getByRole('rowheader', { name: 'Households that rent' })).toBeInTheDocument();
-    expect(screen.getByText('Verified')).toBeInTheDocument();
+    expect(screen.getAllByText('Verified').length).toBeGreaterThan(0);
   });
 
   it('links the census to the Statistics Canada page for the postal area', () => {
@@ -26,5 +26,16 @@ describe('ListingOverview', () => {
   it('still says which analytics are not there yet', () => {
     render(<ListingOverview listing={DENMAN} onSelect={() => {}} />);
     expect(screen.getByRole('heading', { name: 'Not yet available' })).toBeInTheDocument();
+  });
+});
+
+describe('ListingOverview nearby places', () => {
+  it('lists pharmacies and supermarkets within a 10-minute walk, linked to OpenStreetMap', () => {
+    render(<ListingOverview listing={DENMAN} onSelect={() => {}} />);
+    expect(screen.getByRole('heading', { name: 'Within a 10-minute walk' })).toBeInTheDocument();
+    const table = screen.getByRole('table', { name: /within 800 m/ });
+    const links = table.querySelectorAll('a');
+    expect(links.length).toBeGreaterThan(0);
+    for (const a of links) expect(a.getAttribute('href')).toMatch(/^https:\/\/www\.openstreetmap\.org\/(node|way|relation)\/\d+$/);
   });
 });
