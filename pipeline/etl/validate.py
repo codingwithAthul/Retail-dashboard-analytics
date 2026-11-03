@@ -59,6 +59,12 @@ def _check_table(df: pd.DataFrame, table: Table, report: Report) -> None:
         nulls = df[col.name].isna().sum()
         if nulls and not col.nullable:
             report.errors.append(f"{table.name}.{col.name}: {nulls} empty value(s)")
+        if col.allowed is not None:
+            other = sorted(set(df[col.name].dropna()) - set(col.allowed))
+            if other:
+                report.errors.append(
+                    f"{table.name}.{col.name}: {', '.join(repr(v) for v in other[:3])} not allowed; use {' or '.join(col.allowed)}"
+                )
         if col.min_value is not None:
             below = (df[col.name] < col.min_value).sum()
             if below:

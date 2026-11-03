@@ -56,3 +56,9 @@ def test_foreign_keys_point_at_real_columns():
             if col.references:
                 target, column = col.references.split(".")
                 assert column in TABLES[target].column_names
+
+
+@pytest.mark.parametrize("name", ["dim_store", "dim_category", "dim_product", "fact_sales", "fact_traffic"])
+def test_import_templates_have_schema_headers(name):
+    header = (Path(__file__).parent.parent / "templates" / f"{name}.csv").read_text().strip()
+    assert header.split(",") == TABLES[name].column_names

@@ -17,6 +17,7 @@ class Column:
     nullable: bool = False
     min_value: float | None = None
     references: str | None = None  # "table.column" this key must exist in
+    allowed: tuple[str, ...] | None = None  # the only values this column may hold
 
 
 @dataclass(frozen=True)
@@ -57,7 +58,7 @@ DIM_CATEGORY = Table(
     columns=(
         Column("category_id", "str", "Category code, e.g. C01."),
         Column("category_name", "str", "Category name as shown in the dashboard."),
-        Column("department", "str", "Pharmacy or Front store."),
+        Column("department", "str", "Pharmacy or Front store.", allowed=("Pharmacy", "Front store")),
     ),
 )
 

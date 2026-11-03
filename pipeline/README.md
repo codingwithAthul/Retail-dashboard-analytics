@@ -41,3 +41,7 @@ python -m etl run               # sample data → validate → src/data/generate
 ```
 
 The summary file holds, for each store: 24 months of sales and transactions, last-12-month sales by category, the eight best-selling front-store items by units, average sales by weekday, and the pharmacy share. Only full calendar months are used; a partial first or last month is dropped. At least 12 full months are needed.
+
+## Real store data
+
+`python -m etl run --input <folder>` uses real exports instead of sample data. Templates are in [`templates/`](templates); the full guide is [Using real store data](../docs/importing-real-data.md).
