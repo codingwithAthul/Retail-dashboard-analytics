@@ -44,7 +44,7 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 | App | React 19, TypeScript (strict), Vite | Typed, fast, standard |
 | Map | Leaflet with OpenStreetMap / CARTO tiles | Free, no API key |
 | Charts | Recharts | Declarative charts for React |
-| Tests | Vitest, Testing Library | Unit and component tests in CI |
+| Tests | Vitest, Testing Library, Playwright | Unit, component and browser tests (desktop and phone) in CI |
 | Hosting | GitHub Pages via GitHub Actions | Anyone can open a link, no licence needed |
 
 ## Run locally
@@ -53,6 +53,7 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 npm install
 npm run dev        # http://localhost:5173/Retail-dashboard-analytics/
 npm test           # unit and component tests
+npm run e2e        # browser tests, desktop and phone
 npm run build      # type check and production build
 ```
 
