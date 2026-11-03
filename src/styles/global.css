@@ -121,7 +121,7 @@ button {
   font-size: 12px;
   font-weight: 600;
   background: color-mix(in srgb, var(--badge, var(--gray)) 16%, transparent);
-  color: color-mix(in srgb, var(--badge, var(--gray)) 55%, var(--text));
+  color: color-mix(in srgb, var(--badge, var(--gray)) 45%, var(--text));
 }
 
 .badge--sample { --badge: var(--orange); }
