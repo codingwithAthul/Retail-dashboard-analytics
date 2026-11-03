@@ -9,6 +9,8 @@ vi.mock('./components/MapView', () => ({
   ),
 }));
 
+beforeEach(() => window.history.replaceState(null, '', '/'));
+
 describe('App', () => {
   it('renders the dashboard title', () => {
     render(<App />);
@@ -54,5 +56,20 @@ describe('App navigation', () => {
     await userEvent.click(screen.getByRole('tab', { name: 'University Blvd' }));
     expect(screen.getByText('University Blvd · #2273')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Demographics' })).toBeInTheDocument();
+  });
+});
+
+describe('App deep links', () => {
+  it('opens the store and tab named in the URL', () => {
+    window.history.replaceState(null, '', '/#/store/2273/competitors');
+    render(<App />);
+    expect(screen.getByText('University Blvd · #2273')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Competitors' })).toBeInTheDocument();
+  });
+
+  it('writes the current store and tab to the URL', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /^Sales/ }));
+    expect(window.location.hash).toBe('#/store/2247/sales');
   });
 });

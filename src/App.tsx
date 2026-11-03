@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { MapView } from './components/MapView';
 import { StoreSwitcher } from './components/StoreSwitcher';
 import type { Tab } from './components/TabNav';
@@ -6,12 +6,16 @@ import { STORES, getStore } from './data/stores';
 import { AnalyticsPage } from './views/AnalyticsPage';
 import { StoreOverview } from './views/StoreOverview';
 import { renderAnalytics } from './views/registry';
+import { useHashRoute } from './lib/useHashRoute';
+
+const STORE_IDS = STORES.map((s) => s.id);
+const DEFAULT_ROUTE = { storeId: STORES[0].id, tab: 'overview' as Tab };
 
 export default function App() {
-  const [storeId, setStoreId] = useState(STORES[0].id);
-  const [tab, setTab] = useState<Tab>('overview');
+  const [{ storeId, tab }, navigate] = useHashRoute(STORE_IDS, DEFAULT_ROUTE);
   const store = getStore(storeId) ?? STORES[0];
-  const select = useCallback((id: string) => setStoreId(id), []);
+  const select = useCallback((id: string) => navigate({ storeId: id, tab }), [navigate, tab]);
+  const setTab = useCallback((next: Tab) => navigate({ storeId, tab: next }), [navigate, storeId]);
 
   return (
     <div className="app">
