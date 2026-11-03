@@ -130,3 +130,25 @@
   font-size: 22px;
   line-height: 1.2;
 }
+
+.map--inline {
+  position: relative;
+  height: 340px;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.matrix td,
+.matrix th {
+  text-align: center;
+}
+
+.matrix td:first-child,
+.matrix th:first-child {
+  text-align: left;
+}
+
+.tick {
+  color: var(--blue);
+  font-weight: 700;
+}
