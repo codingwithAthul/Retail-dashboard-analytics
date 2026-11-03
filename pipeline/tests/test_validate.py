@@ -112,3 +112,8 @@ def test_price_above_shelf_is_a_warning(raw):
     report = validate(raw)
     assert report.ok
     assert any("sold above shelf price" in w for w in report.warnings)
+
+
+def test_department_must_be_pharmacy_or_front_store(raw):
+    edit(raw, "dim_category", lambda df: df.loc.__setitem__((1, "department"), "Front Store"))
+    assert "dim_category.department: 'Front Store' not allowed; use Pharmacy or Front store" in errors_for(raw)
