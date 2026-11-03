@@ -22,7 +22,7 @@ const tileUrl = () =>
 function storeIcon(store: Store, selected: boolean) {
   return L.divIcon({
     className: '',
-    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}"><span>Rx</span></div><div class="pin-label">${store.shortName}</div>`,
+    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}" aria-hidden="true"><span>Rx</span></div><div class="pin-label" aria-hidden="true">${store.shortName}</div>`,
     iconSize: [36, 36],
     iconAnchor: [18, 18],
   });
@@ -73,9 +73,13 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
         .addTo(layer);
     }
     for (const s of stores) {
-      L.marker(s.coords, { icon: storeIcon(s, s.id === selectedId), title: s.name, alt: s.name, riseOnHover: true })
+      const marker = L.marker(s.coords, { icon: storeIcon(s, s.id === selectedId), title: s.name, riseOnHover: true })
         .on('click', () => onSelect?.(s.id))
         .addTo(layer);
+      // Give keyboard and screen-reader users a clear name and state for each pin.
+      const el = marker.getElement();
+      el?.setAttribute('aria-label', s.name);
+      el?.setAttribute('aria-pressed', String(s.id === selectedId));
     }
   }, [stores, competitors, selectedId, onSelect]);
 
