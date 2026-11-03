@@ -38,6 +38,10 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Pipeline tests
         run: pytest -q
+      - name: Run pipeline (fails on validation errors)
+        run: python -m etl run
+      - name: Check the dashboard data file is up to date
+        run: git diff --exit-code -- ../src/data/generated/sales.json || { echo "::error::src/data/generated/sales.json is out of date. Run 'python -m etl run' in /pipeline and commit the result."; exit 1; }
 
   e2e:
     runs-on: ubuntu-latest
