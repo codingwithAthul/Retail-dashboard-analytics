@@ -2,6 +2,7 @@
 @import './map.css';
 @import './layout.css';
 @import './panel.css';
+@import './page.css';
 
 *,
 *::before,
