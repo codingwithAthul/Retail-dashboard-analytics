@@ -1,0 +1,51 @@
+.map {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-2);
+}
+
+.pin {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: transform 0.2s var(--ease);
+}
+
+.pin--store {
+  width: 36px;
+  height: 36px;
+  background: var(--red);
+  color: #fff;
+  font: 700 13px var(--font);
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
+  cursor: pointer;
+}
+
+.pin--store.is-selected {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--red) 30%, transparent), 0 6px 16px rgb(0 0 0 / 0.3);
+}
+
+.pin-label {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 600 12px var(--font);
+  color: var(--text);
+  text-shadow: 0 0 3px var(--surface), 0 0 3px var(--surface);
+}
+
+.pin--competitor {
+  width: 14px;
+  height: 14px;
+  background: var(--gray);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+}
+
+.leaflet-container {
+  font-family: var(--font);
+}
