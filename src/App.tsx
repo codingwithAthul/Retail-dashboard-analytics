@@ -4,6 +4,7 @@ import { StoreSwitcher } from './components/StoreSwitcher';
 import type { Tab } from './components/TabNav';
 import { STORES, getStore } from './data/stores';
 import { AnalyticsPage } from './views/AnalyticsPage';
+import { ComparePage } from './views/ComparePage';
 import { StoreOverview } from './views/StoreOverview';
 import { renderAnalytics } from './views/registry';
 import { useHashRoute } from './lib/useHashRoute';
@@ -16,7 +17,8 @@ export default function App() {
   const [{ storeId, tab }, navigate] = useHashRoute(STORE_IDS, DEFAULT_ROUTE);
   const store = getStore(storeId) ?? STORES[0];
   const phone = useMediaQuery('(max-width: 760px)');
-  const select = useCallback((id: string) => navigate({ storeId: id, tab }), [navigate, tab]);
+  const select = useCallback((id: string) => navigate({ storeId: id, tab: tab === 'compare' ? 'overview' : tab }), [navigate, tab]);
+  const compare = useCallback(() => navigate({ storeId, tab: 'compare' }), [navigate, storeId]);
   const setTab = useCallback((next: Tab) => navigate({ storeId, tab: next }), [navigate, storeId]);
 
   return (
@@ -25,10 +27,12 @@ export default function App() {
         <h1 className="topbar__title">Store Insights</h1>
         <span className="topbar__meta">Shoppers Drug Mart · Vancouver</span>
         <span className="topbar__spacer" />
-        <StoreSwitcher stores={STORES} selectedId={store.id} onSelect={select} />
+        <StoreSwitcher stores={STORES} selectedId={tab === 'compare' ? null : store.id} onSelect={select} onCompare={compare} />
       </header>
 
-      {tab === 'overview' ? (
+      {tab === 'compare' ? (
+        <ComparePage a={STORES[0]} b={STORES[1]} />
+      ) : tab === 'overview' ? (
         <div className="stage">
           <MapView
             stores={STORES}
