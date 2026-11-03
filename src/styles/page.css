@@ -152,3 +152,23 @@
   color: var(--blue);
   font-weight: 700;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.chart-data {
+  margin-top: var(--space-3);
+  font-size: 13px;
+}
+
+.chart-data summary {
+  cursor: pointer;
+  color: var(--blue);
+  font-weight: 500;
+}
