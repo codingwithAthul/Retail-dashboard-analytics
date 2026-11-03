@@ -69,3 +69,36 @@
     filter: grayscale(0.9) invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85);
   }
 }
+
+.pin--listing {
+  width: 18px;
+  height: 18px;
+  background: var(--surface);
+  border: 4px solid color-mix(in srgb, var(--red) 80%, #000);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+}
+
+.pin--listing.is-selected {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--red) 30%, transparent), 0 2px 8px rgb(0 0 0 / 0.3);
+}
+
+.pin--listing + .pin-label {
+  top: 24px;
+}
+
+.pin--listing {
+  margin: 3px;
+}
+
+.pin--cluster {
+  width: 32px;
+  height: 32px;
+  background: color-mix(in srgb, var(--red) 80%, #000);
+  color: #fff;
+  font: 700 13px var(--font);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+}
