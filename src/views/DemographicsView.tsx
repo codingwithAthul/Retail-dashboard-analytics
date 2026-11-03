@@ -1,5 +1,6 @@
 import { ConfidenceBadge } from '../components/ConfidenceBadge';
 import { KpiTile } from '../components/KpiTile';
+import { CensusCard } from '../components/CensusCard';
 import { SampleDataNotice } from '../components/SampleDataNotice';
 import { ShareBars } from '../components/ShareBars';
 import { SourceLinks } from '../components/SourceLinks';
@@ -87,6 +88,8 @@ export function DemographicsView({ store }: { store: Store }) {
           </dl>
         </section>
       </div>
+
+      {d.census && <CensusCard census={d.census} />}
     </>
   );
 }
