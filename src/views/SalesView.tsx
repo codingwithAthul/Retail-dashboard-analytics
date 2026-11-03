@@ -61,8 +61,8 @@ export function SalesView({ store }: { store: Store }) {
                 <YAxis {...axis} tickFormatter={moneyShort} width={56} domain={[0, 'auto']} />
                 <Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: 13 }} />
-                <Line name="Last 12 months" dataKey="current" stroke="var(--blue)" strokeWidth={2.5} dot={false} />
-                <Line name="Year before" dataKey="previous" stroke="var(--gray)" strokeWidth={2} strokeDasharray="4 4" dot={false} />
+                <Line name="Last 12 months" dataKey="current" stroke="var(--blue)" strokeWidth={2.5} dot={false} isAnimationActive={false} />
+                <Line name="Year before" dataKey="previous" stroke="var(--gray)" strokeWidth={2} strokeDasharray="4 4" dot={false} isAnimationActive={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -79,7 +79,7 @@ export function SalesView({ store }: { store: Store }) {
                 <XAxis type="number" hide domain={[0, 'auto']} />
                 <YAxis type="category" dataKey="category" {...axis} width={112} />
                 <Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} cursor={{ fill: 'var(--surface-2)' }} />
-                <Bar dataKey="sales" name="Sales" fill="var(--blue)" radius={[0, 6, 6, 0]} barSize={16} />
+                <Bar dataKey="sales" name="Sales" fill="var(--blue)" radius={[0, 6, 6, 0]} barSize={16} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
           </div>
