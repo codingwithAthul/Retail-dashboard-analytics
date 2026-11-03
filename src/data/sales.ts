@@ -40,3 +40,35 @@ export function monthlySales(storeId: string, months = 24): MonthPoint[] {
   }
   return points;
 }
+
+export interface SalesKpis {
+  ttmSales: number;
+  priorTtmSales: number;
+  yoy: number;
+  transactions: number;
+  averageBasket: number;
+}
+
+/** Trailing-12-month KPIs compared with the 12 months before. */
+export function salesKpis(storeId: string): SalesKpis {
+  const series = monthlySales(storeId, 24);
+  const last = series.slice(12);
+  const prior = series.slice(0, 12);
+  const total = (xs: MonthPoint[], k: 'sales' | 'transactions') => xs.reduce((a, x) => a + x[k], 0);
+  const ttmSales = total(last, 'sales');
+  const priorTtmSales = total(prior, 'sales');
+  const transactions = total(last, 'transactions');
+  return {
+    ttmSales,
+    priorTtmSales,
+    yoy: ttmSales / priorTtmSales - 1,
+    transactions,
+    averageBasket: ttmSales / transactions,
+  };
+}
+
+/** Last 12 months against the same months a year earlier, for a year-over-year chart. */
+export function yearOverYear(storeId: string) {
+  const series = monthlySales(storeId, 24);
+  return series.slice(12).map((cur, i) => ({ label: cur.label, current: cur.sales, previous: series[i].sales }));
+}
