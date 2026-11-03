@@ -10,6 +10,8 @@
   --indigo: rgb(97 85 245);
   --teal: rgb(0 195 208);
   --gray: rgb(142 142 147);
+  /* Blue for small text and links: system blue is too light for 4.5:1 on white. */
+  --link: #0066cc;
 
   /* Surfaces and text */
   --bg: #f2f2f7;
@@ -46,6 +48,7 @@
     --orange: rgb(255 146 48);
     --indigo: rgb(109 124 255);
     --teal: rgb(0 210 224);
+    --link: #2997ff;
     --bg: #000000;
     --surface: #1c1c1e;
     --surface-2: #2c2c2e;

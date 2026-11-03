@@ -124,7 +124,7 @@
 }
 
 .sources a {
-  color: var(--blue);
+  color: var(--link);
   text-decoration: none;
   margin-left: 2px;
 }
@@ -160,7 +160,7 @@
 }
 
 .tick {
-  color: var(--blue);
+  color: var(--link);
   font-weight: 700;
 }
 
@@ -180,7 +180,7 @@
 
 .chart-data summary {
   cursor: pointer;
-  color: var(--blue);
+  color: var(--link);
   font-weight: 500;
 }
 
