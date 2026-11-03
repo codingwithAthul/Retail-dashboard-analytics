@@ -32,3 +32,27 @@ describe('App', () => {
     expect(screen.getByText('5940 University Blvd, Vancouver, BC V6T 1Z3')).toBeInTheDocument();
   });
 });
+
+describe('App navigation', () => {
+  it('shows Store Leadership and Key Differentiators on the overview', () => {
+    render(<App />);
+    expect(screen.getByRole('heading', { name: 'Store Leadership' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Key Differentiators' })).toBeInTheDocument();
+  });
+
+  it('opens an analytics tab from its entry card and returns to the overview', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /^Sales/ }));
+    expect(screen.getByRole('heading', { level: 2, name: 'Sales' })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('tab', { name: 'Overview' }));
+    expect(screen.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeInTheDocument();
+  });
+
+  it('keeps the tab when switching store', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /^Demographics/ }));
+    await userEvent.click(screen.getByRole('tab', { name: 'University Blvd' }));
+    expect(screen.getByText('University Blvd · #2273')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Demographics' })).toBeInTheDocument();
+  });
+});
