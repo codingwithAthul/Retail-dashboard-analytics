@@ -56,6 +56,20 @@ test.describe('compare', () => {
   });
 });
 
+test.describe('store brief', () => {
+  test('opens from the store panel and prints on one page', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('button', { name: /One-page brief/ }).click();
+    await expect(page).toHaveURL(/#\/store\/2247\/brief$/);
+    await expect(page.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeVisible();
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.topbar')).toBeHidden();
+    await expect(page.getByRole('button', { name: 'Print or save as PDF' })).toBeHidden();
+    const pdf = (await page.pdf({ format: 'Letter', preferCSSPageSize: true })).toString('latin1');
+    expect(pdf.match(/\/Type\s*\/Page[^s]/g)).toHaveLength(1);
+  });
+});
+
 test('dark appearance follows the system setting', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('./');
