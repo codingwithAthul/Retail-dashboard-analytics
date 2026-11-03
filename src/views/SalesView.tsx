@@ -3,11 +3,14 @@ import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContai
 import { ChartData } from '../components/ChartData';
 import { KpiTile } from '../components/KpiTile';
 import { SampleDataNotice } from '../components/SampleDataNotice';
-import { categorySales, pharmacySplit, salesKpis, topItems, yearOverYear } from '../data/sales';
+import { categorySales, pharmacySplit, salesKpis, topItems, weekdaySales, yearOverYear } from '../data/sales';
 import type { Store } from '../data/types';
 import { count, money, money2, moneyShort, percent, signedPercent } from '../lib/format';
 
 const axis = { stroke: 'var(--text-3)', fontSize: 12, tickLine: false, axisLine: false } as const;
+const DAY_NAMES: Record<string, string> = {
+  Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
+};
 const tooltipStyle = { background: 'var(--surface)', border: '1px solid var(--separator)', borderRadius: 10, fontSize: 13 };
 
 export function SalesView({ store }: { store: Store }) {
@@ -18,12 +21,17 @@ export function SalesView({ store }: { store: Store }) {
       categories: categorySales(store.id),
       items: topItems(store.id),
       split: pharmacySplit(store.id),
+      weekdays: weekdaySales(store.id),
     }),
     [store.id],
   );
-  const { kpis, yoy, categories, items, split } = data;
+  const { kpis, yoy, categories, items, split, weekdays } = data;
   const peak = yoy.reduce((a, b) => (b.current > a.current ? b : a));
   const low = yoy.reduce((a, b) => (b.current < a.current ? b : a));
+  const busiest = weekdays.reduce((a, b) => (b.averageSales > a.averageSales ? b : a));
+  const quietest = weekdays.reduce((a, b) => (b.averageSales < a.averageSales ? b : a));
+  const mean = (xs: typeof weekdays) => xs.reduce((a, d) => a + d.averageSales, 0) / xs.length;
+  const weekendGap = mean(weekdays.slice(5)) / mean(weekdays.slice(0, 5)) - 1;
 
   return (
     <>
@@ -96,7 +104,7 @@ export function SalesView({ store }: { store: Store }) {
           />
         </section>
 
-        <section className="card span-12" aria-labelledby="items-title">
+        <section className="card span-8" aria-labelledby="items-title">
           <h3 id="items-title">Best-selling front-store items</h3>
           <p className="takeaway">
             {items[0].name} sells the most units; {[...items].sort((a, b) => b.revenue - a.revenue)[0].name} brings in the most revenue.
@@ -121,6 +129,30 @@ export function SalesView({ store }: { store: Store }) {
               ))}
             </tbody>
           </table>
+        </section>
+
+        <section className="card span-4" aria-labelledby="weekday-title">
+          <h3 id="weekday-title">Average sales by weekday</h3>
+          <p className="takeaway">
+            Busiest on {DAY_NAMES[busiest.day]}, quietest on {DAY_NAMES[quietest.day]}. Weekends run {percent(Math.abs(weekendGap))}{' '}
+            {weekendGap < 0 ? 'below' : 'above'} weekdays.
+          </p>
+          <div className="chart" role="img" aria-label={`Bar chart of average daily sales by weekday. Busiest ${DAY_NAMES[busiest.day]}, quietest ${DAY_NAMES[quietest.day]}.`}>
+            <ResponsiveContainer width="100%" height={240}>
+              <BarChart data={weekdays} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
+                <CartesianGrid vertical={false} stroke="var(--separator)" />
+                <XAxis dataKey="day" {...axis} />
+                <YAxis {...axis} tickFormatter={moneyShort} width={56} domain={[0, 'auto']} />
+                <Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} cursor={{ fill: 'var(--surface-2)' }} />
+                <Bar dataKey="averageSales" name="Average sales" fill="var(--blue)" radius={[6, 6, 0, 0]} barSize={20} isAnimationActive={false} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <ChartData
+            caption="Average daily sales by weekday"
+            headers={['Day', 'Average sales']}
+            rows={weekdays.map((d) => [DAY_NAMES[d.day], money(d.averageSales)])}
+          />
         </section>
       </div>
     </>
