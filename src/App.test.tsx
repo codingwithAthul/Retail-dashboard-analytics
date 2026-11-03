@@ -1,9 +1,34 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
+
+// Leaflet needs a real browser layout; the map itself is covered by end-to-end tests (v1.1).
+vi.mock('./components/MapView', () => ({
+  MapView: ({ onSelect }: { onSelect: (id: string) => void }) => (
+    <button onClick={() => onSelect('2273')}>map pin University Blvd</button>
+  ),
+}));
 
 describe('App', () => {
   it('renders the dashboard title', () => {
     render(<App />);
     expect(screen.getByRole('heading', { name: 'Store Insights' })).toBeInTheDocument();
+  });
+
+  it('opens on the first store', () => {
+    render(<App />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeInTheDocument();
+  });
+
+  it('switches store from the switcher', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('tab', { name: 'University Blvd' }));
+    expect(screen.getByRole('heading', { level: 2, name: 'University Blvd' })).toBeInTheDocument();
+  });
+
+  it('switches store from a map pin', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: 'map pin University Blvd' }));
+    expect(screen.getByText('5940 University Blvd, Vancouver, BC V6T 1Z3')).toBeInTheDocument();
   });
 });
