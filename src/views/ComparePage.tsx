@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { ChartData } from '../components/ChartData';
+import { ComparePicker } from '../components/ComparePicker';
 import { SampleDataNotice } from '../components/SampleDataNotice';
 import { competitorsNear } from '../data/competition';
 import { categoryGaps, compareKpis, sharedCompetitors, storeDistanceKm, type KpiKey } from '../data/compare';
@@ -25,7 +26,16 @@ const FORMAT: Record<KpiKey, (v: number) => string> = {
 
 const points = (gap: number) => `${Math.round(Math.abs(gap) * 100)} pts`;
 
-export function ComparePage({ a, b }: { a: Store; b: Store }) {
+interface Props {
+  a: Store;
+  b: Store;
+  /** Stores the user can choose between. Without it, the page compares a and b only. */
+  stores?: Store[];
+  onChange?: (a: string, b: string) => void;
+  notComparable?: number;
+}
+
+export function ComparePage({ a, b, stores, onChange, notComparable }: Props) {
   const data = useMemo(() => {
     const gaps = categoryGaps(a, b);
     const wa = weekdaySales(a.id);
@@ -52,11 +62,12 @@ export function ComparePage({ a, b }: { a: Store; b: Store }) {
       <div className="page__inner">
         <header className="page__head">
           <div>
-            <p className="eyebrow">Both stores</p>
+            <p className="eyebrow">Two stores</p>
             <h2>Compare stores</h2>
             <p className="muted">
               {a.shortName} and {b.shortName}, {formatDistance(storeDistanceKm(a, b))} apart. What each does differently, and where each should specialise.
             </p>
+            {stores && onChange && <ComparePicker stores={stores} a={a} b={b} onChange={onChange} notComparable={notComparable} />}
           </div>
         </header>
 

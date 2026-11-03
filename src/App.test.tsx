@@ -110,3 +110,14 @@ describe('Vancouver directory stores', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Wesbrook Village' })).toBeInTheDocument();
   });
 });
+
+describe('Compare page store choice', () => {
+  it('opens a chosen pair from the link and keeps it in the link when swapped', async () => {
+    window.history.replaceState(null, '', '/#/compare/2273/2247');
+    render(<App />);
+    const first = screen.getByRole('combobox', { name: 'Store' });
+    expect(first).toHaveValue('2273');
+    await userEvent.click(screen.getByRole('button', { name: 'Swap stores' }));
+    expect(window.location.hash).toBe('#/compare/2247/2273');
+  });
+});
