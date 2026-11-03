@@ -1,0 +1,30 @@
+store_number,name,address,postal_code,local_area_osm,lat,lng,approximate,osm_id,position_check,address_check
+201,Denman Place Mall,1020 Denman St,V6G 2M5,West End,49.28916,-123.13864,false,n4794315121,SDM map pin 21 m away,match
+202,Granville St & 13th,2888 Granville St,V6H 3J5,Fairview,49.26004,-123.13828,false,w210713391,SDM map pin 11 m away,match (postal differs: OSM V6H 3J0)
+204,Kingsgate Mall,370 East Broadway,V5T 4G5,Mount Pleasant,49.26226,-123.09828,false,n1723485080,SDM map pin 26 m away,match (postal differs: OSM V5T 1W0)
+222,Fraser Street,6305 Fraser St,V5W 3A3,Sunset,49.22722,-123.09091,true,n1431514604,not checked: address only resolves to the street,OSM number wrong (6303)
+232,Kerrisdale,2303 West 41st Avenue,V6M 2A3,Arbutus-Ridge,49.23479,-123.15985,false,n1887635499,address point 15 m away,OSM number wrong (2203)
+234,4th & Vine St.,2302 West 4th Avenue,V6K 1P1,Kitsilano,49.26809,-123.15769,false,n955340426,OSM shop point carries the same address,match (postal differs)
+238,Broadway & Carnarvon,3020 West Broadway,V6K 2H1,Kitsilano,49.26401,-123.17258,false,n6862208775,OSM shop point carries the same address,match (postal differs)
+263,Broadway,885 West Broadway,V5Z 1J9,Fairview,49.26351,-123.12364,false,n704317977,OSM shop point carries the same address,match
+272,Thurlow & Davie,1125 Davie Street,V6E 1N2,West End,49.28096,-123.13151,false,n1335346918,OSM shop point carries the same address,match
+280,The Hub Broadway & Commercial,1755 East Broadway,V5N 1W2,Grandview-Woodland,49.26262,-123.06883,false,w390750152,OSM shop point carries the same address,match
+288,Dunbar,4326 Dunbar St,V6S 2G3,Dunbar-Southlands,49.24768,-123.18499,true,n4232366391,not checked: address only resolves to the street,OSM has no number
+2130,River District,8525 River District Crossing,V5S 0C8,Killarney,49.2064,-123.03122,false,n8920851132,OSM shop point carries the same address,match
+2221,Broadway,1780 West Broadway,V6J 1Y1,Fairview,49.26354,-123.1448,false,n2611360463,OSM shop point carries the same address,match (postal differs)
+2227,Marine & Cambie,432 SW Marine Drive,V5X 0C4,Marpole,49.21027,-123.11621,false,n4639384796,OSM shop point carries the same address,match
+2228,Champlain Square,7160 Kerr Street,V5S 4W2,Killarney,49.21911,-123.04021,true,n4129477990,not checked: address only resolves to the street,OSM has no number (Couillard Mews); same postal
+2234,Cambie Village,3277 Cambie Street,V5Z 2W3,South Cambie,49.25667,-123.11548,false,n811017690,SDM map pin 50 m away,match (postal differs)
+2245,Robson & Burrard,748 Burrard Street,V6Z 2V6,Downtown,49.28345,-123.12217,false,n3744771325,OSM shop point carries the same address,match
+2246,Yaletown,1006 Homer Street,V6B 2W9,Downtown,49.27708,-123.12012,false,n513054172,OSM shop point carries the same address,match
+2249,Commercial & Grant (Simply Pharmacy),1517 Commercial Drive,V5L 3Y1,Grandview-Woodland,49.2711,-123.06983,false,n7083362225,OSM shop point carries the same address,"match; second source is medimap/thedrive, not SDM site"
+2252,Main Street,3303 Main Street,V5V 0B7,Riley Park,49.25549,-123.10165,false,n5867020306,OSM shop point carries the same address,match (postal differs)
+2274,East 49th & Elliot,2607 East 49th Avenue,V5S 1J9,Victoria-Fraserview,49.22531,-123.05434,false,n5031559280,address point 8 m away,match
+2275,The Ritz,1202 West Pender Street,V6E 2S9,Downtown,49.28835,-123.12388,false,n926024537,OSM shop point carries the same address,match (postal differs)
+2276,Fraser Street,4590 Fraser Street,V5V 4G7,Kensington-Cedar Cottage,49.2437,-123.09006,false,n4238182492,SDM map pin 64 m away,match
+2277,Granville,586 Granville Street,V6C 1X5,Downtown,49.28363,-123.11612,false,n3705791014,address point 9 m away,OSM street wrong (Dunsmuir); same postal
+2279,Vancouver General Hospital,2730 Oak Street,V6H 0A5,Fairview,49.26111,-123.12635,true,n6677348472,not checked: address only resolves to the street,OSM street wrong (Laurel)
+2289,El Dorado,2330 Kingsway,V5R 5G9,Renfrew-Collingwood,49.24122,-123.05711,false,n2882826678,OSM shop point carries the same address,match
+2292,Liberty Building,1295 Seymour Street,V6B 3N6,Downtown,49.27566,-123.12686,false,n652979860,address point 12 m away,match (postal differs)
+2294,Hastings & Slocan,2748 East Hastings Street,V5K 1Z9,Hastings-Sunrise,49.28094,-123.04836,false,n1492926905,SDM map pin 27 m away,match (postal differs)
+3005,1750 East 10th Avenue (pharmacy),1750 East 10th Avenue,V5N 5K4,Kensington-Cedar Cottage,49.26124,-123.06841,false,n4139774089,address point 14 m away,second source medimap/cortico; OSM POI has no number

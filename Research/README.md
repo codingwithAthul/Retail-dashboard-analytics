@@ -11,6 +11,7 @@ Background research that shapes the dashboard. Every fact is tied to a source li
 | [05-apple-design-language.md](05-apple-design-language.md) | Apple Human Interface Guidelines applied to a web dashboard |
 | [06-analytics-scope.md](06-analytics-scope.md) | What the Demographic, Sales and Competitor tabs contain, and why |
 | [07-census-2021-ubc.md](07-census-2021-ubc.md) | 2021 census for Metro Vancouver A (UBC) against Metro Vancouver |
+| [08-vancouver-sdm-stores.md](08-vancouver-sdm-stores.md) | Shoppers Drug Mart stores in the City of Vancouver: positions and cross-checks |
 
 ## Confidence labels
 
