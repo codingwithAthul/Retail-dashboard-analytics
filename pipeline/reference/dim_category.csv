@@ -1,0 +1,9 @@
+category_id,category_name,department
+C01,Pharmacy,Pharmacy
+C02,OTC health,Front store
+C03,Beauty,Front store
+C04,Personal care,Front store
+C05,Convenience food,Front store
+C06,Fresh grocery,Front store
+C07,Household,Front store
+C08,Seasonal,Front store
