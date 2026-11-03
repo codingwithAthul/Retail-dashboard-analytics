@@ -9,7 +9,7 @@ export function KpiTile({ label, value, delta, note }: Props) {
   return (
     <div className="card kpi">
       <p className="eyebrow">{label}</p>
-      <p className={`kpi__value${value.length > 14 ? " kpi__value--text" : ""}`}>{value}</p>
+      <p className={`kpi__value${/[a-z]{3}/i.test(value) ? " kpi__value--text" : ""}`}>{value}</p>
       {delta && (
         <p className={`kpi__delta ${delta.positive ? 'is-up' : 'is-down'}`}>
           <span aria-hidden="true">{delta.positive ? '▲' : '▼'}</span> {delta.text}

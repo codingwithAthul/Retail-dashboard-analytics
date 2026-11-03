@@ -1,6 +1,7 @@
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import type { Segment } from '../data/types';
 import { percent } from '../lib/format';
+import { ChartData } from './ChartData';
 
 interface Props {
   data: Segment[];
@@ -13,6 +14,7 @@ interface Props {
 export function ShareBars({ data, label, color = 'var(--indigo)', height = 220 }: Props) {
   const summary = data.map((d) => `${d.name} ${percent(d.share)}`).join(', ');
   return (
+    <>
     <div className="chart" role="img" aria-label={`${label}: ${summary}.`}>
       <ResponsiveContainer width="100%" height={height}>
         <BarChart data={data} layout="vertical" margin={{ top: 0, right: 40, bottom: 0, left: 0 }}>
@@ -35,5 +37,7 @@ export function ShareBars({ data, label, color = 'var(--indigo)', height = 220 }
         </BarChart>
       </ResponsiveContainer>
     </div>
+    <ChartData caption={label} headers={['Group', 'Share']} rows={data.map((d) => [d.name, percent(d.share)])} />
+    </>
   );
 }

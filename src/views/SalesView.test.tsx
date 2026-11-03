@@ -20,7 +20,8 @@ describe('SalesView', () => {
 
   it('lists the best-selling items in order', () => {
     render(<SalesView store={UNIVERSITY} />);
-    const rows = within(screen.getByRole('table')).getAllByRole('row').slice(1);
+    const section = screen.getByRole('region', { name: 'Best-selling front-store items' });
+    const rows = within(section).getAllByRole('row').slice(1);
     expect(rows).toHaveLength(topItems('2273').length);
     expect(rows[0]).toHaveTextContent(topItems('2273')[0].name);
   });
@@ -29,5 +30,12 @@ describe('SalesView', () => {
     render(<SalesView store={UNIVERSITY} />);
     expect(screen.getByRole('img', { name: /line chart of monthly sales/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /bar chart of sales by category/i })).toBeInTheDocument();
+  });
+});
+
+describe('SalesView data tables', () => {
+  it('offers the numbers behind both charts', () => {
+    render(<SalesView store={WESBROOK} />);
+    expect(screen.getAllByText('Show data')).toHaveLength(2);
   });
 });
