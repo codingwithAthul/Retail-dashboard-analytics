@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.2.0 (unreleased)
+## 2.2.0 (2026-11-03)
 
 Map fix, the 2021 census, and the first step of v3.0: every Vancouver store on the map.
 
