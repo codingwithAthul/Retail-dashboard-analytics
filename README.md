@@ -16,7 +16,7 @@ Version 1 covers two Shoppers Drug Mart stores at the University of British Colu
 | View | Answers |
 |---|---|
 | **Overview** | Map of the stores. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. |
-| **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources. |
+| **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources, and the 2021 census for the area against Metro Vancouver. |
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
 | **Compare** | Both stores side by side: headline numbers, where each should specialise, category mix, main customers, weekly rhythm, competitors. |

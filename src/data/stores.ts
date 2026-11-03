@@ -1,3 +1,4 @@
+import { UBC_CENSUS } from './census';
 import type { LeadershipRole, Store } from './types';
 
 /** Placeholder roles. Names are intentionally empty and filled in later by the store team. */
@@ -71,6 +72,7 @@ export const WESBROOK: Store = {
       { label: 'UBC Vancouver faculty and staff', value: '18,543', confidence: 'verified', sources: ['ubcFacts'] },
       { label: 'University Endowment Lands population (2021)', value: '3,193', confidence: 'verified', sources: ['uel'] },
     ],
+    census: UBC_CENSUS,
   },
   categoryCalls: [
     { category: 'Fresh grocery', rival: 'Save-On-Foods', decision: 'Avoid', reason: 'A full grocery store is one block away with better price and range; fresh would carry high shrink.' },
@@ -146,6 +148,7 @@ export const UNIVERSITY: Store = {
       { label: 'Undergraduate / graduate', value: '49,165 / 11,144', confidence: 'verified', sources: ['ubcFacts'] },
       { label: 'International share', value: '25.4%', confidence: 'verified', sources: ['ubcFacts'] },
     ],
+    census: UBC_CENSUS,
   },
   categoryCalls: [
     { category: 'Convenience food', rival: 'Campus food outlets', decision: 'Compete', reason: 'Highest-traffic SDM on campus; students buy between classes.' },

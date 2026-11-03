@@ -1,3 +1,5 @@
+import type { CensusProfile } from './census';
+
 /** How sure we are about a value shown in the dashboard. */
 export type Confidence = 'verified' | 'inferred' | 'estimate' | 'sample';
 
@@ -49,6 +51,8 @@ export interface Demographics {
   seasonality: string;
   nearby: { name: string; kind: string; note: string }[];
   facts: Fact[];
+  /** Official census figures for the store's census subdivision, when published. */
+  census?: CensusProfile;
 }
 
 export interface CategoryCall {
