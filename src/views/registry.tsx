@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Tab } from '../components/TabNav';
 import type { Store } from '../data/types';
+import { CompetitorsView } from './CompetitorsView';
 import { DemographicsView } from './DemographicsView';
 import { SalesView } from './SalesView';
 
@@ -14,6 +15,6 @@ export function renderAnalytics(tab: AnalyticsTab, store: Store): { title: strin
     case 'sales':
       return { title: 'Sales', lead: 'What sells, how much, and the trend.', children: <SalesView store={store} /> };
     case 'competitors':
-      return { title: 'Competitors', lead: 'Who nearby sells the same things, and where not to compete.', children: null };
+      return { title: 'Competitors', lead: 'Who nearby sells the same things, and where not to compete.', children: <CompetitorsView store={store} /> };
   }
 }
