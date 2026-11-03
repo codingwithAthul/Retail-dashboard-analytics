@@ -17,3 +17,11 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pytest
 ```
+
+## Generate sample data
+
+```bash
+python -m etl generate          # writes data/raw/*.csv
+```
+
+The generator builds two years of daily sales (Nov 2024 to Oct 2026) for each store from the assumptions in [`etl/profiles.py`](etl/profiles.py): monthly seasonality (including UBC's academic calendar), weekday pattern, yearly growth, category mix, product preferences, promotions and reduced holiday hours. It uses a fixed seed, so the output is identical on every run. **This is sample data, not real store sales.**
