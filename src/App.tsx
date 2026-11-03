@@ -1,24 +1,35 @@
 import { useCallback } from 'react';
-import { MapView } from './components/MapView';
+import { MapView, type MapPin } from './components/MapView';
+import { StoreSearch } from './components/StoreSearch';
 import { StoreSwitcher } from './components/StoreSwitcher';
 import type { Tab } from './components/TabNav';
+import { DIRECTORY, hasProfile } from './data/directory';
 import { STORES, getStore } from './data/stores';
 import { AnalyticsPage } from './views/AnalyticsPage';
 import { ComparePage } from './views/ComparePage';
+import { ListingOverview } from './views/ListingOverview';
 import { StoreBrief } from './views/StoreBrief';
 import { StoreOverview } from './views/StoreOverview';
 import { renderAnalytics } from './views/registry';
 import { useHashRoute } from './lib/useHashRoute';
 import { useMediaQuery } from './lib/useMediaQuery';
 
-const STORE_IDS = STORES.map((s) => s.id);
+const STORE_IDS = DIRECTORY.map((s) => s.id);
+const PINS: MapPin[] = DIRECTORY.map((s) => ({ ...s, profiled: hasProfile(s) }));
 const DEFAULT_ROUTE = { storeId: STORES[0].id, tab: 'overview' as Tab };
 
 export default function App() {
   const [{ storeId, tab }, navigate] = useHashRoute(STORE_IDS, DEFAULT_ROUTE);
-  const store = getStore(storeId) ?? STORES[0];
+  const profile = getStore(storeId);
+  // Stores known only from public directories have no analytics tabs or brief yet.
+  const listing = profile ? undefined : DIRECTORY.find((s) => s.id === storeId);
+  const store = profile ?? STORES[0];
+  const view = listing && tab !== 'compare' ? 'overview' : tab;
   const phone = useMediaQuery('(max-width: 760px)');
-  const select = useCallback((id: string) => navigate({ storeId: id, tab: tab === 'compare' ? 'overview' : tab }), [navigate, tab]);
+  const select = useCallback(
+    (id: string) => navigate({ storeId: id, tab: tab === 'compare' || !getStore(id) ? 'overview' : tab }),
+    [navigate, tab],
+  );
   const compare = useCallback(() => navigate({ storeId, tab: 'compare' }), [navigate, storeId]);
   const setTab = useCallback((next: Tab) => navigate({ storeId, tab: next }), [navigate, storeId]);
   const brief = useCallback(() => navigate({ storeId, tab: 'brief' }), [navigate, storeId]);
@@ -29,29 +40,34 @@ export default function App() {
         <h1 className="topbar__title">Store Insights</h1>
         <span className="topbar__meta">Shoppers Drug Mart · Vancouver</span>
         <span className="topbar__spacer" />
-        <StoreSwitcher stores={STORES} selectedId={tab === 'compare' ? null : store.id} onSelect={select} onCompare={compare} />
+        <StoreSearch stores={DIRECTORY} onSelect={select} />
+        <StoreSwitcher stores={STORES} selectedId={tab === 'compare' ? null : storeId} onSelect={select} onCompare={compare} />
       </header>
 
-      {tab === 'compare' ? (
+      {view === 'compare' ? (
         <ComparePage a={STORES[0]} b={STORES[1]} />
-      ) : tab === 'brief' ? (
+      ) : view === 'brief' ? (
         <StoreBrief store={store} onBack={() => setTab('overview')} />
-      ) : tab === 'overview' ? (
+      ) : view === 'overview' ? (
         <div className="stage">
           <MapView
-            stores={STORES}
-            selectedId={store.id}
+            stores={PINS}
+            selectedId={storeId}
             onSelect={select}
             leftInset={phone ? 0 : 416}
             topInset={phone ? 130 : 96}
             bottomInset={phone ? Math.round(window.innerHeight * 0.55) : 0}
           />
-          <aside className="panel glass" aria-label={`${store.name} details`}>
-            <StoreOverview store={store} onOpen={setTab} onBrief={brief} />
+          <aside className="panel glass" aria-label={`${(listing ?? store).name} details`}>
+            {listing ? (
+              <ListingOverview listing={listing} onSelect={select} />
+            ) : (
+              <StoreOverview store={store} onOpen={setTab} onBrief={brief} />
+            )}
           </aside>
         </div>
       ) : (
-        <AnalyticsPage store={store} tab={tab} onTab={setTab} {...renderAnalytics(tab, store)} />
+        <AnalyticsPage store={store} tab={view} onTab={setTab} {...renderAnalytics(view, store)} />
       )}
     </div>
   );
