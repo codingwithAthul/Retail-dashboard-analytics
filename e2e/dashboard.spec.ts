@@ -14,12 +14,23 @@ test.describe('overview', () => {
     await expect(page).toHaveURL(/#\/store\/2273$/);
   });
 
-  test('shows the 29 Vancouver directory stores and opens one from its pin', async ({ page }) => {
+  test('groups close directory stores and zooms in to open one', async ({ page }) => {
     await page.goto('./');
-    await expect(page.locator('.pin--listing')).toHaveCount(29);
+    const clusters = page.locator('.pin--cluster');
+    await expect(clusters.first()).toBeVisible();
+    const shown = await page.locator('.pin--listing').count();
+    const grouped = await clusters.evaluateAll((els) => els.reduce((n, el) => n + Number(el.textContent), 0));
+    expect(shown + grouped).toBe(29);
+    await page.getByRole('button', { name: /stores: .*Yaletown/ }).click();
     await page.getByRole('button', { name: 'Shoppers Drug Mart Yaletown' }).click();
     await expect(page.getByRole('heading', { level: 2, name: 'Yaletown' })).toBeVisible();
     await expect(page).toHaveURL(/#\/store\/2246$/);
+  });
+
+  test('zooms to a directory store opened by link, with no pins grouped', async ({ page }) => {
+    await page.goto('./#/store/2246');
+    await expect(page.locator('.pin--listing.is-selected')).toBeVisible();
+    await expect(page.locator('.pin--cluster')).toHaveCount(0);
   });
 
   test('finds a store from the search field', async ({ page }) => {
