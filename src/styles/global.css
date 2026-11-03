@@ -126,3 +126,4 @@ button {
 .badge--sample { --badge: var(--orange); }
 .badge--estimate { --badge: var(--indigo); }
 .badge--verified { --badge: var(--green); }
+.badge--avoid { --badge: var(--red); }
