@@ -19,6 +19,11 @@ describe('route', () => {
     expect(parseHash('#/store/9999/sales', ids, fallback)).toBe(fallback);
   });
 
+  it('opens a store brief', () => {
+    expect(parseHash('#/store/2273/brief', ids, fallback)).toEqual({ storeId: '2273', tab: 'brief' });
+    expect(toHash({ storeId: '2273', tab: 'brief' })).toBe('#/store/2273/brief');
+  });
+
   it('opens the compare page', () => {
     expect(parseHash('#/compare', ids, fallback)).toEqual({ storeId: '2247', tab: 'compare' });
     expect(toHash({ storeId: '2273', tab: 'compare' })).toBe('#/compare');

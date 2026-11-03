@@ -1,4 +1,4 @@
-import { count, money, moneyShort, percent, signedPercent } from './format';
+import { count, money, moneyShort, monthYear, percent, signedPercent } from './format';
 
 describe('format', () => {
   it('formats Canadian dollars without cents', () => {
@@ -20,5 +20,10 @@ describe('format', () => {
     expect(moneyShort(610000)).toBe('$610K');
     expect(moneyShort(7_300_000)).toBe('$7.3M');
     expect(moneyShort(500)).toBe('$500');
+  });
+
+  it('names a data month', () => {
+    expect(monthYear('2026-10')).toBe('October 2026');
+    expect(monthYear('2025-01')).toBe('January 2025');
   });
 });

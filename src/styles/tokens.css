@@ -39,8 +39,8 @@
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* Dark appearance follows the operating system setting (HIG: no app-specific toggle). */
-@media (prefers-color-scheme: dark) {
+/* Dark appearance follows the operating system setting (HIG: no app-specific toggle). Print always uses light. */
+@media screen and (prefers-color-scheme: dark) {
   :root {
     --blue: rgb(0 145 255);
     --green: rgb(48 209 88);
