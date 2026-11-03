@@ -1,10 +1,16 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
-import type { Competitor, LatLng, Store } from '../data/types';
+import type { Competitor, LatLng, StoreListing } from '../data/types';
+
+/** A store pin. Profiled stores get the large labelled pin; directory listings a small one. */
+export type MapPin = Pick<StoreListing, 'id' | 'name' | 'shortName' | 'coords'> & {
+  approximate?: boolean;
+  profiled?: boolean;
+};
 
 export interface MapViewProps {
-  stores: Store[];
+  stores: MapPin[];
   competitors?: Competitor[];
   selectedId?: string;
   onSelect?: (id: string) => void;
@@ -21,10 +27,21 @@ const prefersDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').ma
 const tileUrl = () =>
   `https://{s}.basemaps.cartocdn.com/${prefersDark() ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`;
 
-function storeIcon(store: Store, selected: boolean) {
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function storeIcon(store: MapPin, selected: boolean) {
+  const label = `<div class="pin-label" aria-hidden="true">${escapeHtml(store.shortName)}</div>`;
+  if (store.profiled === false) {
+    return L.divIcon({
+      className: '',
+      html: `<div class="pin pin--listing${selected ? ' is-selected' : ''}" aria-hidden="true"></div>${selected ? label : ''}`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+    });
+  }
   return L.divIcon({
     className: '',
-    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}" aria-hidden="true"></div><div class="pin-label" aria-hidden="true">${store.shortName}</div>`,
+    html: `<div class="pin pin--store${selected ? ' is-selected' : ''}" aria-hidden="true"></div>${label}`,
     iconSize: [36, 36],
     iconAnchor: [18, 18],
   });
@@ -75,7 +92,13 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
         .addTo(layer);
     }
     for (const s of stores) {
-      const marker = L.marker(s.coords, { icon: storeIcon(s, s.id === selectedId), title: s.name, riseOnHover: true })
+      const selected = s.id === selectedId;
+      const marker = L.marker(s.coords, {
+        icon: storeIcon(s, selected),
+        title: s.approximate ? `${s.name} (approximate location)` : s.name,
+        riseOnHover: true,
+        zIndexOffset: selected ? 1000 : s.profiled === false ? 0 : 500,
+      })
         .on('click', () => onSelect?.(s.id))
         .addTo(layer);
       // Give keyboard and screen-reader users a clear name and state for each pin.
