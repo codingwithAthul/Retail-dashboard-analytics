@@ -1,0 +1,493 @@
+{
+  "source": "sample",
+  "period": {
+    "start": "2024-11",
+    "end": "2026-10"
+  },
+  "stores": {
+    "2247": {
+      "months": [
+        {
+          "key": "2024-11",
+          "sales": 641156,
+          "transactions": 16625
+        },
+        {
+          "key": "2024-12",
+          "sales": 724952,
+          "transactions": 18655
+        },
+        {
+          "key": "2025-01",
+          "sales": 590985,
+          "transactions": 15592
+        },
+        {
+          "key": "2025-02",
+          "sales": 524415,
+          "transactions": 13585
+        },
+        {
+          "key": "2025-03",
+          "sales": 617782,
+          "transactions": 16161
+        },
+        {
+          "key": "2025-04",
+          "sales": 606830,
+          "transactions": 15950
+        },
+        {
+          "key": "2025-05",
+          "sales": 651648,
+          "transactions": 16732
+        },
+        {
+          "key": "2025-06",
+          "sales": 621170,
+          "transactions": 16206
+        },
+        {
+          "key": "2025-07",
+          "sales": 629367,
+          "transactions": 16122
+        },
+        {
+          "key": "2025-08",
+          "sales": 623952,
+          "transactions": 16364
+        },
+        {
+          "key": "2025-09",
+          "sales": 642742,
+          "transactions": 16939
+        },
+        {
+          "key": "2025-10",
+          "sales": 671094,
+          "transactions": 17446
+        },
+        {
+          "key": "2025-11",
+          "sales": 669982,
+          "transactions": 17402
+        },
+        {
+          "key": "2025-12",
+          "sales": 764769,
+          "transactions": 19994
+        },
+        {
+          "key": "2026-01",
+          "sales": 634671,
+          "transactions": 16426
+        },
+        {
+          "key": "2026-02",
+          "sales": 578839,
+          "transactions": 15252
+        },
+        {
+          "key": "2026-03",
+          "sales": 666543,
+          "transactions": 17295
+        },
+        {
+          "key": "2026-04",
+          "sales": 648289,
+          "transactions": 16849
+        },
+        {
+          "key": "2026-05",
+          "sales": 686451,
+          "transactions": 17959
+        },
+        {
+          "key": "2026-06",
+          "sales": 657320,
+          "transactions": 17029
+        },
+        {
+          "key": "2026-07",
+          "sales": 690199,
+          "transactions": 17733
+        },
+        {
+          "key": "2026-08",
+          "sales": 686845,
+          "transactions": 17883
+        },
+        {
+          "key": "2026-09",
+          "sales": 675992,
+          "transactions": 17438
+        },
+        {
+          "key": "2026-10",
+          "sales": 721543,
+          "transactions": 18857
+        }
+      ],
+      "categories": [
+        {
+          "category": "Pharmacy",
+          "sales": 3554674,
+          "share": 0.4399
+        },
+        {
+          "category": "Beauty",
+          "sales": 1376781,
+          "share": 0.1704
+        },
+        {
+          "category": "OTC health",
+          "sales": 889076,
+          "share": 0.11
+        },
+        {
+          "category": "Personal care",
+          "sales": 808116,
+          "share": 0.1
+        },
+        {
+          "category": "Convenience food",
+          "sales": 644383,
+          "share": 0.0797
+        },
+        {
+          "category": "Household",
+          "sales": 404658,
+          "share": 0.0501
+        },
+        {
+          "category": "Seasonal",
+          "sales": 403756,
+          "share": 0.05
+        }
+      ],
+      "topItems": [
+        {
+          "name": "Milk 2% (2 L)",
+          "category": "Convenience food",
+          "units": 56191,
+          "revenue": 332752
+        },
+        {
+          "name": "Greeting cards",
+          "category": "Seasonal",
+          "units": 35955,
+          "revenue": 177036
+        },
+        {
+          "name": "Chocolate bar",
+          "category": "Convenience food",
+          "units": 29794,
+          "revenue": 66295
+        },
+        {
+          "name": "Bottled water 500 mL",
+          "category": "Convenience food",
+          "units": 28341,
+          "revenue": 55710
+        },
+        {
+          "name": "Baby wipes",
+          "category": "Personal care",
+          "units": 27502,
+          "revenue": 245027
+        },
+        {
+          "name": "Toothpaste",
+          "category": "Personal care",
+          "units": 22932,
+          "revenue": 112933
+        },
+        {
+          "name": "Granola bars",
+          "category": "Convenience food",
+          "units": 22807,
+          "revenue": 111741
+        },
+        {
+          "name": "Lip balm",
+          "category": "Beauty",
+          "units": 20426,
+          "revenue": 100863
+        }
+      ],
+      "weekdays": [
+        {
+          "day": "Mon",
+          "averageSales": 21504
+        },
+        {
+          "day": "Tue",
+          "averageSales": 21254
+        },
+        {
+          "day": "Wed",
+          "averageSales": 21709
+        },
+        {
+          "day": "Thu",
+          "averageSales": 21305
+        },
+        {
+          "day": "Fri",
+          "averageSales": 23103
+        },
+        {
+          "day": "Sat",
+          "averageSales": 23648
+        },
+        {
+          "day": "Sun",
+          "averageSales": 22435
+        }
+      ],
+      "pharmacyShare": 0.4399
+    },
+    "2273": {
+      "months": [
+        {
+          "key": "2024-11",
+          "sales": 596790,
+          "transactions": 32818
+        },
+        {
+          "key": "2024-12",
+          "sales": 631940,
+          "transactions": 35078
+        },
+        {
+          "key": "2025-01",
+          "sales": 601981,
+          "transactions": 33411
+        },
+        {
+          "key": "2025-02",
+          "sales": 524966,
+          "transactions": 29385
+        },
+        {
+          "key": "2025-03",
+          "sales": 615369,
+          "transactions": 34184
+        },
+        {
+          "key": "2025-04",
+          "sales": 629047,
+          "transactions": 35207
+        },
+        {
+          "key": "2025-05",
+          "sales": 430696,
+          "transactions": 23955
+        },
+        {
+          "key": "2025-06",
+          "sales": 360868,
+          "transactions": 20175
+        },
+        {
+          "key": "2025-07",
+          "sales": 361483,
+          "transactions": 20280
+        },
+        {
+          "key": "2025-08",
+          "sales": 404985,
+          "transactions": 22698
+        },
+        {
+          "key": "2025-09",
+          "sales": 697090,
+          "transactions": 39236
+        },
+        {
+          "key": "2025-10",
+          "sales": 663847,
+          "transactions": 37611
+        },
+        {
+          "key": "2025-11",
+          "sales": 612397,
+          "transactions": 34127
+        },
+        {
+          "key": "2025-12",
+          "sales": 672040,
+          "transactions": 37449
+        },
+        {
+          "key": "2026-01",
+          "sales": 625669,
+          "transactions": 34760
+        },
+        {
+          "key": "2026-02",
+          "sales": 550116,
+          "transactions": 30314
+        },
+        {
+          "key": "2026-03",
+          "sales": 642424,
+          "transactions": 35789
+        },
+        {
+          "key": "2026-04",
+          "sales": 630406,
+          "transactions": 35778
+        },
+        {
+          "key": "2026-05",
+          "sales": 456072,
+          "transactions": 25618
+        },
+        {
+          "key": "2026-06",
+          "sales": 389749,
+          "transactions": 21871
+        },
+        {
+          "key": "2026-07",
+          "sales": 384098,
+          "transactions": 21689
+        },
+        {
+          "key": "2026-08",
+          "sales": 410708,
+          "transactions": 22978
+        },
+        {
+          "key": "2026-09",
+          "sales": 709140,
+          "transactions": 40042
+        },
+        {
+          "key": "2026-10",
+          "sales": 680617,
+          "transactions": 38185
+        }
+      ],
+      "categories": [
+        {
+          "category": "Pharmacy",
+          "sales": 2030039,
+          "share": 0.3001
+        },
+        {
+          "category": "Convenience food",
+          "sales": 1352671,
+          "share": 0.2
+        },
+        {
+          "category": "Personal care",
+          "sales": 949625,
+          "share": 0.1404
+        },
+        {
+          "category": "OTC health",
+          "sales": 871847,
+          "share": 0.1289
+        },
+        {
+          "category": "Beauty",
+          "sales": 807881,
+          "share": 0.1194
+        },
+        {
+          "category": "Household",
+          "sales": 409210,
+          "share": 0.0605
+        },
+        {
+          "category": "Seasonal",
+          "sales": 342162,
+          "share": 0.0506
+        }
+      ],
+      "topItems": [
+        {
+          "name": "Bottled water 500 mL",
+          "category": "Convenience food",
+          "units": 155769,
+          "revenue": 308268
+        },
+        {
+          "name": "Instant noodles",
+          "category": "Convenience food",
+          "units": 115993,
+          "revenue": 284882
+        },
+        {
+          "name": "Energy drink 473 mL",
+          "category": "Convenience food",
+          "units": 96780,
+          "revenue": 334008
+        },
+        {
+          "name": "Chocolate bar",
+          "category": "Convenience food",
+          "units": 87754,
+          "revenue": 194526
+        },
+        {
+          "name": "Ruled notebook",
+          "category": "Seasonal",
+          "units": 42337,
+          "revenue": 167143
+        },
+        {
+          "name": "Life Brand shampoo",
+          "category": "Personal care",
+          "units": 37437,
+          "revenue": 257631
+        },
+        {
+          "name": "Lip balm",
+          "category": "Beauty",
+          "units": 35439,
+          "revenue": 174863
+        },
+        {
+          "name": "Toothpaste",
+          "category": "Personal care",
+          "units": 32197,
+          "revenue": 159174
+        }
+      ],
+      "weekdays": [
+        {
+          "day": "Mon",
+          "averageSales": 20078
+        },
+        {
+          "day": "Tue",
+          "averageSales": 20264
+        },
+        {
+          "day": "Wed",
+          "averageSales": 20481
+        },
+        {
+          "day": "Thu",
+          "averageSales": 19588
+        },
+        {
+          "day": "Fri",
+          "averageSales": 19044
+        },
+        {
+          "day": "Sat",
+          "averageSales": 15549
+        },
+        {
+          "day": "Sun",
+          "averageSales": 14764
+        }
+      ],
+      "pharmacyShare": 0.3001
+    }
+  }
+}
