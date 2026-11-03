@@ -87,3 +87,18 @@
 .pin--listing + .pin-label {
   top: 24px;
 }
+
+.pin--listing {
+  margin: 3px;
+}
+
+.pin--cluster {
+  width: 32px;
+  height: 32px;
+  background: color-mix(in srgb, var(--red) 80%, #000);
+  color: #fff;
+  font: 700 13px var(--font);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+}

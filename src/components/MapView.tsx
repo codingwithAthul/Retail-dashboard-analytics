@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { clusterPoints } from '../lib/cluster';
 import type { Competitor, LatLng, StoreListing } from '../data/types';
 
 /** A store pin. Profiled stores get the large labelled pin; directory listings a small one. */
@@ -39,8 +40,8 @@ function storeIcon(store: MapPin, selected: boolean) {
     return L.divIcon({
       className: '',
       html: `<div class="pin pin--listing${selected ? ' is-selected' : ''}" aria-hidden="true"></div>${selected ? label : ''}`,
-      iconSize: [18, 18],
-      iconAnchor: [9, 9],
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
     });
   }
   return L.divIcon({
@@ -51,12 +52,27 @@ function storeIcon(store: MapPin, selected: boolean) {
   });
 }
 
+/** Pins closer than this many pixels are drawn as one cluster (keeps touch targets apart). */
+const CLUSTER_RADIUS = 40;
+
+function clusterIcon(count: number) {
+  return L.divIcon({
+    className: '',
+    html: `<div class="pin pin--cluster" aria-hidden="true">${count}</div>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+  });
+}
+
+const NO_COMPETITORS: Competitor[] = [];
+
 const competitorIcon = L.divIcon({ className: '', html: '<div class="pin pin--competitor"></div>', iconSize: [14, 14], iconAnchor: [7, 7] });
 
-export function MapView({ stores, competitors = [], selectedId, onSelect, leftInset = 0, topInset = 96, bottomInset = 0, className }: MapViewProps) {
+export function MapView({ stores, competitors = NO_COMPETITORS, selectedId, onSelect, leftInset = 0, topInset = 96, bottomInset = 0, className }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const layerRef = useRef<L.LayerGroup | null>(null);
+  const [zoom, setZoom] = useState<number | null>(null);
 
   // Create the map once.
   useEffect(() => {
@@ -65,6 +81,7 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer(TILE_URL, { maxZoom: 19, attribution: TILE_ATTRIBUTION }).addTo(map);
     layerRef.current = L.layerGroup().addTo(map);
+    map.on('zoomend', () => setZoom(map.getZoom()));
     mapRef.current = map;
     return () => {
       map.remove();
@@ -72,26 +89,59 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
     };
   }, []);
 
-  // Fit the view to the stores shown, so the map is always centred on them.
+  // A selected directory store is zoomed to, because its neighbours are too close to tell
+  // apart at city scale. Otherwise the view fits every store shown.
+  const selectedListing = stores.find((s) => s.id === selectedId && s.profiled === false);
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
+    if (selectedListing) {
+      map.setView(selectedListing.coords, 15, { animate: false });
+      map.panBy([-leftInset / 2, (bottomInset - topInset) / 2], { animate: false });
+      return;
+    }
     const points: LatLng[] = [...stores.map((s) => s.coords), ...competitors.map((c) => c.coords)];
     if (points.length === 0) return;
     map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, topInset], paddingBottomRight: [48, bottomInset + 48], maxZoom: 16 });
-  }, [stores, competitors, leftInset, topInset, bottomInset]);
+  }, [stores, competitors, selectedListing, leftInset, topInset, bottomInset]);
 
   // Draw pins whenever the data or the selection changes.
   useEffect(() => {
     const layer = layerRef.current;
-    if (!layer) return;
+    const map = mapRef.current;
+    if (!layer || !map) return;
     layer.clearLayers();
     for (const c of competitors) {
       L.marker(c.coords, { icon: competitorIcon, title: c.name, keyboard: false })
         .bindTooltip(`${c.name}${c.approximate ? ' (approximate location)' : ''}`)
         .addTo(layer);
     }
-    for (const s of stores) {
+    // Directory pins that would overlap at this zoom are grouped; profiled and selected stores always show.
+    const loose = stores.filter((s) => s.profiled === false && s.id !== selectedId);
+    const single = stores.filter((s) => !loose.includes(s));
+    const z = zoom ?? map.getZoom();
+    const groups = Number.isFinite(z)
+      ? clusterPoints(
+          loose.map((s) => {
+            const { x, y } = map.project(s.coords, z);
+            return { item: s, x, y };
+          }),
+          CLUSTER_RADIUS,
+        )
+      : loose.map((s) => ({ items: [s], x: 0, y: 0 }));
+    for (const g of groups) {
+      if (g.items.length === 1) {
+        single.push(g.items[0]);
+        continue;
+      }
+      const bounds = L.latLngBounds(g.items.map((s) => s.coords));
+      const marker = L.marker(bounds.getCenter(), { icon: clusterIcon(g.items.length), title: `${g.items.length} stores` })
+        .on('click', () => map.fitBounds(bounds.pad(0.5), { maxZoom: 17 }))
+        .addTo(layer);
+      const el = marker.getElement();
+      el?.setAttribute('aria-label', `${g.items.length} stores: ${g.items.map((s) => s.shortName).join(', ')}. Zoom in`);
+    }
+    for (const s of single) {
       const selected = s.id === selectedId;
       const marker = L.marker(s.coords, {
         icon: storeIcon(s, selected),
@@ -107,7 +157,7 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
       el?.setAttribute('aria-label', s.name.includes(s.shortName) ? s.name : `${s.name}, ${s.shortName}`);
       el?.setAttribute('aria-pressed', String(s.id === selectedId));
     }
-  }, [stores, competitors, selectedId, onSelect]);
+  }, [stores, competitors, selectedId, onSelect, zoom]);
 
   return <div ref={containerRef} className={className ?? 'map'} role="region" aria-label="Map of stores" />;
 }
