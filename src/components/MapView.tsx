@@ -17,9 +17,13 @@ export interface MapViewProps {
   className?: string;
 }
 
-const prefersDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-const tileUrl = () =>
-  `https://{s}.basemaps.cartocdn.com/${prefersDark() ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`;
+/**
+ * OpenStreetMap's standard tiles: free and keyless. (CARTO's basemaps now answer
+ * "API key required" without a key.) Colours are softened, and inverted in dark
+ * appearance, by CSS on the tile pane: see map.css.
+ */
+export const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+export const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 function storeIcon(store: Store, selected: boolean) {
   return L.divIcon({
@@ -42,11 +46,7 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
     if (!containerRef.current) return;
     const map = L.map(containerRef.current, { zoomControl: false, attributionControl: true });
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    L.tileLayer(tileUrl(), {
-      maxZoom: 19,
-      subdomains: 'abcd',
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    }).addTo(map);
+    L.tileLayer(TILE_URL, { maxZoom: 19, attribution: TILE_ATTRIBUTION }).addTo(map);
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
     return () => {
