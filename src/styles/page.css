@@ -6,6 +6,7 @@
 }
 
 .page__inner {
+  min-width: 0;
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
@@ -24,6 +25,11 @@
 .page__head h2 {
   font-size: 34px;
   font-weight: 700;
+}
+
+.grid > *,
+.page__inner > * {
+  min-width: 0;
 }
 
 .grid {
@@ -81,6 +87,10 @@
   background: color-mix(in srgb, var(--orange) 10%, var(--surface));
   font-size: 13px;
   color: var(--text-2);
+}
+
+.card:has(> .table) {
+  overflow-x: auto;
 }
 
 .table {
@@ -175,6 +185,15 @@
 }
 
 @media (max-width: 760px) {
+  .page {
+    padding: 112px var(--space-4) var(--space-5);
+  }
+  .page__head h2 {
+    font-size: 28px;
+  }
+  .card {
+    padding: var(--space-4);
+  }
   .page__head .segmented {
     width: 100%;
     overflow-x: auto;

@@ -69,15 +69,3 @@
     max-height: 55%;
   }
 }
-
-@media (max-width: 760px) {
-  .page {
-    padding: 112px var(--space-4) var(--space-5);
-  }
-  .page__head h2 {
-    font-size: 28px;
-  }
-  .card {
-    padding: var(--space-4);
-  }
-}
