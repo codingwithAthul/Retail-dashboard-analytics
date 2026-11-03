@@ -1,0 +1,55 @@
+import type { Competitor } from './types';
+
+/** Nearby retailers that overlap with SDM categories. Pins are approximate (placed from street address). */
+export const COMPETITORS: Competitor[] = [
+  {
+    id: 'save-on-wesbrook',
+    name: 'Save-On-Foods (with pharmacy)',
+    kind: 'Grocery',
+    address: '5945 Berton Ave',
+    coords: [49.2531, -123.2369],
+    approximate: true,
+    categories: ['Fresh grocery', 'Convenience food', 'Household', 'Personal care', 'OTC health', 'Pharmacy'],
+    sources: ['cortico', 'liveAtUbc'],
+  },
+  {
+    id: 'pharmachoice-wesbrook',
+    name: 'PharmaChoice Wesbrook Pharmacy',
+    kind: 'Pharmacy',
+    address: '3317 Wesbrook Mall',
+    coords: [49.2547, -123.2346],
+    approximate: true,
+    categories: ['Pharmacy', 'OTC health'],
+    sources: ['cortico'],
+  },
+  {
+    id: 'careville-ubc',
+    name: 'Careville Pharmacy UBC',
+    kind: 'Pharmacy',
+    address: '3317 Wesbrook Mall',
+    coords: [49.2549, -123.2342],
+    approximate: true,
+    categories: ['Pharmacy', 'OTC health'],
+    sources: ['cortico'],
+  },
+  {
+    id: 'ubc-pharmacists-clinic',
+    name: 'UBC Pharmacists Clinic',
+    kind: 'Pharmacist clinic',
+    address: '2405 Wesbrook Mall',
+    coords: [49.2643, -123.2438],
+    approximate: true,
+    categories: ['Pharmacy'],
+    sources: ['cortico'],
+  },
+  {
+    id: 'university-pharmacy',
+    name: 'University Pharmacy',
+    kind: 'Pharmacy',
+    address: '5754 University Blvd',
+    coords: [49.2663, -123.2423],
+    approximate: true,
+    categories: ['Pharmacy', 'OTC health', 'Personal care'],
+    sources: ['cortico'],
+  },
+];
