@@ -59,3 +59,23 @@ export function MapView({ stores, competitors = [], selectedId, onSelect, leftIn
     if (points.length === 0) return;
     map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, 96], paddingBottomRight: [48, 48], maxZoom: 16 });
   }, [stores, competitors, leftInset]);
+
+  // Draw pins whenever the data or the selection changes.
+  useEffect(() => {
+    const layer = layerRef.current;
+    if (!layer) return;
+    layer.clearLayers();
+    for (const c of competitors) {
+      L.marker(c.coords, { icon: competitorIcon, title: c.name, keyboard: false })
+        .bindTooltip(`${c.name}${c.approximate ? ' (approximate location)' : ''}`)
+        .addTo(layer);
+    }
+    for (const s of stores) {
+      L.marker(s.coords, { icon: storeIcon(s, s.id === selectedId), title: s.name, alt: s.name, riseOnHover: true })
+        .on('click', () => onSelect?.(s.id))
+        .addTo(layer);
+    }
+  }, [stores, competitors, selectedId, onSelect]);
+
+  return <div ref={containerRef} className={className ?? 'map'} role="region" aria-label="Map of stores" />;
+}
