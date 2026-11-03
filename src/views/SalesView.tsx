@@ -34,7 +34,7 @@ export function SalesView({ store }: { store: Store }) {
           <KpiTile
             label="Sales, last 12 months"
             value={moneyShort(kpis.ttmSales)}
-            delta={{ text: `${signedPercent(kpis.yoy)} vs prior year`, positive: kpis.yoy >= 0 }}
+            delta={kpis.yoy === null ? undefined : { text: `${signedPercent(kpis.yoy)} vs prior year`, positive: kpis.yoy >= 0 }}
           />
         </div>
         <div className="span-3">
@@ -70,7 +70,7 @@ export function SalesView({ store }: { store: Store }) {
           <ChartData
             caption="Monthly sales, last 12 months and year before"
             headers={['Month', 'Last 12 months', 'Year before']}
-            rows={yoy.map((p) => [p.label, money(p.current), money(p.previous)])}
+            rows={yoy.map((p) => [p.label, money(p.current), p.previous === null ? '–' : money(p.previous)])}
           />
         </section>
 
