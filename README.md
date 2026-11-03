@@ -54,6 +54,7 @@ Follows Apple's Human Interface Guidelines: system font, system colours, solid c
 | Charts | Recharts | Declarative charts for React |
 | Data | Python, pandas | Standard tools for data cleaning and aggregation |
 | Tests | Vitest, Testing Library, Playwright, pytest | Unit, component, browser (desktop and phone) and data tests in CI |
+| Quality | Lighthouse CI | Every page must score 100 for accessibility, or CI fails |
 | Hosting | GitHub Pages via GitHub Actions | Anyone can open a link, no licence needed |
 
 ## Run locally
@@ -63,6 +64,7 @@ npm install
 npm run dev        # http://localhost:5173/Retail-dashboard-analytics/
 npm test           # unit and component tests
 npm run e2e        # browser tests, desktop and phone
+npx @lhci/cli@0.15.1 autorun   # Lighthouse on every page (after a build)
 npm run build      # type check and production build
 ```
 
