@@ -1,11 +1,13 @@
 # Changelog
 
-## Unreleased
+## 2.3.0 (2026-11-03)
+
+Light profiles for the 29 Vancouver directory stores.
 
 - **Census for every Vancouver store**: each directory store's panel shows the 2021 census for its postal area (FSA) next to Metro Vancouver, with residents by age and a link to the Statistics Canada page. Pulled by the new pipeline command `python -m etl census` (`Research/09-census-by-postal-area.md`)
 - **Within a 10-minute walk**: each directory store lists the pharmacies and supermarkets within 800 m from OpenStreetMap, with grey pins on the map, Loblaw banners marked, and other Shoppers Drug Mart stores counted. Pulled by `python -m etl nearby` (`Research/10-nearby-pharmacies-and-supermarkets.md`)
 
-## 2.2.0 (unreleased)
+## 2.2.0 (2026-11-03)
 
 Map fix, the 2021 census, and the first step of v3.0: every Vancouver store on the map.
 
