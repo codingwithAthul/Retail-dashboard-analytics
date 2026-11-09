@@ -54,6 +54,10 @@ Every place, with its distance and a link to its OpenStreetMap page, is in the a
 - **The hospital cluster is pharmacy-dense.** 885 West Broadway (#263) and VGH (#2279) each have 12 or 13 other pharmacies within 800 m, mostly independent and specialty pharmacies around Vancouver General Hospital. Front store, hours and services, not dispensing, are what can set them apart.
 - **Edge-of-city stores have little nearby**: River District (#2130), East 49th & Elliot (#2274), Champlain Square (#2228) and Marine & Cambie (#2227) have no other pharmacy within 800 m, so their own pharmacy is likely the neighbourhood's default.
 
+## In the app
+
+The **Network** page (`#/network`) puts the overlap for all 31 stores in one table. Shoppers-to-Shoppers distances there are measured between the checked store positions (`Research/data/vancouver-sdm-stores.csv`), not from OpenStreetMap, so they agree in both directions. 14 of 31 stores have another Shoppers within 800 m. 12 have a sister Loblaw banner within 800 m. The closest pair is East 10th Avenue (#3005) and The Hub Broadway & Commercial (#280), 156 m apart.
+
 ## Limits
 
 - **OpenStreetMap is volunteer-mapped.** Recently opened or unmapped stores are missed, and a few places carry a pharmacy tag they may not deserve (a medical clinic, for example). Treat the counts as a floor.
