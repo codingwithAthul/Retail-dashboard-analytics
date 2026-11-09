@@ -1,3 +1,5 @@
+import type { CensusProfile } from './census';
+
 /** How sure we are about a value shown in the dashboard. */
 export type Confidence = 'verified' | 'inferred' | 'estimate' | 'sample';
 
@@ -49,6 +51,8 @@ export interface Demographics {
   seasonality: string;
   nearby: { name: string; kind: string; note: string }[];
   facts: Fact[];
+  /** Official census figures for the store's census subdivision, when published. */
+  census?: CensusProfile;
 }
 
 export interface CategoryCall {
@@ -89,4 +93,27 @@ export interface Competitor {
   approximate: boolean;
   categories: Category[];
   sources: string[];
+}
+
+/** Where a store listing's facts came from. */
+export type ListingSource = 'profile' | 'public-directory';
+
+/**
+ * One store on the map. Every store has a listing; only some have a full profile
+ * (summary, demographics, sales, competitors). Listings without a profile come from
+ * public directories and are labelled that way.
+ */
+export interface StoreListing {
+  id: string;
+  name: string;
+  shortName: string;
+  banner: string;
+  format: StoreFormat | 'Not yet known';
+  address: string;
+  /** City of Vancouver local area, or "UBC" for the University Endowment Lands. */
+  neighbourhood: string;
+  coords: LatLng;
+  /** True when the pin is placed from the street address, not a surveyed point. */
+  approximate: boolean;
+  source: ListingSource;
 }

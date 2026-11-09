@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.2.0 (2026-11-03)
+
+Map fix, the 2021 census, and the first step of v3.0: every Vancouver store on the map.
+
+- **Map fix**: the base map was blank because CARTO's tile servers now require an API key. The map now uses OpenStreetMap tiles (no key), muted in light appearance and inverted in dark
+- **Census**: the Demographics tab shows the Statistics Canada 2021 census for Metro Vancouver A (CSD 5915020, the UBC area) next to Metro Vancouver: population, growth, median age, household income, renters, immigrants, non-permanent residents, low income, and residents by age
+- **29 City of Vancouver stores** on the map from public directories, each address checked against the store's own page or a pharmacy directory (`Research/08-vancouver-sdm-stores.md`). Close pins group until you zoom in; a store opened by link is zoomed to
+- **Store search** in the top bar: number, name, street, postal code or local area, with keyboard support
+- **Directory store panel**: checked address, local area, format, approximate-position note, and the nearest profiled store
+- **Compare**: choose the two stores to compare; the pair is kept in the link (`#/compare/2273/2247`)
+- Lighthouse also checks a directory store page
+
 ## 2.1.0 (2026-11-03)
 
 Store comparison, a printable brief, and an accessibility gate in CI.
