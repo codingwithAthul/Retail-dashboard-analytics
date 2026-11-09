@@ -17,7 +17,7 @@ The project's scope is Metro Vancouver: Shoppers Drug Mart first, then other Lob
 
 | View | Answers |
 |---|---|
-| **Overview** | Map of every store; close pins group until you zoom in. Search by store number, name, street, postal code or area. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. Directory stores show their checked address, local area and nearest profiled store. |
+| **Overview** | Map of every store; close pins group until you zoom in. Search by store number, name, street, postal code or area. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. Directory stores show their checked address, local area, the 2021 census for their postal area, pharmacies and supermarkets within a 10-minute walk (Loblaw banners marked), and the nearest profiled store. |
 | **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources, and the 2021 census for the area against Metro Vancouver. |
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
@@ -34,7 +34,7 @@ Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the 
 
 ## Data policy
 
-- **Store facts** (address, hours, services) come from public store pages. **Area facts** come from UBC and the Statistics Canada 2021 census. Each is marked *Verified* and linked to its source.
+- **Store facts** (address, hours, services) come from public store pages. **Area facts** come from UBC and the Statistics Canada 2021 census (by census subdivision for UBC, by postal area for the other Vancouver stores). Each is marked *Verified* and linked to its source.
 - **Directory stores** are labelled as public-directory listings. Map positions come from OpenStreetMap; positions that could not be checked against a second point are marked approximate.
 - **Customer segment shares** are *Estimates* built from public research.
 - **Sales figures are synthetic sample data**, built by the [data pipeline](pipeline/README.md) from a fixed seed so they are the same on every run. They are labelled *Sample data* on screen and are **not** real store sales. Real store exports can replace them without code changes.

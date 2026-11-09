@@ -290,3 +290,14 @@
   margin: 0;
   font-size: 13px;
 }
+
+.table th a {
+  color: var(--link);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.table th a:hover,
+.table th a:focus-visible {
+  text-decoration: underline;
+}
