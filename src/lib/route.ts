@@ -1,7 +1,7 @@
 import type { Tab } from '../components/TabNav';
 
-/** A store tab, a store's printable brief, or the page that compares stores. */
-export type View = Tab | 'brief' | 'compare';
+/** A store tab, a store's printable brief, the page that compares stores, or the network overlap page. */
+export type View = Tab | 'brief' | 'compare' | 'network';
 
 export interface Route {
   storeId: string;
@@ -14,6 +14,7 @@ const TABS: Tab[] = ['overview', 'demographics', 'sales', 'competitors'];
 
 /** Parse "#/store/2247/sales" into a route. Unknown parts fall back to the defaults. */
 export function parseHash(hash: string, validStoreIds: string[], fallback: Route): Route {
+  if (/^#\/network\/?$/.test(hash)) return { storeId: fallback.storeId, tab: 'network' };
   const cmp = hash.match(/^#\/compare(?:\/([^/]+)\/([^/]+))?\/?$/);
   if (cmp) {
     const [, a, b] = cmp;
@@ -27,6 +28,7 @@ export function parseHash(hash: string, validStoreIds: string[], fallback: Route
 }
 
 export function toHash({ storeId, tab, compare }: Route): string {
+  if (tab === 'network') return '#/network';
   if (tab === 'compare') return compare ? `#/compare/${compare[0]}/${compare[1]}` : '#/compare';
   return tab === 'overview' ? `#/store/${storeId}` : `#/store/${storeId}/${tab}`;
 }

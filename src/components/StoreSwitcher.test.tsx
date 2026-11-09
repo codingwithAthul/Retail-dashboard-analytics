@@ -22,3 +22,19 @@ describe('StoreSwitcher', () => {
     expect(onCompare).toHaveBeenCalled();
   });
 });
+
+describe('StoreSwitcher network tab', () => {
+  it('offers the network page and marks it when open', async () => {
+    const onNetwork = vi.fn();
+    render(<StoreSwitcher stores={STORES} selectedId={null} page="network" onSelect={vi.fn()} onCompare={vi.fn()} onNetwork={onNetwork} />);
+    expect(screen.getByRole('tab', { name: 'Network' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: 'Compare' })).toHaveAttribute('aria-selected', 'false');
+    await userEvent.click(screen.getByRole('tab', { name: 'Network' }));
+    expect(onNetwork).toHaveBeenCalled();
+  });
+
+  it('leaves the network tab out without a handler', () => {
+    render(<StoreSwitcher stores={STORES} selectedId="2247" onSelect={vi.fn()} onCompare={vi.fn()} />);
+    expect(screen.queryByRole('tab', { name: 'Network' })).toBeNull();
+  });
+});

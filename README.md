@@ -22,6 +22,7 @@ The project's scope is Metro Vancouver: Shoppers Drug Mart first, then other Lob
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
 | **Compare** | Choose two stores and see them side by side: headline numbers, where each should specialise, category mix, main customers, weekly rhythm, competitors. The pair is kept in the link (`#/compare/2273/2247`). |
+| **Network** | Where the network overlaps: for every store, the other Shoppers Drug Mart stores and the sister Loblaw banners (No Frills, T&T, Your Independent Grocer, Loblaws City Market) within a 10-minute walk, with three headline numbers (`#/network`). |
 | **Store brief** | One printable page per store for a meeting or a store visit. Prints or saves as PDF on a single Letter sheet. |
 
 Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the Competitors tab recommends **avoiding fresh grocery** there and putting the space into beauty and health services instead.

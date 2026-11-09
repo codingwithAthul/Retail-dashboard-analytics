@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **Network page** (`#/network`, new tab in the top bar): for every store, the other Shoppers Drug Mart stores and sister Loblaw banners within 800 m, nearest first, with how many stores overlap and the closest pair. Downtown's Robson & Burrard, Granville and Yaletown each have three or more other Shoppers within a walk
+- Lighthouse also checks the network page
+
 ## 2.3.0 (2026-11-03)
 
 Light profiles for the 29 Vancouver directory stores.
