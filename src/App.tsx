@@ -10,6 +10,7 @@ import type { Store } from './data/types';
 import { AnalyticsPage } from './views/AnalyticsPage';
 import { ComparePage } from './views/ComparePage';
 import { ListingOverview } from './views/ListingOverview';
+import { NetworkPage } from './views/NetworkPage';
 import { StoreBrief } from './views/StoreBrief';
 import { StoreOverview } from './views/StoreOverview';
 import { renderAnalytics } from './views/registry';
@@ -26,15 +27,16 @@ export default function App() {
   // Stores known only from public directories have no analytics tabs or brief yet.
   const listing = profile ? undefined : DIRECTORY.find((s) => s.id === storeId);
   const store = profile ?? STORES[0];
-  const view = listing && tab !== 'compare' ? 'overview' : tab;
+  const view = listing && tab !== 'compare' && tab !== 'network' ? 'overview' : tab;
   const phone = useMediaQuery('(max-width: 760px)');
   // A directory store shows the pharmacies and supermarkets within a 10-minute walk.
   const nearby = useMemo(() => (listing ? nearbyPins(nearbyFor(listing.id)) : undefined), [listing]);
   const select = useCallback(
-    (id: string) => navigate({ storeId: id, tab: tab === 'compare' || !getStore(id) ? 'overview' : tab }),
+    (id: string) => navigate({ storeId: id, tab: tab === 'compare' || tab === 'network' || !getStore(id) ? 'overview' : tab }),
     [navigate, tab],
   );
   const compare = useCallback(() => navigate({ storeId, tab: 'compare' }), [navigate, storeId]);
+  const network = useCallback(() => navigate({ storeId, tab: 'network' }), [navigate, storeId]);
   const pick = useCallback((a: string, b: string) => navigate({ storeId, tab: 'compare', compare: [a, b] }), [navigate, storeId]);
   // Only profiled stores have the data to compare; anything else falls back to the first two.
   const [compareA, compareB] = (pair && pair.every((id) => getStore(id)) ? pair.map((id) => getStore(id)!) : STORES.slice(0, 2)) as [
@@ -51,10 +53,19 @@ export default function App() {
         <span className="topbar__meta">Shoppers Drug Mart · Vancouver</span>
         <span className="topbar__spacer" />
         <StoreSearch stores={DIRECTORY} onSelect={select} />
-        <StoreSwitcher stores={STORES} selectedId={tab === 'compare' ? null : storeId} onSelect={select} onCompare={compare} />
+        <StoreSwitcher
+          stores={STORES}
+          selectedId={tab === 'compare' || tab === 'network' ? null : storeId}
+          page={tab === 'compare' || tab === 'network' ? tab : undefined}
+          onSelect={select}
+          onCompare={compare}
+          onNetwork={network}
+        />
       </header>
 
-      {view === 'compare' ? (
+      {view === 'network' ? (
+        <NetworkPage onSelect={select} />
+      ) : view === 'compare' ? (
         <ComparePage a={compareA} b={compareB} stores={STORES} onChange={pick} notComparable={DIRECTORY.length - STORES.length} />
       ) : view === 'brief' ? (
         <StoreBrief store={store} onBack={() => setTab('overview')} />

@@ -301,3 +301,31 @@
 .table th a:focus-visible {
   text-decoration: underline;
 }
+
+/* Network page */
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--link);
+  cursor: pointer;
+  text-align: left;
+  min-height: 24px;
+}
+
+.link-button:hover,
+.link-button:focus-visible {
+  text-decoration: underline;
+}
+
+.network-table__area {
+  display: block;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.network-table td {
+  font-size: 13px;
+}
