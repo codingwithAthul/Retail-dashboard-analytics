@@ -96,6 +96,17 @@ test.describe('compare', () => {
   });
 });
 
+test.describe('network', () => {
+  test('opens from the switcher, lists overlapping stores, and opens one', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('tab', { name: 'Network' }).click();
+    await expect(page).toHaveURL(/#\/network$/);
+    await expect(page.getByRole('heading', { level: 2, name: 'Where the network overlaps' })).toBeVisible();
+    await page.getByRole('button', { name: 'Yaletown' }).click();
+    await expect(page.getByRole('heading', { level: 2, name: 'Yaletown' })).toBeVisible();
+  });
+});
+
 test.describe('store brief', () => {
   test('opens from the store panel and prints on one page', async ({ page }) => {
     await page.goto('./');
@@ -123,7 +134,9 @@ test('analytics pages never scroll sideways', async ({ page }) => {
     const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
     expect(scroll, tab).toBeLessThanOrEqual(client);
   }
-  await page.goto('./#/compare');
-  const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
-  expect(scroll, 'compare').toBeLessThanOrEqual(client);
+  for (const hash of ['compare', 'network']) {
+    await page.goto(`./#/${hash}`);
+    const [scroll, client] = await page.locator('.page').evaluate((el) => [el.scrollWidth, el.clientWidth]);
+    expect(scroll, hash).toBeLessThanOrEqual(client);
+  }
 });
