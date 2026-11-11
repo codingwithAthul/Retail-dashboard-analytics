@@ -137,3 +137,16 @@
     width: 100%;
   }
 }
+
+/* Four switcher tabs must stay on one line on phones, so the top bar keeps its height. */
+@media (max-width: 760px) {
+  .topbar .segmented {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .topbar .segmented button {
+    white-space: nowrap;
+    padding: 6px 7px;
+    font-size: 12px;
+  }
+}
