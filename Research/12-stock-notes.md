@@ -20,7 +20,7 @@ A note fires only when the area clearly differs from the Vancouver CMA. The CMA 
 | Many residents born outside Canada | The immigrant share is 8 points or more above Metro | International foods and beauty brands, multilingual pharmacy service | Beauty, Convenience food, Pharmacy |
 | Many students and temporary residents | The non-permanent resident share is 4 points or more above Metro | Travel sizes, new-home starter kits, phone and transit cards, late hours | Personal care, Household, Convenience food |
 
-The thresholds are set so that a note marks a real difference, not noise. Ten of the 29 Vancouver stores get no note at all.
+The thresholds are set so that a note marks a real difference, not noise. Nine of the 29 Vancouver stores get no note at all.
 
 ## Limits
 
