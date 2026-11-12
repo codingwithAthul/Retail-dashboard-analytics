@@ -52,6 +52,12 @@
   gap: var(--space-4);
 }
 
+.panel--right {
+  left: auto;
+  right: var(--space-4);
+  width: 360px;
+}
+
 @media (max-width: 760px) {
   .topbar {
     flex-wrap: wrap;

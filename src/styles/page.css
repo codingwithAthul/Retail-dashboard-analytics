@@ -330,19 +330,7 @@
   font-size: 13px;
 }
 
-/* What nearby places sell */
-.place-sells {
-  display: block;
-  margin-top: 2px;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-2);
-}
-
-.table th .place-sells a {
-  font-weight: 400;
-}
-
+/* What to stock */
 .calls-table th[scope='row'] {
   white-space: nowrap;
   vertical-align: top;
@@ -358,4 +346,110 @@
   display: block;
   margin-top: 4px;
   font-size: 13px;
+}
+
+/* Neighbours panel: nearby places, stock calls, stock notes */
+.neighbours {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.neighbours__tabs {
+  align-self: stretch;
+  display: flex;
+}
+
+.neighbours__tabs button {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.neighbours__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.neighbours__body > .section__head h3 {
+  margin: 0;
+}
+
+.place-list,
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.place,
+.note {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--separator);
+}
+
+.place:last-child,
+.note:last-child {
+  border-bottom: 0;
+}
+
+.place__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.place__name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.place__name a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.place__name a:hover,
+.place__name a:focus-visible {
+  text-decoration: underline;
+}
+
+.place__distance {
+  flex: none;
+  font-size: 13px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.place__sells,
+.note p {
+  margin: 2px 0 0;
+  font-size: 13px;
+}
+
+.place__kind,
+.place__basis,
+.note__evidence {
+  color: var(--text-2);
+}
+
+.place__sells a {
+  color: var(--link);
+}
+
+.place__drives {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.note strong {
+  font-size: 14px;
+}
+
+.neighbours__body > p {
+  margin: 0;
 }

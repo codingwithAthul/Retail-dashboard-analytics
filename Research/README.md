@@ -15,6 +15,7 @@ Background research that shapes the dashboard. Every fact is tied to a source li
 | [09-census-by-postal-area.md](09-census-by-postal-area.md) | 2021 census for the postal area of each Vancouver store, and what stands out |
 | [10-nearby-pharmacies-and-supermarkets.md](10-nearby-pharmacies-and-supermarkets.md) | Pharmacies, supermarkets and Loblaw banners within a 10-minute walk of each Vancouver store |
 | [11-what-nearby-stores-sell.md](11-what-nearby-stores-sell.md) | What each nearby chain mainly sells, and the avoid / differentiate / compete call per category |
+| [12-stock-notes.md](12-stock-notes.md) | What the neighbourhood census suggests a store should stock |
 
 ## Confidence labels
 
