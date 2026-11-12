@@ -27,6 +27,21 @@ test.describe('overview', () => {
     await expect(page).toHaveURL(/#\/store\/2246$/);
   });
 
+  test('explains the pins in a map key, folded on phones', async ({ page }, testInfo) => {
+    await page.goto('./');
+    const key = page.getByRole('note', { name: 'Map key' });
+    await expect(key).toBeVisible();
+    if (testInfo.project.name === 'phone') {
+      await expect(key.getByText('Profiled store, full analytics')).toBeHidden();
+      await key.getByText('Map key').click();
+    }
+    await expect(key.getByText('Profiled store, full analytics')).toBeVisible();
+    await expect(key.getByText('Stores grouped here; tap to zoom in')).toBeVisible();
+    await expect(key.getByText('Nearby pharmacy or supermarket')).toBeHidden();
+    await page.goto('./#/store/2246');
+    await expect(key.getByText('Nearby pharmacy or supermarket')).toBeVisible();
+  });
+
   test('zooms to a directory store opened by link, with no pins grouped', async ({ page }) => {
     await page.goto('./#/store/2246');
     await expect(page.locator('.pin--listing.is-selected')).toBeVisible();
@@ -45,6 +60,13 @@ test.describe('overview', () => {
     await expect(page.locator('.pin--competitor').first()).toBeVisible();
     await page.goto('./#/store/2247');
     await expect(page.locator('.pin--competitor')).toHaveCount(0);
+  });
+
+  test('says what nearby stores sell and what to stock', async ({ page }) => {
+    await page.goto('./#/store/201');
+    await expect(page.getByRole('rowheader', { name: /No Frills/ })).toContainText('Discount supermarket');
+    const calls = page.getByRole('table', { name: /Stock calls/ });
+    await expect(calls.getByRole('row', { name: /Fresh grocery/ })).toContainText('Avoid');
   });
 
   test('finds a store from the search field', async ({ page }) => {

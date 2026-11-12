@@ -79,6 +79,7 @@ export default function App() {
             leftInset={phone ? 0 : 416}
             topInset={phone ? 130 : 96}
             bottomInset={phone ? Math.round(window.innerHeight * 0.55) : 0}
+            legend
           />
           <aside className="panel glass" aria-label={`${(listing ?? store).name} details`}>
             {listing ? (
