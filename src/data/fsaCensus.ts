@@ -34,6 +34,12 @@ export function fsaOf(address: string): string | undefined {
   return address.match(/\b([A-Z]\d[A-Z])\s?\d[A-Z]\d\s*$/i)?.[1].toUpperCase();
 }
 
+/** The raw census figures for a store's postal area; undefined when the area is not in the data. */
+export function fsaArea(listing: Pick<StoreListing, 'address'>): AreaProfile | undefined {
+  const fsa = fsaOf(listing.address);
+  return fsa ? AREAS[fsa] : undefined;
+}
+
 const count = (n: number | null) => (n == null ? 'Not published' : n.toLocaleString('en-CA'));
 const money = (n: number | null) => (n == null ? 'Not published' : `$${n.toLocaleString('en-CA')}`);
 const rate = (n: number | null) => (n == null ? 'Not published' : `${n.toFixed(1)}%`);

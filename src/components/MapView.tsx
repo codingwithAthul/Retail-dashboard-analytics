@@ -17,6 +17,8 @@ export interface MapViewProps {
   onSelect?: (id: string) => void;
   /** Extra space (px) on the left, kept clear for the floating panel. */
   leftInset?: number;
+  /** Extra space (px) on the right, kept clear for a second floating panel. */
+  rightInset?: number;
   /** Extra space (px) at the top, kept clear for the top bar. */
   topInset?: number;
   /** Extra space (px) at the bottom, kept clear for a bottom sheet on phones. */
@@ -104,6 +106,7 @@ export function MapView({
   selectedId,
   onSelect,
   leftInset = 0,
+  rightInset = 0,
   topInset = 96,
   bottomInset = 0,
   legend = false,
@@ -129,6 +132,11 @@ export function MapView({
     };
   }, []);
 
+  // Controls on the right (key, zoom, credits) move left of a right-hand panel.
+  useEffect(() => {
+    containerRef.current?.style.setProperty('--map-right-inset', `${rightInset}px`);
+  }, [rightInset]);
+
   // The key sits under the top bar, out of the way of the panel and the zoom buttons.
   useEffect(() => {
     const map = mapRef.current;
@@ -147,13 +155,13 @@ export function MapView({
     if (!map) return;
     if (selectedListing) {
       map.setView(selectedListing.coords, 15, { animate: false });
-      map.panBy([-leftInset / 2, (bottomInset - topInset) / 2], { animate: false });
+      map.panBy([(rightInset - leftInset) / 2, (bottomInset - topInset) / 2], { animate: false });
       return;
     }
     const points: LatLng[] = [...stores.map((s) => s.coords), ...competitors.map((c) => c.coords)];
     if (points.length === 0) return;
-    map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, topInset], paddingBottomRight: [48, bottomInset + 48], maxZoom: 16 });
-  }, [stores, competitors, selectedListing, leftInset, topInset, bottomInset]);
+    map.fitBounds(L.latLngBounds(points), { paddingTopLeft: [leftInset + 48, topInset], paddingBottomRight: [rightInset + 48, bottomInset + 48], maxZoom: 16 });
+  }, [stores, competitors, selectedListing, leftInset, rightInset, topInset, bottomInset]);
 
   // Draw pins whenever the data or the selection changes.
   useEffect(() => {
