@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 2.6.0 (2026-11-12)
+
+The neighbours panel.
 
 - **Neighbours panel**: a second panel on the right of the map, with three tabs: **Nearby** (each place, what it mainly sells, and the categories it draws shoppers for), **What to stock** (the call per category), and **Stock notes**. The store stays on the left. On phones and narrower screens both share one panel, with a Store tab first
 - **Stock notes**: what the 2021 census around a store suggests it should stock, only where the area clearly differs from Metro Vancouver, with the figure behind each note (`Research/12-stock-notes.md`)
