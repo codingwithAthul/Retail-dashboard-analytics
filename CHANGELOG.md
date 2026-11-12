@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **What the neighbours sell**: every place within a 10-minute walk of a directory store now says what it mainly sells (for example "Discount supermarket: produce, meat, dairy, bakery"), from 27 chain profiles with sources; independents are marked as inferred
+- **What to stock, given the neighbours**: a call per category for each directory store. Fresh grocery is Avoid at 26 of 29 Vancouver stores because a fresh-food destination is within 800 m (`Research/11-what-nearby-stores-sell.md`)
 - **Map key**: a small key at the top right explains the pins: Rx for a profiled store, a ring for a Shoppers Drug Mart store, a numbered ring for stores grouped together (tap to zoom in), and grey for nearby pharmacies and supermarkets when shown. Folded on phones so it does not cover pins
 - Grouped stores now look like a larger store ring with a count, instead of a red disc that read like a profiled store
 

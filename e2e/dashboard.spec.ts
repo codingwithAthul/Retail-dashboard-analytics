@@ -62,6 +62,13 @@ test.describe('overview', () => {
     await expect(page.locator('.pin--competitor')).toHaveCount(0);
   });
 
+  test('says what nearby stores sell and what to stock', async ({ page }) => {
+    await page.goto('./#/store/201');
+    await expect(page.getByRole('rowheader', { name: /No Frills/ })).toContainText('Discount supermarket');
+    const calls = page.getByRole('table', { name: /Stock calls/ });
+    await expect(calls.getByRole('row', { name: /Fresh grocery/ })).toContainText('Avoid');
+  });
+
   test('finds a store from the search field', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('combobox', { name: /find a store/i }).fill('kingsway');

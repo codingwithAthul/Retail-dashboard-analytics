@@ -1,9 +1,11 @@
 import { CensusTable } from '../components/CensusTable';
 import { ConfidenceBadge } from '../components/ConfidenceBadge';
+import { DecisionBadge } from '../components/DecisionBadge';
 import { Section } from '../components/Section';
 import { ShareBars } from '../components/ShareBars';
 import { fsaCensus } from '../data/fsaCensus';
 import { NEARBY_RADIUS_M, nearbyFor, osmUrl } from '../data/nearby';
+import { profileFor, shelfCalls, type PlaceProfile } from '../data/sellers';
 import { STORES } from '../data/stores';
 import type { StoreListing } from '../data/types';
 import { distanceKm, formatDistance } from '../lib/geo';
@@ -11,6 +13,31 @@ import { distanceKm, formatDistance } from '../lib/geo';
 interface Props {
   listing: StoreListing;
   onSelect: (id: string) => void;
+}
+
+const BASIS: Record<PlaceProfile['basis'], string> = {
+  chain: '',
+  name: ' (inferred from its name)',
+  'map type': ' (inferred from the map)',
+};
+
+/** One line on what a nearby place mainly sells, with the chain's source when there is one. */
+function MainlySells({ profile }: { profile: PlaceProfile }) {
+  const source = profile.sources[0];
+  return (
+    <span className="place-sells">
+      {profile.mainlySells}
+      {BASIS[profile.basis]}
+      {source && (
+        <>
+          {' '}
+          <a href={source.url} target="_blank" rel="noreferrer" title={source.title} aria-label={`Source: ${source.title}`}>
+            [source]
+          </a>
+        </>
+      )}
+    </span>
+  );
 }
 
 /** Panel for a store known only from public directories: what is checked, and what is not yet there. */
@@ -90,6 +117,7 @@ export function ListingOverview({ listing, onSelect }: Props) {
                         {p.name}
                       </a>
                       {p.loblaw && <span className="chip chip--small">Loblaw</span>}
+                      <MainlySells profile={profileFor(p)} />
                     </th>
                     <td>{p.kind}</td>
                     <td className="num">{p.distanceM} m</td>
@@ -100,14 +128,46 @@ export function ListingOverview({ listing, onSelect }: Props) {
           )}
           <p className="footnote">
             Source: OpenStreetMap contributors. Straight-line distance; the map may miss recently opened or unmapped
-            stores.
+            stores. What a chain sells is its usual range from its own site or trade press; one store may lack a
+            department. Independents are inferred from the map and not checked.
           </p>
+        </Section>
+      )}
+
+      {nearby && (
+        <Section title="What to stock, given the neighbours" aside={<ConfidenceBadge level="inferred" />}>
+          <p className="muted">
+            A call per category from what the places above sell: avoid what a destination store next door does better,
+            differentiate where it overlaps, compete where nobody nearby is strong. A rule, not sales data: check it on a
+            walk.
+          </p>
+          <table className="table calls-table">
+            <caption className="visually-hidden">Stock calls by category, from the places nearby</caption>
+            <thead>
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Call and why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shelfCalls(nearby.places).map((c) => (
+                <tr key={c.category}>
+                  <th scope="row">{c.category}</th>
+                  <td>
+                    <DecisionBadge decision={c.decision} />
+                    <span className="calls-table__rival">{c.rival}</span>
+                    <span className="calls-table__reason">{c.reason}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </Section>
       )}
 
       <Section title="Not yet available">
         <p className="muted">
-          Sales, customer segments, category decisions and a one-page brief are built only for the profiled stores so far.
+          Sales, customer segments and a one-page brief are built only for the profiled stores so far.
         </p>
       </Section>
 
