@@ -17,7 +17,7 @@ The project's scope is Metro Vancouver: Shoppers Drug Mart first, then other Lob
 
 | View | Answers |
 |---|---|
-| **Overview** | Map of every store; close pins group until you zoom in. Search by store number, name, street, postal code or area. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. Directory stores show their checked address, local area, the 2021 census for their postal area, pharmacies and supermarkets within a 10-minute walk with what each mainly sells (Loblaw banners marked), a stock call per category (avoid / differentiate / compete), and the nearest profiled store. |
+| **Overview** | Map of every store; close pins group until you zoom in. Search by store number, name, street, postal code or area. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. Directory stores show their checked address, local area, the 2021 census for their postal area, and the nearest profiled store. A second panel on the right (tabs on phones) shows the neighbours: pharmacies and supermarkets within a 10-minute walk with what each mainly sells and which categories it draws shoppers for (Loblaw banners marked), a stock call per category (avoid / differentiate / compete), and stock notes from the neighbourhood census. |
 | **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources, and the 2021 census for the area against Metro Vancouver. |
 | **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
 | **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
