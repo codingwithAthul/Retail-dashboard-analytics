@@ -21,6 +21,8 @@ export interface MapViewProps {
   topInset?: number;
   /** Extra space (px) at the bottom, kept clear for a bottom sheet on phones. */
   bottomInset?: number;
+  /** Show the key that explains the pins. */
+  legend?: boolean;
   className?: string;
 }
 
@@ -66,9 +68,47 @@ function clusterIcon(count: number) {
 
 const NO_COMPETITORS: Competitor[] = [];
 
+/** What each kind of pin means. The grey row shows only while nearby places are on the map. */
+export const LEGEND_ROWS = [
+  { pin: 'store', mark: '', text: 'Profiled store, full analytics' },
+  { pin: 'listing', mark: '', text: 'Shoppers Drug Mart store' },
+  { pin: 'cluster', mark: '3', text: 'Stores grouped here; tap to zoom in' },
+  { pin: 'competitor', mark: '', text: 'Nearby pharmacy or supermarket', competitors: true },
+];
+
+function legendControl(topInset: number) {
+  const control = new L.Control({ position: 'topright' });
+  control.onAdd = () => {
+    const el = L.DomUtil.create('div', 'map-key');
+    el.setAttribute('role', 'note');
+    el.setAttribute('aria-label', 'Map key');
+    el.style.marginTop = `${topInset}px`;
+    // Open on wide screens; on phones it starts folded so it does not cover pins.
+    const open = !window.matchMedia?.('(max-width: 760px)').matches;
+    const rows = LEGEND_ROWS.map(
+      (r) =>
+        `<div class="map-key__row${r.competitors ? ' map-key__row--competitor' : ''}"><span class="map-key__pin"><span class="key-swatch key-swatch--${r.pin}" aria-hidden="true">${r.mark}</span></span><span>${r.text}</span></div>`,
+    ).join('');
+    el.innerHTML = `<details${open ? ' open' : ''}><summary>Map key</summary><div class="map-key__rows">${rows}</div></details>`;
+    L.DomEvent.disableClickPropagation(el);
+    return el;
+  };
+  return control;
+}
+
 const competitorIcon = L.divIcon({ className: '', html: '<div class="pin pin--competitor"></div>', iconSize: [14, 14], iconAnchor: [7, 7] });
 
-export function MapView({ stores, competitors = NO_COMPETITORS, selectedId, onSelect, leftInset = 0, topInset = 96, bottomInset = 0, className }: MapViewProps) {
+export function MapView({
+  stores,
+  competitors = NO_COMPETITORS,
+  selectedId,
+  onSelect,
+  leftInset = 0,
+  topInset = 96,
+  bottomInset = 0,
+  legend = false,
+  className,
+}: MapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const layerRef = useRef<L.LayerGroup | null>(null);
@@ -88,6 +128,16 @@ export function MapView({ stores, competitors = NO_COMPETITORS, selectedId, onSe
       mapRef.current = null;
     };
   }, []);
+
+  // The key sits under the top bar, out of the way of the panel and the zoom buttons.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !legend) return;
+    const control = legendControl(topInset).addTo(map);
+    return () => {
+      control.remove();
+    };
+  }, [legend, topInset]);
 
   // A selected directory store is zoomed to, because its neighbours are too close to tell
   // apart at city scale. Otherwise the view fits every store shown.
@@ -111,6 +161,7 @@ export function MapView({ stores, competitors = NO_COMPETITORS, selectedId, onSe
     const map = mapRef.current;
     if (!layer || !map) return;
     layer.clearLayers();
+    containerRef.current?.classList.toggle('map--with-nearby', competitors.length > 0);
     for (const c of competitors) {
       L.marker(c.coords, { icon: competitorIcon, title: c.name, keyboard: false })
         .bindTooltip(`${c.name}${c.approximate ? ' (approximate location)' : ''}`)
