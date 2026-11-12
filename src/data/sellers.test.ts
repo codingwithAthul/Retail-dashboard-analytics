@@ -71,6 +71,11 @@ describe('shelf calls from the neighbours', () => {
     expect(fresh.rival).toBe('Save-On-Foods, 350 m');
   });
 
+  it('says when the supermarket next door is a Loblaw store', () => {
+    const fresh = shelfCalls([place('No Frills', 'Supermarket', 51, 'No Frills')]).find((c) => c.category === 'Fresh grocery')!;
+    expect(fresh.reason).toMatch(/Loblaw store/);
+  });
+
   it('only differentiates when the nearby grocers are small independents', () => {
     const fresh = shelfCalls([place('Danial Market', 'Supermarket', 200)]).find((c) => c.category === 'Fresh grocery')!;
     expect(fresh.decision).toBe('Differentiate');

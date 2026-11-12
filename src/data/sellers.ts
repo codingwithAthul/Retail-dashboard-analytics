@@ -374,7 +374,7 @@ export function shelfCalls(places: NearbyPlace[]): CategoryCall[] {
           category,
           decision: 'Avoid',
           rival: label(big.place),
-          reason: `${big.profile.chain} sells ${big.profile.mainlySells.split(': ')[1]?.split(';')[0] ?? 'fresh food'}. Keep milk, eggs and bread for top-ups only.`,
+          reason: `${big.profile.chain} sells ${big.profile.mainlySells.split(': ')[1]?.split(';')[0] ?? 'fresh food'}. Keep milk, eggs and bread for top-ups only.${big.place.loblaw ? ' It is a Loblaw store, so the trip stays in the family.' : ''}`,
         };
       }
       const small = rivals.find((r) => r.place.kind === 'Supermarket');
