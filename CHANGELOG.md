@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **Map key**: a small key at the top right explains the pins: Rx for a profiled store, a ring for a Shoppers Drug Mart store, a numbered ring for stores grouped together (tap to zoom in), and grey for nearby pharmacies and supermarkets when shown. Folded on phones so it does not cover pins
+- Grouped stores now look like a larger store ring with a count, instead of a red disc that read like a profiled store
+
 ## 2.4.0 (2026-11-09)
 
 The Loblaw overlap view.
