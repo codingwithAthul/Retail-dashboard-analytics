@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 2.5.0 (2026-11-12)
+
+What the neighbours sell, and a map key.
 
 - **What the neighbours sell**: every place within a 10-minute walk of a directory store now says what it mainly sells (for example "Discount supermarket: produce, meat, dairy, bakery"), from 27 chain profiles with sources; independents are marked as inferred
 - **What to stock, given the neighbours**: a call per category for each directory store. Fresh grocery is Avoid at 26 of 29 Vancouver stores because a fresh-food destination is within 800 m (`Research/11-what-nearby-stores-sell.md`)
