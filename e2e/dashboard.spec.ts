@@ -56,17 +56,36 @@ test.describe('overview', () => {
 
   test('shows pharmacies and supermarkets within a 10-minute walk of a directory store', async ({ page }) => {
     await page.goto('./#/store/2246');
+    await page.getByRole('tab', { name: 'Nearby' }).click();
     await expect(page.getByRole('heading', { name: 'Within a 10-minute walk' })).toBeVisible();
     await expect(page.locator('.pin--competitor').first()).toBeVisible();
     await page.goto('./#/store/2247');
     await expect(page.locator('.pin--competitor')).toHaveCount(0);
   });
 
-  test('says what nearby stores sell and what to stock', async ({ page }) => {
+  test('says what nearby stores sell, what to stock and what the census suggests', async ({ page }) => {
     await page.goto('./#/store/201');
-    await expect(page.getByRole('rowheader', { name: /No Frills/ })).toContainText('Discount supermarket');
+    await page.getByRole('tab', { name: 'Nearby' }).click();
+    const places = page.getByRole('list', { name: 'Nearby places' });
+    await expect(places.getByRole('listitem').filter({ hasText: 'No Frills' })).toContainText('Discount supermarket');
+    await page.getByRole('tab', { name: 'What to stock' }).click();
     const calls = page.getByRole('table', { name: /Stock calls/ });
     await expect(calls.getByRole('row', { name: /Fresh grocery/ })).toContainText('Avoid');
+    await page.getByRole('tab', { name: 'Stock notes' }).click();
+    await expect(page.getByText('Most households rent')).toBeVisible();
+  });
+
+  test('keeps the store and its neighbours side by side on wide screens, as tabs on phones', async ({ page }, testInfo) => {
+    await page.goto('./#/store/201');
+    const right = page.getByRole('complementary', { name: 'Neighbours and stock' });
+    if (testInfo.project.name === 'phone') {
+      await expect(right).toHaveCount(0);
+      await expect(page.getByRole('tab', { name: 'Store' })).toHaveAttribute('aria-selected', 'true');
+    } else {
+      await expect(right).toBeVisible();
+      await expect(page.getByRole('heading', { name: /2021 census, postal area V6G/ })).toBeVisible();
+      await expect(right.getByRole('heading', { name: 'Within a 10-minute walk' })).toBeVisible();
+    }
   });
 
   test('finds a store from the search field', async ({ page }) => {
