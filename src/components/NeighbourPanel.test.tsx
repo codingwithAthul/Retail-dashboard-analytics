@@ -24,12 +24,14 @@ describe('NeighbourPanel', () => {
     expect(screen.queryByRole('list', { name: 'Nearby places' })).not.toBeInTheDocument();
   });
 
-  it('shows census stock notes with the figure behind each', () => {
+  it('shows census stock notes with the figure behind each and a call', () => {
     render(<NeighbourPanel data={DENMAN} />);
     fireEvent.click(screen.getByRole('tab', { name: 'Stock notes' }));
-    expect(screen.getByRole('tabpanel')).toHaveTextContent('postal area V6G');
-    expect(screen.getByText('Most households rent')).toBeInTheDocument();
-    expect(screen.getByText(/rent, Metro Vancouver 37\.8%/)).toBeInTheDocument();
+    const panel = screen.getByRole('tabpanel');
+    expect(panel).toHaveTextContent('postal area V6G');
+    expect(screen.getByText('Mostly people living alone')).toBeInTheDocument();
+    expect(screen.getByText(/of households are one person, against 29\.0% across Metro Vancouver/)).toBeInTheDocument();
+    expect(within(panel).getAllByText('Call:', { exact: false }).length).toBe(DENMAN.notes.length);
   });
 
   it('moves between tabs with the arrow keys', () => {

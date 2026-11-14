@@ -156,27 +156,26 @@ function StockNotes({ data }: { data: Neighbours }) {
   return (
     <>
       <div className="section__head">
-        <h3>What the neighbourhood suggests</h3>
+        <h3>Who lives here, and what it means</h3>
         <ConfidenceBadge level="inferred" />
       </div>
       <p className="muted">
-        From the 2021 census for {data.notesArea}, where it differs clearly from Metro Vancouver. Rules of thumb to check
-        against sales, not sales results.
+        2021 census for {data.notesArea}, against Metro Vancouver. Check each call against this store&rsquo;s sales before
+        moving shelf space.
       </p>
-      {data.notes.length === 0 ? (
-        <p>Close to the Metro Vancouver average on every measure checked, so the census suggests no change to the usual range.</p>
-      ) : (
-        <ul className="note-list">
-          {data.notes.map((n) => (
-            <li key={n.title} className="note">
-              <strong>{n.title}</strong>
-              <p>{n.detail}</p>
-              <p className="note__evidence">{n.evidence}</p>
-              <p className="place__drives">Categories: {n.categories.join(', ')}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="note-list">
+        {data.notes.map((n) => (
+          <li key={n.title} className="note">
+            <strong>{n.title}</strong>
+            <p className="note__evidence">{n.evidence}</p>
+            <p>
+              <span className="note__call">Call: </span>
+              {n.detail}
+            </p>
+            {n.categories.length > 0 && <p className="place__drives">Categories: {n.categories.join(', ')}</p>}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

@@ -27,6 +27,27 @@ MEASURES = [
     ("immigrants", 1515, 4),
     ("nonPermanentResidents", 1523, 4),
     ("lowIncome", 331, 4),
+    ("onePersonHouseholds", 51, 4),
+    ("householdsWithChildren", 103, 4),
+    ("householdSize", 56, 1),
+    ("noEnglishOrFrench", 373, 4),
+    ("otherLanguageAtHome", 726, 4),
+]
+
+# Languages spoken most often at home (share of residents), the ones common in Metro Vancouver.
+HOME_LANGUAGES = [
+    ("Mandarin", 1014),
+    ("Cantonese", 1018),
+    ("Punjabi", 949),
+    ("Tagalog", 865),
+    ("Korean", 975),
+    ("Persian", 962),
+    ("Spanish", 971),
+    ("Vietnamese", 847),
+    ("Hindi", 940),
+    ("Russian", 898),
+    ("Arabic", 835),
+    ("Japanese", 974),
 ]
 
 # Age bands built from the five-year groups, matching the UBC census card.
@@ -65,6 +86,10 @@ def area_profile(rows: list[dict]) -> dict:
         bands.append({"name": name, "count": None if None in parts else int(sum(parts))})
     profile["ageBands"] = bands
     profile["ageTotal"] = values.get((AGE_TOTAL, 1))
+    languages = [{"name": name, "share": values.get((code, 4))} for name, code in HOME_LANGUAGES]
+    profile["homeLanguages"] = sorted(
+        (l for l in languages if l["share"] is not None), key=lambda l: l["share"], reverse=True
+    )
     return profile
 
 

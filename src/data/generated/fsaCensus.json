@@ -11,6 +11,11 @@
       "immigrants": 38.8,
       "nonPermanentResidents": 3.2,
       "lowIncome": 9.2,
+      "onePersonHouseholds": 25.7,
+      "householdsWithChildren": 24.9,
+      "householdSize": 2.6,
+      "noEnglishOrFrench": 8.9,
+      "otherLanguageAtHome": 25.5,
       "ageBands": [
         {
           "name": "0–14",
@@ -33,7 +38,57 @@
           "count": 4130
         }
       ],
-      "ageTotal": 23430
+      "ageTotal": 23430,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 15.3
+        },
+        {
+          "name": "Vietnamese",
+          "share": 2.1
+        },
+        {
+          "name": "Mandarin",
+          "share": 1.4
+        },
+        {
+          "name": "Spanish",
+          "share": 1.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 1
+        },
+        {
+          "name": "Japanese",
+          "share": 0.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Korean",
+          "share": 0.2
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Hindi",
+          "share": 0.2
+        },
+        {
+          "name": "Russian",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V5L": {
       "population": 19473,
@@ -43,6 +98,11 @@
       "immigrants": 25.8,
       "nonPermanentResidents": 2.4,
       "lowIncome": 14.2,
+      "onePersonHouseholds": 46.2,
+      "householdsWithChildren": 12.9,
+      "householdSize": 1.9,
+      "noEnglishOrFrench": 3.7,
+      "otherLanguageAtHome": 10.4,
       "ageBands": [
         {
           "name": "0–14",
@@ -65,7 +125,57 @@
           "count": 2510
         }
       ],
-      "ageTotal": 19475
+      "ageTotal": 19475,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 4.5
+        },
+        {
+          "name": "Spanish",
+          "share": 1.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.9
+        },
+        {
+          "name": "Mandarin",
+          "share": 0.6
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.4
+        },
+        {
+          "name": "Japanese",
+          "share": 0.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.1
+        },
+        {
+          "name": "Korean",
+          "share": 0.1
+        },
+        {
+          "name": "Persian",
+          "share": 0.1
+        },
+        {
+          "name": "Russian",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0
+        }
+      ]
     },
     "V5N": {
       "population": 35843,
@@ -75,6 +185,11 @@
       "immigrants": 39.2,
       "nonPermanentResidents": 5.1,
       "lowIncome": 11.5,
+      "onePersonHouseholds": 32.9,
+      "householdsWithChildren": 20,
+      "householdSize": 2.3,
+      "noEnglishOrFrench": 8.1,
+      "otherLanguageAtHome": 24.8,
       "ageBands": [
         {
           "name": "0–14",
@@ -97,7 +212,57 @@
           "count": 5440
         }
       ],
-      "ageTotal": 35845
+      "ageTotal": 35845,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 10.9
+        },
+        {
+          "name": "Vietnamese",
+          "share": 3.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 2.3
+        },
+        {
+          "name": "Mandarin",
+          "share": 1.7
+        },
+        {
+          "name": "Spanish",
+          "share": 1.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.4
+        },
+        {
+          "name": "Korean",
+          "share": 0.4
+        },
+        {
+          "name": "Japanese",
+          "share": 0.4
+        },
+        {
+          "name": "Hindi",
+          "share": 0.3
+        },
+        {
+          "name": "Persian",
+          "share": 0.1
+        },
+        {
+          "name": "Russian",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V5R": {
       "population": 48150,
@@ -107,6 +272,11 @@
       "immigrants": 55.5,
       "nonPermanentResidents": 7.7,
       "lowIncome": 11.2,
+      "onePersonHouseholds": 27,
+      "householdsWithChildren": 22.4,
+      "householdSize": 2.6,
+      "noEnglishOrFrench": 11,
+      "otherLanguageAtHome": 40.3,
       "ageBands": [
         {
           "name": "0–14",
@@ -129,7 +299,57 @@
           "count": 7790
         }
       ],
-      "ageTotal": 48150
+      "ageTotal": 48150,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 17.6
+        },
+        {
+          "name": "Tagalog",
+          "share": 4.4
+        },
+        {
+          "name": "Mandarin",
+          "share": 4.3
+        },
+        {
+          "name": "Vietnamese",
+          "share": 3
+        },
+        {
+          "name": "Punjabi",
+          "share": 1.5
+        },
+        {
+          "name": "Spanish",
+          "share": 1.5
+        },
+        {
+          "name": "Korean",
+          "share": 0.9
+        },
+        {
+          "name": "Hindi",
+          "share": 0.7
+        },
+        {
+          "name": "Japanese",
+          "share": 0.5
+        },
+        {
+          "name": "Persian",
+          "share": 0.3
+        },
+        {
+          "name": "Russian",
+          "share": 0.3
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        }
+      ]
     },
     "V5S": {
       "population": 32940,
@@ -139,6 +359,11 @@
       "immigrants": 48.8,
       "nonPermanentResidents": 3.5,
       "lowIncome": 10,
+      "onePersonHouseholds": 26.2,
+      "householdsWithChildren": 27.7,
+      "householdSize": 2.5,
+      "noEnglishOrFrench": 7.3,
+      "otherLanguageAtHome": 32.9,
       "ageBands": [
         {
           "name": "0–14",
@@ -161,7 +386,57 @@
           "count": 6475
         }
       ],
-      "ageTotal": 32940
+      "ageTotal": 32940,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 15
+        },
+        {
+          "name": "Mandarin",
+          "share": 3.8
+        },
+        {
+          "name": "Tagalog",
+          "share": 2.7
+        },
+        {
+          "name": "Punjabi",
+          "share": 1.4
+        },
+        {
+          "name": "Spanish",
+          "share": 1.4
+        },
+        {
+          "name": "Vietnamese",
+          "share": 1.4
+        },
+        {
+          "name": "Korean",
+          "share": 1.2
+        },
+        {
+          "name": "Japanese",
+          "share": 0.5
+        },
+        {
+          "name": "Russian",
+          "share": 0.3
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Hindi",
+          "share": 0.2
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        }
+      ]
     },
     "V5T": {
       "population": 26340,
@@ -171,6 +446,11 @@
       "immigrants": 28.3,
       "nonPermanentResidents": 4.3,
       "lowIncome": 10.8,
+      "onePersonHouseholds": 47.5,
+      "householdsWithChildren": 11.7,
+      "householdSize": 1.8,
+      "noEnglishOrFrench": 1.7,
+      "otherLanguageAtHome": 10.4,
       "ageBands": [
         {
           "name": "0–14",
@@ -193,7 +473,57 @@
           "count": 2600
         }
       ],
-      "ageTotal": 26340
+      "ageTotal": 26340,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 2.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 1.9
+        },
+        {
+          "name": "Spanish",
+          "share": 1.1
+        },
+        {
+          "name": "Mandarin",
+          "share": 0.7
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.7
+        },
+        {
+          "name": "Japanese",
+          "share": 0.4
+        },
+        {
+          "name": "Russian",
+          "share": 0.3
+        },
+        {
+          "name": "Korean",
+          "share": 0.2
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V5V": {
       "population": 24288,
@@ -203,6 +533,11 @@
       "immigrants": 36.3,
       "nonPermanentResidents": 3.7,
       "lowIncome": 7.3,
+      "onePersonHouseholds": 25.1,
+      "householdsWithChildren": 27.1,
+      "householdSize": 2.6,
+      "noEnglishOrFrench": 5.6,
+      "otherLanguageAtHome": 19.7,
       "ageBands": [
         {
           "name": "0–14",
@@ -225,7 +560,57 @@
           "count": 3540
         }
       ],
-      "ageTotal": 24285
+      "ageTotal": 24285,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 8.4
+        },
+        {
+          "name": "Tagalog",
+          "share": 2.7
+        },
+        {
+          "name": "Vietnamese",
+          "share": 1.9
+        },
+        {
+          "name": "Mandarin",
+          "share": 1.1
+        },
+        {
+          "name": "Punjabi",
+          "share": 1
+        },
+        {
+          "name": "Spanish",
+          "share": 0.7
+        },
+        {
+          "name": "Hindi",
+          "share": 0.3
+        },
+        {
+          "name": "Japanese",
+          "share": 0.3
+        },
+        {
+          "name": "Korean",
+          "share": 0.2
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Russian",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V5W": {
       "population": 20828,
@@ -235,6 +620,11 @@
       "immigrants": 44.2,
       "nonPermanentResidents": 5.7,
       "lowIncome": 9.8,
+      "onePersonHouseholds": 25.4,
+      "householdsWithChildren": 26.5,
+      "householdSize": 2.6,
+      "noEnglishOrFrench": 5.9,
+      "otherLanguageAtHome": 28.6,
       "ageBands": [
         {
           "name": "0–14",
@@ -257,7 +647,57 @@
           "count": 3630
         }
       ],
-      "ageTotal": 20825
+      "ageTotal": 20825,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 8.7
+        },
+        {
+          "name": "Tagalog",
+          "share": 4.5
+        },
+        {
+          "name": "Punjabi",
+          "share": 3.7
+        },
+        {
+          "name": "Mandarin",
+          "share": 2.2
+        },
+        {
+          "name": "Vietnamese",
+          "share": 1.6
+        },
+        {
+          "name": "Spanish",
+          "share": 1.3
+        },
+        {
+          "name": "Hindi",
+          "share": 0.7
+        },
+        {
+          "name": "Japanese",
+          "share": 0.4
+        },
+        {
+          "name": "Korean",
+          "share": 0.3
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Russian",
+          "share": 0.2
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        }
+      ]
     },
     "V5X": {
       "population": 31095,
@@ -267,6 +707,11 @@
       "immigrants": 54.5,
       "nonPermanentResidents": 10.3,
       "lowIncome": 11.9,
+      "onePersonHouseholds": 25.4,
+      "householdsWithChildren": 24.3,
+      "householdSize": 2.8,
+      "noEnglishOrFrench": 8.5,
+      "otherLanguageAtHome": 43.8,
       "ageBands": [
         {
           "name": "0–14",
@@ -289,7 +734,57 @@
           "count": 5240
         }
       ],
-      "ageTotal": 31095
+      "ageTotal": 31095,
+      "homeLanguages": [
+        {
+          "name": "Punjabi",
+          "share": 13.6
+        },
+        {
+          "name": "Cantonese",
+          "share": 9.5
+        },
+        {
+          "name": "Mandarin",
+          "share": 5.3
+        },
+        {
+          "name": "Tagalog",
+          "share": 4.9
+        },
+        {
+          "name": "Spanish",
+          "share": 1.3
+        },
+        {
+          "name": "Vietnamese",
+          "share": 1.2
+        },
+        {
+          "name": "Hindi",
+          "share": 1.2
+        },
+        {
+          "name": "Korean",
+          "share": 0.5
+        },
+        {
+          "name": "Japanese",
+          "share": 0.4
+        },
+        {
+          "name": "Persian",
+          "share": 0.2
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        },
+        {
+          "name": "Russian",
+          "share": 0.1
+        }
+      ]
     },
     "V5Z": {
       "population": 24957,
@@ -299,6 +794,11 @@
       "immigrants": 39.5,
       "nonPermanentResidents": 5.7,
       "lowIncome": 13.1,
+      "onePersonHouseholds": 40.3,
+      "householdsWithChildren": 17.9,
+      "householdSize": 2,
+      "noEnglishOrFrench": 3.2,
+      "otherLanguageAtHome": 20.2,
       "ageBands": [
         {
           "name": "0–14",
@@ -321,7 +821,57 @@
           "count": 4935
         }
       ],
-      "ageTotal": 24955
+      "ageTotal": 24955,
+      "homeLanguages": [
+        {
+          "name": "Cantonese",
+          "share": 5.7
+        },
+        {
+          "name": "Mandarin",
+          "share": 5.2
+        },
+        {
+          "name": "Spanish",
+          "share": 1.4
+        },
+        {
+          "name": "Korean",
+          "share": 1
+        },
+        {
+          "name": "Japanese",
+          "share": 1
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.7
+        },
+        {
+          "name": "Persian",
+          "share": 0.5
+        },
+        {
+          "name": "Russian",
+          "share": 0.5
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.2
+        },
+        {
+          "name": "Hindi",
+          "share": 0.2
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        }
+      ]
     },
     "V6B": {
       "population": 32375,
@@ -331,6 +881,11 @@
       "immigrants": 40,
       "nonPermanentResidents": 12.5,
       "lowIncome": 17.3,
+      "onePersonHouseholds": 53.2,
+      "householdsWithChildren": 8.1,
+      "householdSize": 1.7,
+      "noEnglishOrFrench": 2.2,
+      "otherLanguageAtHome": 20.7,
       "ageBands": [
         {
           "name": "0–14",
@@ -353,7 +908,57 @@
           "count": 3035
         }
       ],
-      "ageTotal": 32375
+      "ageTotal": 32375,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 3.7
+        },
+        {
+          "name": "Persian",
+          "share": 2.7
+        },
+        {
+          "name": "Spanish",
+          "share": 2.6
+        },
+        {
+          "name": "Korean",
+          "share": 2.4
+        },
+        {
+          "name": "Cantonese",
+          "share": 1.7
+        },
+        {
+          "name": "Russian",
+          "share": 1.1
+        },
+        {
+          "name": "Japanese",
+          "share": 0.7
+        },
+        {
+          "name": "Hindi",
+          "share": 0.3
+        },
+        {
+          "name": "Arabic",
+          "share": 0.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.1
+        }
+      ]
     },
     "V6C": {
       "population": 2846,
@@ -363,6 +968,11 @@
       "immigrants": 52.6,
       "nonPermanentResidents": 6.5,
       "lowIncome": 19.4,
+      "onePersonHouseholds": 44.1,
+      "householdsWithChildren": 13.4,
+      "householdSize": 1.9,
+      "noEnglishOrFrench": 5.3,
+      "otherLanguageAtHome": 32.3,
       "ageBands": [
         {
           "name": "0–14",
@@ -385,7 +995,57 @@
           "count": 500
         }
       ],
-      "ageTotal": 2845
+      "ageTotal": 2845,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 12.3
+        },
+        {
+          "name": "Persian",
+          "share": 7
+        },
+        {
+          "name": "Korean",
+          "share": 3
+        },
+        {
+          "name": "Cantonese",
+          "share": 1.9
+        },
+        {
+          "name": "Spanish",
+          "share": 1.8
+        },
+        {
+          "name": "Japanese",
+          "share": 1.2
+        },
+        {
+          "name": "Russian",
+          "share": 0.7
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.5
+        },
+        {
+          "name": "Arabic",
+          "share": 0.4
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.2
+        },
+        {
+          "name": "Hindi",
+          "share": 0.2
+        }
+      ]
     },
     "V6E": {
       "population": 27482,
@@ -395,6 +1055,11 @@
       "immigrants": 41.3,
       "nonPermanentResidents": 12,
       "lowIncome": 17.5,
+      "onePersonHouseholds": 54.8,
+      "householdsWithChildren": 7.1,
+      "householdSize": 1.6,
+      "noEnglishOrFrench": 2.1,
+      "otherLanguageAtHome": 20.2,
       "ageBands": [
         {
           "name": "0–14",
@@ -417,7 +1082,57 @@
           "count": 3840
         }
       ],
-      "ageTotal": 27480
+      "ageTotal": 27480,
+      "homeLanguages": [
+        {
+          "name": "Persian",
+          "share": 4.1
+        },
+        {
+          "name": "Mandarin",
+          "share": 2.6
+        },
+        {
+          "name": "Spanish",
+          "share": 2.5
+        },
+        {
+          "name": "Korean",
+          "share": 1.5
+        },
+        {
+          "name": "Japanese",
+          "share": 1.5
+        },
+        {
+          "name": "Russian",
+          "share": 1
+        },
+        {
+          "name": "Cantonese",
+          "share": 0.9
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.4
+        },
+        {
+          "name": "Hindi",
+          "share": 0.4
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        }
+      ]
     },
     "V6G": {
       "population": 28013,
@@ -427,6 +1142,11 @@
       "immigrants": 38.7,
       "nonPermanentResidents": 10.1,
       "lowIncome": 17.3,
+      "onePersonHouseholds": 57.2,
+      "householdsWithChildren": 6.8,
+      "householdSize": 1.6,
+      "noEnglishOrFrench": 1.5,
+      "otherLanguageAtHome": 16.4,
       "ageBands": [
         {
           "name": "0–14",
@@ -449,7 +1169,57 @@
           "count": 5330
         }
       ],
-      "ageTotal": 28015
+      "ageTotal": 28015,
+      "homeLanguages": [
+        {
+          "name": "Persian",
+          "share": 3.2
+        },
+        {
+          "name": "Spanish",
+          "share": 2.1
+        },
+        {
+          "name": "Mandarin",
+          "share": 1.6
+        },
+        {
+          "name": "Korean",
+          "share": 1
+        },
+        {
+          "name": "Russian",
+          "share": 0.9
+        },
+        {
+          "name": "Japanese",
+          "share": 0.9
+        },
+        {
+          "name": "Cantonese",
+          "share": 0.6
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.3
+        },
+        {
+          "name": "Hindi",
+          "share": 0.3
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        }
+      ]
     },
     "V6H": {
       "population": 17742,
@@ -459,6 +1229,11 @@
       "immigrants": 32.4,
       "nonPermanentResidents": 5.1,
       "lowIncome": 12.2,
+      "onePersonHouseholds": 51.1,
+      "householdsWithChildren": 10.8,
+      "householdSize": 1.7,
+      "noEnglishOrFrench": 1.9,
+      "otherLanguageAtHome": 12,
       "ageBands": [
         {
           "name": "0–14",
@@ -481,7 +1256,57 @@
           "count": 3255
         }
       ],
-      "ageTotal": 17740
+      "ageTotal": 17740,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 4.1
+        },
+        {
+          "name": "Cantonese",
+          "share": 2
+        },
+        {
+          "name": "Spanish",
+          "share": 0.9
+        },
+        {
+          "name": "Persian",
+          "share": 0.5
+        },
+        {
+          "name": "Japanese",
+          "share": 0.5
+        },
+        {
+          "name": "Korean",
+          "share": 0.4
+        },
+        {
+          "name": "Russian",
+          "share": 0.4
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V6J": {
       "population": 23044,
@@ -491,6 +1316,11 @@
       "immigrants": 32,
       "nonPermanentResidents": 5.7,
       "lowIncome": 13.4,
+      "onePersonHouseholds": 47.9,
+      "householdsWithChildren": 11.6,
+      "householdSize": 1.8,
+      "noEnglishOrFrench": 1.9,
+      "otherLanguageAtHome": 12.3,
       "ageBands": [
         {
           "name": "0–14",
@@ -513,7 +1343,57 @@
           "count": 4165
         }
       ],
-      "ageTotal": 23045
+      "ageTotal": 23045,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 4.2
+        },
+        {
+          "name": "Cantonese",
+          "share": 1.9
+        },
+        {
+          "name": "Spanish",
+          "share": 1
+        },
+        {
+          "name": "Korean",
+          "share": 0.7
+        },
+        {
+          "name": "Persian",
+          "share": 0.6
+        },
+        {
+          "name": "Russian",
+          "share": 0.5
+        },
+        {
+          "name": "Japanese",
+          "share": 0.5
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        },
+        {
+          "name": "Punjabi",
+          "share": 0
+        }
+      ]
     },
     "V6K": {
       "population": 27146,
@@ -523,6 +1403,11 @@
       "immigrants": 29.5,
       "nonPermanentResidents": 6.9,
       "lowIncome": 10.7,
+      "onePersonHouseholds": 43.4,
+      "householdsWithChildren": 14.5,
+      "householdSize": 1.9,
+      "noEnglishOrFrench": 1,
+      "otherLanguageAtHome": 9.1,
       "ageBands": [
         {
           "name": "0–14",
@@ -545,7 +1430,57 @@
           "count": 4470
         }
       ],
-      "ageTotal": 27145
+      "ageTotal": 27145,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 2.3
+        },
+        {
+          "name": "Spanish",
+          "share": 1.1
+        },
+        {
+          "name": "Cantonese",
+          "share": 0.9
+        },
+        {
+          "name": "Persian",
+          "share": 0.5
+        },
+        {
+          "name": "Korean",
+          "share": 0.4
+        },
+        {
+          "name": "Japanese",
+          "share": 0.4
+        },
+        {
+          "name": "Russian",
+          "share": 0.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.1
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.1
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0.1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.1
+        }
+      ]
     },
     "V6M": {
       "population": 16421,
@@ -555,6 +1490,11 @@
       "immigrants": 50.7,
       "nonPermanentResidents": 6,
       "lowIncome": 17.1,
+      "onePersonHouseholds": 35.3,
+      "householdsWithChildren": 21.2,
+      "householdSize": 2.3,
+      "noEnglishOrFrench": 6.5,
+      "otherLanguageAtHome": 31.7,
       "ageBands": [
         {
           "name": "0–14",
@@ -577,7 +1517,57 @@
           "count": 3980
         }
       ],
-      "ageTotal": 16420
+      "ageTotal": 16420,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 16.1
+        },
+        {
+          "name": "Cantonese",
+          "share": 7.4
+        },
+        {
+          "name": "Korean",
+          "share": 1.4
+        },
+        {
+          "name": "Spanish",
+          "share": 0.8
+        },
+        {
+          "name": "Persian",
+          "share": 0.7
+        },
+        {
+          "name": "Japanese",
+          "share": 0.5
+        },
+        {
+          "name": "Russian",
+          "share": 0.4
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.3
+        },
+        {
+          "name": "Punjabi",
+          "share": 0.2
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.2
+        },
+        {
+          "name": "Hindi",
+          "share": 0.2
+        },
+        {
+          "name": "Arabic",
+          "share": 0.2
+        }
+      ]
     },
     "V6S": {
       "population": 15711,
@@ -587,6 +1577,11 @@
       "immigrants": 45.3,
       "nonPermanentResidents": 11.7,
       "lowIncome": 23.5,
+      "onePersonHouseholds": 26.9,
+      "householdsWithChildren": 30.2,
+      "householdSize": 2.5,
+      "noEnglishOrFrench": 6,
+      "otherLanguageAtHome": 32.5,
       "ageBands": [
         {
           "name": "0–14",
@@ -609,7 +1604,57 @@
           "count": 2000
         }
       ],
-      "ageTotal": 15710
+      "ageTotal": 15710,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 20.6
+        },
+        {
+          "name": "Cantonese",
+          "share": 3.1
+        },
+        {
+          "name": "Korean",
+          "share": 2.4
+        },
+        {
+          "name": "Persian",
+          "share": 0.9
+        },
+        {
+          "name": "Spanish",
+          "share": 0.9
+        },
+        {
+          "name": "Japanese",
+          "share": 0.7
+        },
+        {
+          "name": "Russian",
+          "share": 0.4
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.3
+        },
+        {
+          "name": "Arabic",
+          "share": 0.3
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.1
+        },
+        {
+          "name": "Hindi",
+          "share": 0.1
+        },
+        {
+          "name": "Punjabi",
+          "share": 0
+        }
+      ]
     },
     "V6Z": {
       "population": 20683,
@@ -619,6 +1664,11 @@
       "immigrants": 42.2,
       "nonPermanentResidents": 11.7,
       "lowIncome": 17.9,
+      "onePersonHouseholds": 49.8,
+      "householdsWithChildren": 9.5,
+      "householdSize": 1.7,
+      "noEnglishOrFrench": 2.2,
+      "otherLanguageAtHome": 21.3,
       "ageBands": [
         {
           "name": "0–14",
@@ -641,7 +1691,57 @@
           "count": 3145
         }
       ],
-      "ageTotal": 20685
+      "ageTotal": 20685,
+      "homeLanguages": [
+        {
+          "name": "Mandarin",
+          "share": 4
+        },
+        {
+          "name": "Persian",
+          "share": 3.4
+        },
+        {
+          "name": "Cantonese",
+          "share": 2.4
+        },
+        {
+          "name": "Spanish",
+          "share": 2
+        },
+        {
+          "name": "Korean",
+          "share": 1.6
+        },
+        {
+          "name": "Russian",
+          "share": 1.1
+        },
+        {
+          "name": "Japanese",
+          "share": 1
+        },
+        {
+          "name": "Arabic",
+          "share": 0.5
+        },
+        {
+          "name": "Tagalog",
+          "share": 0.3
+        },
+        {
+          "name": "Hindi",
+          "share": 0.3
+        },
+        {
+          "name": "Vietnamese",
+          "share": 0.1
+        },
+        {
+          "name": "Punjabi",
+          "share": 0
+        }
+      ]
     }
   }
 }

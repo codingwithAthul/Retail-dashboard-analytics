@@ -1,5 +1,6 @@
 import type { CensusProfile } from './census';
 import data from './generated/fsaCensus.json';
+import type { AreaNumbers, HomeLanguage } from './stockNotes';
 import type { StoreListing } from './types';
 
 /**
@@ -15,6 +16,13 @@ interface AreaProfile {
   immigrants: number | null;
   nonPermanentResidents: number | null;
   lowIncome: number | null;
+  onePersonHouseholds: number | null;
+  householdsWithChildren: number | null;
+  householdSize: number | null;
+  noEnglishOrFrench: number | null;
+  otherLanguageAtHome: number | null;
+  /** Main home languages common in Metro Vancouver, largest share first. */
+  homeLanguages: HomeLanguage[];
   ageBands: { name: string; count: number | null }[];
   ageTotal: number | null;
 }
@@ -38,6 +46,31 @@ export function fsaOf(address: string): string | undefined {
 export function fsaArea(listing: Pick<StoreListing, 'address'>): AreaProfile | undefined {
   const fsa = fsaOf(listing.address);
   return fsa ? AREAS[fsa] : undefined;
+}
+
+/** A store's postal-area figures in the shape the stock notes read, with age bands as shares. */
+export function fsaNumbers(listing: Pick<StoreListing, 'address'>): AreaNumbers | undefined {
+  const a = fsaArea(listing);
+  if (!a) return undefined;
+  const total = a.ageTotal ?? a.ageBands.reduce((n, b) => n + (b.count ?? 0), 0);
+  const share = (name: string) => {
+    const c = a.ageBands.find((b) => b.name === name)?.count;
+    return c == null || !total ? null : Math.round((c / total) * 1000) / 10;
+  };
+  return {
+    medianAge: a.medianAge,
+    medianHouseholdIncome: a.medianHouseholdIncome,
+    renters: a.renters,
+    immigrants: a.immigrants,
+    nonPermanentResidents: a.nonPermanentResidents,
+    lowIncome: a.lowIncome,
+    seniors: share('65+'),
+    children: share('0–14'),
+    onePersonHouseholds: a.onePersonHouseholds,
+    householdsWithChildren: a.householdsWithChildren,
+    noEnglishOrFrench: a.noEnglishOrFrench,
+    homeLanguages: a.homeLanguages,
+  };
 }
 
 const count = (n: number | null) => (n == null ? 'Not published' : n.toLocaleString('en-CA'));

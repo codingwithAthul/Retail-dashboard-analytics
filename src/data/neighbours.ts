@@ -1,5 +1,5 @@
 import { competitorsNear } from './competition';
-import { fsaArea, fsaOf } from './fsaCensus';
+import { fsaNumbers, fsaOf } from './fsaCensus';
 import { NEARBY_RADIUS_M, nearbyFor, osmUrl } from './nearby';
 import { profileFor, shelfCalls } from './sellers';
 import { UBC_AREA, stockNotes, type StockNote } from './stockNotes';
@@ -65,7 +65,7 @@ export function listingNeighbours(listing: StoreListing): Neighbours | undefined
   const parts = [plural(nearby.pharmacies, 'other pharmacy', 'other pharmacies'), plural(nearby.supermarkets, 'supermarket', 'supermarkets')];
   if (nearby.shoppers) parts.push(plural(nearby.shoppers, 'other Shoppers Drug Mart store', 'other Shoppers Drug Mart stores'));
   if (nearby.otherLoblaw) parts.push(plural(nearby.otherLoblaw, 'Loblaw store under another banner', 'Loblaw stores under other banners'));
-  const area = fsaArea(listing);
+  const area = fsaNumbers(listing);
   return {
     rows,
     summary: `${parts.join(', ')} within ${NEARBY_RADIUS_M} m, about a 10-minute walk.`,

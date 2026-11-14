@@ -72,7 +72,8 @@ test.describe('overview', () => {
     const calls = page.getByRole('table', { name: /Stock calls/ });
     await expect(calls.getByRole('row', { name: /Fresh grocery/ })).toContainText('Avoid');
     await page.getByRole('tab', { name: 'Stock notes' }).click();
-    await expect(page.getByText('Most households rent')).toBeVisible();
+    await expect(page.getByText('Mostly people living alone')).toBeVisible();
+    await expect(page.getByText(/57\.2% of households are one person/)).toBeVisible();
   });
 
   test('keeps the store and its neighbours side by side on wide screens, as tabs on phones', async ({ page }, testInfo) => {
