@@ -33,6 +33,8 @@ Metro Vancouver (Vancouver CMA 933): median age 40.8, median household income $9
 | Many students and newcomers | Non-permanent residents are 4 points or more above Metro | Travel sizes, first-apartment basics, stock up before late August | Personal care, Household, Convenience food |
 | A typical Vancouver neighbourhood | None of the above | Run the standard range; changes should come from the store's own sales. Shows the store's income, families, seniors and median age next to Metro's, and says when incomes lean a little above or below Metro (10% or more) | (none) |
 
+Every call opens with the gap to Metro, then a colon and what to do, often with what not to do ("About twice Metro's share of one-person households: sell single-serve meals and small packs of paper towel and detergent, but don't give space to bulk packs"). The gap is a percentage under 1.75 times Metro, a multiple ("twice", "3.5 times") above that, and "Under half" at half or less (`gapToMetro`).
+
 Each rule has a strength: how far the figure is past its threshold. A store shows its three strongest notes, strongest first.
 
 Shares people can picture are written as "About 1 in 4" with the exact figure in brackets. The median age is written as "Half the residents are younger than 33.4".
