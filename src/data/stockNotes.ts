@@ -123,6 +123,21 @@ const BRANDS_FROM: Record<string, string> = {
   Japanese: 'Japanese',
 };
 
+/**
+ * How an area's share compares with Metro's, as a call's opening words:
+ * "About twice Metro's share of seniors", "About 39% more seniors than Metro".
+ */
+export function gapToMetro(area: number, metro: number, noun: string): string {
+  const ratio = area / metro;
+  if (ratio >= 1.75) {
+    const r = Math.round(ratio * 2) / 2;
+    return `About ${r === 2 ? 'twice' : `${r} times`} Metro's share of ${noun}`;
+  }
+  if (ratio <= 0.5) return `Under half Metro's share of ${noun}`;
+  const change = Math.round(Math.abs(ratio - 1) * 100);
+  return `About ${change}% ${ratio > 1 ? 'more' : 'fewer'} ${noun} than Metro`;
+}
+
 interface Candidate extends StockNote {
   /** How far past its threshold the figure is; 1 means just over. */
   strength: number;
@@ -138,8 +153,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Older than most of Vancouver',
       evidence: `${lead ? `${lead} residents is` : `${pct(seniors)} of residents are`} 65 or older${lead ? ` (${pct(seniors)})` : ''}, against ${pct(m.seniors)} across Metro Vancouver.`,
-      detail:
-        'Give home health care, incontinence and mobility aids a full bay, and offer blister packs and medication reviews at the pharmacy counter.',
+      detail: `${gapToMetro(seniors, m.seniors, 'seniors')}: give home health care, incontinence and mobility aids a full bay, and offer blister packs and medication reviews at the pharmacy.`,
       categories: ['Pharmacy', 'OTC health'],
       strength: (seniors - m.seniors) / 4,
     });
@@ -150,8 +164,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Younger than most of Vancouver',
       evidence: `Half the residents are younger than ${age.toFixed(1)}. Across Metro Vancouver the midpoint is ${m.medianAge.toFixed(1)}.`,
-      detail:
-        'Give more facings to skin care, trend cosmetics, sexual health and cold drinks, and fewer to home health care.',
+      detail: `Residents are about ${Math.round(m.medianAge - age)} years younger than Metro: give more facings to skin care, trend cosmetics, sexual health and cold drinks, and take them from home health care.`,
       categories: ['Beauty', 'Personal care', 'Convenience food'],
       strength: (m.medianAge - age) / 3,
     });
@@ -163,8 +176,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'A family neighbourhood',
       evidence: `${pct(families)} of households have children at home, against ${pct(m.householdsWithChildren)} across Metro Vancouver.`,
-      detail:
-        "Keep diapers, formula and children's cold and fever medicine at full depth, and stock lunch-box snacks. Running out of these sends parents to a competitor.",
+      detail: `${gapToMetro(families, m.householdsWithChildren, 'households with children')}: keep diapers, formula and children's cold and fever medicine fully stocked, and never let them run out.`,
       categories: ['Personal care', 'OTC health', 'Convenience food'],
       strength: (families - m.householdsWithChildren) / 5,
     });
@@ -172,8 +184,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Few children',
       evidence: `Only ${pct(children)} of residents are under 15, against ${pct(m.children)} across Metro Vancouver.`,
-      detail:
-        'Cut baby care to the basics (diapers, wipes, formula) and give the freed space to adult personal care.',
+      detail: `${gapToMetro(children, m.children, 'children')}: cut baby care to diapers, wipes and formula and give the space to adult personal care, but keep those three fully stocked.`,
       categories: ['Personal care'],
       strength: (m.children - children) / 5,
     });
@@ -186,8 +197,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Mostly people living alone',
       evidence: `${pct(alone)} of households are one person, against ${pct(m.onePersonHouseholds)} across Metro Vancouver${rent}.`,
-      detail:
-        'Sell small sizes: single-serve meals and snacks, small packs of paper towel and detergent. Bulk packs will sit on the shelf.',
+      detail: `${gapToMetro(alone, m.onePersonHouseholds, 'one-person households')}: sell single-serve meals and small packs of paper towel and detergent, but don't give space to bulk packs.`,
       categories: ['Household', 'Convenience food'],
       strength: (alone - m.onePersonHouseholds) / 10,
     });
@@ -203,7 +213,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Higher incomes',
       evidence: `Median household income is ${money(income)}, ${above}% above Metro Vancouver's ${money(m.medianHouseholdIncome)}.`,
-      detail: 'Prestige beauty, premium vitamins and natural health lines can take more space here.',
+      detail: `Incomes are about ${above}% above Metro: give prestige beauty, premium vitamins and natural health more space, but keep Life Brand on the shelf.`,
       categories: ['Beauty', 'OTC health'],
       strength: (income / m.medianHouseholdIncome - 1) / 0.25,
     });
@@ -214,8 +224,11 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
       evidence: byShare
         ? `${pct(low!)} of residents are on a low income, against ${pct(m.lowIncome)} across Metro Vancouver.`
         : `Median household income is ${money(income!)}, against ${money(m.medianHouseholdIncome)} across Metro Vancouver.`,
-      detail:
-        'Lead with Life Brand and no name, keep flyer deals at the front of the store, and remind shoppers of PC Optimum points at the till.',
+      detail: `${
+        byShare
+          ? gapToMetro(low!, m.lowIncome, 'people on a low income')
+          : `Incomes are about ${Math.round((1 - income! / m.medianHouseholdIncome) * 100)}% below Metro`
+      }: lead with Life Brand and no name and keep flyer deals at the front, but don't drop the national brands.`,
       categories: ['Personal care', 'Household', 'OTC health'],
       strength: byShare ? (low! - m.lowIncome) / 5 : (1 - income! / m.medianHouseholdIncome) / 0.2,
     });
@@ -232,8 +245,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
       evidence:
         `${lead ? `${lead} residents speaks` : `${pct(top.share)} of residents speak`} ${top.name} most often at home${lead ? ` (${pct(top.share)})` : ''}, against ${pct(metroShare)} across Metro Vancouver.` +
         (barrier ? ` ${pct(noOfficial!)} speak neither English nor French (Metro ${pct(m.noEnglishOrFrench)}).` : ''),
-      detail:
-        `${barrier ? 'Have' : 'Try to have'} a ${top.name}-speaking staff member on each pharmacy shift, and carry the ${BRANDS_FROM[top.name] ?? top.name} beauty and food brands these shoppers already know.`,
+      detail: `${gapToMetro(top.share, metroShare, `${top.name} speakers`)}: ${barrier ? 'have' : 'try to have'} a ${top.name}-speaking staff member on each pharmacy shift, and carry the ${BRANDS_FROM[top.name] ?? top.name} beauty and food brands these shoppers already know.`,
       categories: ['Pharmacy', 'Beauty', 'Convenience food'],
       strength: (top.share - metroShare) / 6,
     });
@@ -244,8 +256,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Many students and newcomers',
       evidence: `${pct(temporary)} of residents are on temporary permits, mostly students and workers, against ${pct(m.nonPermanentResidents)} across Metro Vancouver.`,
-      detail:
-        'Stock travel sizes and first-apartment basics, and build stock before late August, when new students arrive.',
+      detail: `${gapToMetro(temporary, m.nonPermanentResidents, 'students and temporary residents')}: stock travel sizes and first-apartment basics, and build stock before late August, when new students arrive.`,
       categories: ['Personal care', 'Household', 'Convenience food'],
       strength: (temporary - m.nonPermanentResidents) / 4,
     });
@@ -270,11 +281,12 @@ function typicalNote(area: AreaNumbers): StockNote {
     area.medianAge != null && `median age ${area.medianAge.toFixed(1)} (Metro ${m.medianAge!.toFixed(1)})`,
   ].filter(Boolean);
   const income = area.medianHouseholdIncome;
+  const gap = income != null ? Math.round(Math.abs(income / m.medianHouseholdIncome! - 1) * 100) : 0;
   const lean =
     income != null && income >= m.medianHouseholdIncome! * 1.1
-      ? ' Incomes run a little above Metro, so premium beauty and vitamins will hold their space, but no category needs more.'
+      ? ` Incomes are about ${gap}% above Metro: keep premium beauty and vitamins at their usual space, but don't add more.`
       : income != null && income <= m.medianHouseholdIncome! * 0.9
-        ? ' Incomes run a little below Metro, so keep Life Brand and no name visible, but no category needs more space.'
+        ? ` Incomes are about ${gap}% below Metro: keep Life Brand and no name easy to find, but don't add more space for them.`
         : '';
   return {
     title: 'A typical Vancouver neighbourhood',

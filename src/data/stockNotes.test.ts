@@ -13,14 +13,21 @@ describe('stock notes from the neighbourhood census', () => {
     expect(notes[0].evidence).toMatch(/^Median household income \$90,000 \(Metro \$90,000\)/);
     expect(notes[0].evidence).toMatch(/No figure is far enough from Metro Vancouver to change the shelves\.$/);
     expect(notes[0].detail).toMatch(/^Run the standard Shoppers range as it is\./);
-    expect(stockNotes(like({ medianHouseholdIncome: 103000 }))[0].detail).toMatch(/Incomes run a little above Metro/);
+    expect(stockNotes(like({ medianHouseholdIncome: 103000 }))[0].detail).toMatch(
+      /Incomes are about 14% above Metro: keep premium beauty and vitamins at their usual space, but don't add more\./,
+    );
+    expect(stockNotes(like({ medianHouseholdIncome: 79000 }))[0].detail).toMatch(
+      /Incomes are about 12% below Metro: keep Life Brand and no name easy to find, but don't add more space for them\./,
+    );
   });
 
   it('flags an older area with the share of seniors and a pharmacy call', () => {
     const [note] = stockNotes(like({ seniors: 25.2 }));
     expect(note.title).toBe('Older than most of Vancouver');
     expect(note.evidence).toBe('About 1 in 4 residents is 65 or older (25.2%), against 17.4% across Metro Vancouver.');
-    expect(note.detail).toMatch(/blister packs/);
+    expect(note.detail).toBe(
+      'About 45% more seniors than Metro: give home health care, incontinence and mobility aids a full bay, and offer blister packs and medication reviews at the pharmacy.',
+    );
     expect(note.categories).toContain('OTC health');
   });
 
@@ -33,7 +40,9 @@ describe('stock notes from the neighbourhood census', () => {
     expect(titles(like({ householdsWithChildren: 34 }))).toEqual(['A family neighbourhood']);
     const [few] = stockNotes(like({ children: 6.2 }));
     expect(few.title).toBe('Few children');
-    expect(few.detail).toMatch(/Cut baby care to the basics/);
+    expect(few.detail).toBe(
+      "Under half Metro's share of children: cut baby care to diapers, wipes and formula and give the space to adult personal care, but keep those three fully stocked.",
+    );
   });
 
   it('puts small households ahead of a low household income they explain', () => {
@@ -50,7 +59,26 @@ describe('stock notes from the neighbourhood census', () => {
     expect(note.title).toBe('Many speak Cantonese at home');
     expect(note.evidence).toMatch(/^About 1 in 4 residents speaks Cantonese most often at home \(24\.6%\), against 5\.0%/);
     expect(note.evidence).toMatch(/12\.3% speak neither English nor French/);
-    expect(note.detail).toMatch(/^Have a Cantonese-speaking staff member/);
+    expect(note.detail).toMatch(/^About 5 times Metro's share of Cantonese speakers: have a Cantonese-speaking staff member/);
+  });
+
+  it('opens every call with the gap to Metro, then what to do', () => {
+    const calls = [
+      like({ medianAge: 34.8 }),
+      like({ householdsWithChildren: 34 }),
+      like({ onePersonHouseholds: 57.2 }),
+      like({ medianHouseholdIncome: 120000 }),
+      like({ lowIncome: 23.5 }),
+      like({ nonPermanentResidents: 12 }),
+    ].map((a) => stockNotes(a)[0].detail);
+    expect(calls).toEqual([
+      'Residents are about 6 years younger than Metro: give more facings to skin care, trend cosmetics, sexual health and cold drinks, and take them from home health care.',
+      "About 34% more households with children than Metro: keep diapers, formula and children's cold and fever medicine fully stocked, and never let them run out.",
+      'About twice Metro\'s share of one-person households: sell single-serve meals and small packs of paper towel and detergent, but don\'t give space to bulk packs.',
+      'Incomes are about 33% above Metro: give prestige beauty, premium vitamins and natural health more space, but keep Life Brand on the shelf.',
+      'About twice Metro\'s share of people on a low income: lead with Life Brand and no name and keep flyer deals at the front, but don\'t drop the national brands.',
+      "About 2.5 times Metro's share of students and temporary residents: stock travel sizes and first-apartment basics, and build stock before late August, when new students arrive.",
+    ]);
   });
 
   it('ignores a home language that is common across Metro anyway', () => {
