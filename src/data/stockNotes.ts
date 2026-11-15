@@ -270,11 +270,12 @@ function typicalNote(area: AreaNumbers): StockNote {
     area.medianAge != null && `median age ${area.medianAge.toFixed(1)} (Metro ${m.medianAge!.toFixed(1)})`,
   ].filter(Boolean);
   const income = area.medianHouseholdIncome;
+  const gap = income != null ? Math.round(Math.abs(income / m.medianHouseholdIncome! - 1) * 100) : 0;
   const lean =
     income != null && income >= m.medianHouseholdIncome! * 1.1
-      ? ' Incomes run a little above Metro, so premium beauty and vitamins will hold their space, but no category needs more.'
+      ? ` Incomes are about ${gap}% above Metro: keep premium beauty and vitamins at their usual space, but don't add more.`
       : income != null && income <= m.medianHouseholdIncome! * 0.9
-        ? ' Incomes run a little below Metro, so keep Life Brand and no name visible, but no category needs more space.'
+        ? ` Incomes are about ${gap}% below Metro: keep Life Brand and no name easy to find, but don't add more space for them.`
         : '';
   return {
     title: 'A typical Vancouver neighbourhood',

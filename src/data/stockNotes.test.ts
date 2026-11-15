@@ -13,7 +13,12 @@ describe('stock notes from the neighbourhood census', () => {
     expect(notes[0].evidence).toMatch(/^Median household income \$90,000 \(Metro \$90,000\)/);
     expect(notes[0].evidence).toMatch(/No figure is far enough from Metro Vancouver to change the shelves\.$/);
     expect(notes[0].detail).toMatch(/^Run the standard Shoppers range as it is\./);
-    expect(stockNotes(like({ medianHouseholdIncome: 103000 }))[0].detail).toMatch(/Incomes run a little above Metro/);
+    expect(stockNotes(like({ medianHouseholdIncome: 103000 }))[0].detail).toMatch(
+      /Incomes are about 14% above Metro: keep premium beauty and vitamins at their usual space, but don't add more\./,
+    );
+    expect(stockNotes(like({ medianHouseholdIncome: 79000 }))[0].detail).toMatch(
+      /Incomes are about 12% below Metro: keep Life Brand and no name easy to find, but don't add more space for them\./,
+    );
   });
 
   it('flags an older area with the share of seniors and a pharmacy call', () => {
