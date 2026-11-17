@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.7.0 (2026-11-16)
+
+Stock notes in plain words.
+
+- **Stock notes rewritten**: every store now gets a plain conclusion. Each note names what sets the area apart, gives the local figure next to Metro Vancouver's ("57.2% of households are one person, against 29.0%"), and ends with a call a manager can act on. Stores close to the Metro figures say so with their numbers and keep the standard range. New census measures: people living alone, households with children, under-15 and 65+ shares, and the main language spoken at home (`Research/12-stock-notes.md`)
+- **Every call reads the same way**: the gap to Metro, then what to do, often with what not to do. For example: "Incomes are about 14% above Metro: keep premium beauty and vitamins at their usual space, but don't add more."
+
 ## 2.6.0 (2026-11-12)
 
 The neighbours panel.

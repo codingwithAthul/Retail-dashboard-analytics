@@ -36,7 +36,7 @@ describe('neighbours panel data', () => {
     for (const s of STORES) {
       const n = storeNeighbours(s);
       expect(n.calls).toBe(s.categoryCalls);
-      expect(n.notes.map((x) => x.title)).toContain('Younger than Metro');
+      expect(n.notes.map((x) => x.title)).toContain('Younger than most of Vancouver');
     }
   });
 });

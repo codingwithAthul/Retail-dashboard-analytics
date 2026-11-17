@@ -431,8 +431,7 @@
 }
 
 .place__kind,
-.place__basis,
-.note__evidence {
+.place__basis {
   color: var(--text-2);
 }
 
@@ -448,6 +447,10 @@
 
 .note strong {
   font-size: 14px;
+}
+
+.note__call {
+  font-weight: 600;
 }
 
 .neighbours__body > p {

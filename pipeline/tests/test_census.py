@@ -21,6 +21,14 @@ def rows():
         row(1515, 4, "40.0"),
         row(1523, 4, "7.5"),
         row(331, 4, "12.0"),
+        row(51, 4, "44.0"),
+        row(103, 4, "15.5"),
+        row(56, 1, "1.8"),
+        row(373, 4, "6.1"),
+        row(726, 4, "30.2"),
+        row(1018, 4, "12.4"),
+        row(1014, 4, "8.0"),
+        row(949, 4, "0.3"),
         # Other genders and statistics are ignored.
         row(1, 1, "500", gender="2"),
         row(229, 4, "99999"),
@@ -42,6 +50,20 @@ def test_area_profile_picks_totals_and_rates(rows):
     assert p["immigrants"] == 40.0
     assert p["nonPermanentResidents"] == 7.5
     assert p["lowIncome"] == 12.0
+    assert p["onePersonHouseholds"] == 44.0
+    assert p["householdsWithChildren"] == 15.5
+    assert p["householdSize"] == 1.8
+    assert p["noEnglishOrFrench"] == 6.1
+    assert p["otherLanguageAtHome"] == 30.2
+
+
+def test_home_languages_are_sorted_by_share_and_skip_missing(rows):
+    langs = area_profile(rows)["homeLanguages"]
+    assert langs == [
+        {"name": "Cantonese", "share": 12.4},
+        {"name": "Mandarin", "share": 8.0},
+        {"name": "Punjabi", "share": 0.3},
+    ]
 
 
 def test_age_bands_sum_single_years_and_share_the_total(rows):
