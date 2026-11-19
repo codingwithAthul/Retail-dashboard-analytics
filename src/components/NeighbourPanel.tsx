@@ -160,10 +160,21 @@ function StockNotes({ data }: { data: Neighbours }) {
         <ConfidenceBadge level="inferred" />
       </div>
       <p className="muted">
-        2021 census for {data.notesArea}, against Metro Vancouver. Check each call against this store&rsquo;s sales before
-        moving shelf space.
+        2021 census for {data.notesArea}, against Metro Vancouver. Check each call against this store&rsquo;s sales and bookings before
+        acting on it.
       </p>
       <ul className="note-list">
+        {data.service && (
+          <li className="note note--service">
+            <p className="eyebrow">At the pharmacy counter</p>
+            <strong>{data.service.title}</strong>
+            <p className="note__evidence">{data.service.evidence}</p>
+            <p>
+              <span className="note__call">Call: </span>
+              {data.service.detail}
+            </p>
+          </li>
+        )}
         {data.notes.map((n) => (
           <li key={n.title} className="note">
             <strong>{n.title}</strong>

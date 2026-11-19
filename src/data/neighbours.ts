@@ -2,7 +2,7 @@ import { competitorsNear } from './competition';
 import { fsaNumbers, fsaOf } from './fsaCensus';
 import { NEARBY_RADIUS_M, nearbyFor, osmUrl } from './nearby';
 import { profileFor, shelfCalls } from './sellers';
-import { UBC_AREA, stockNotes, type StockNote } from './stockNotes';
+import { UBC_AREA, serviceCall, stockNotes, type ServiceCall, type StockNote } from './stockNotes';
 import type { Category, CategoryCall, Confidence, Store, StoreListing } from './types';
 
 /** One place near a store, as the neighbours panel lists it. */
@@ -34,6 +34,8 @@ export interface Neighbours {
   calls: CategoryCall[];
   callsNote: string;
   notes: StockNote[];
+  /** The pharmacy service the census points to; absent when there is no census area. */
+  service?: ServiceCall;
   /** The census area behind the notes, e.g. "postal area V6G". */
   notesArea: string;
 }
@@ -66,15 +68,22 @@ export function listingNeighbours(listing: StoreListing): Neighbours | undefined
   if (nearby.shoppers) parts.push(plural(nearby.shoppers, 'other Shoppers Drug Mart store', 'other Shoppers Drug Mart stores'));
   if (nearby.otherLoblaw) parts.push(plural(nearby.otherLoblaw, 'Loblaw store under another banner', 'Loblaw stores under other banners'));
   const area = fsaNumbers(listing);
+  const service = area ? serviceCall(area) : undefined;
+  const calls = shelfCalls(nearby.places).map((c) =>
+    c.category === 'Pharmacy' && service
+      ? { ...c, reason: c.reason.replace(/Core business: compete on services \([^)]*\)\./, `Core business: compete on services, led by ${service.lead} (see Stock notes).`) }
+      : c,
+  );
   return {
     rows,
     summary: `${parts.join(', ')} within ${NEARBY_RADIUS_M} m, about a 10-minute walk.`,
     footnote:
       'Source: OpenStreetMap contributors. Straight-line distance; the map may miss new or unmapped stores. What a chain sells is its usual range, from its own site or trade press; one store may lack a department.',
-    calls: shelfCalls(nearby.places),
+    calls,
     callsNote:
       'From what the places nearby sell: avoid what a destination store next door does better, differentiate where it overlaps, compete where nobody nearby is strong. A rule, not sales data.',
     notes: area ? stockNotes(area) : [],
+    service,
     notesArea: `postal area ${fsaOf(listing.address) ?? ''}`.trim(),
   };
 }
@@ -82,6 +91,7 @@ export function listingNeighbours(listing: StoreListing): Neighbours | undefined
 /** A profiled store: surveyed competitors and the researched category calls. */
 export function storeNeighbours(store: Store): Neighbours {
   const near = competitorsNear(store);
+  const ubc = store.demographics.census?.code === '5915020';
   return {
     rows: near.map((c) => ({
       id: c.id,
@@ -98,7 +108,8 @@ export function storeNeighbours(store: Store): Neighbours {
     footnote: 'Surveyed from public sources; see the Competitors tab for the map and sources.',
     calls: store.categoryCalls,
     callsNote: 'Researched for this store; see the Competitors tab for the full reasoning.',
-    notes: store.demographics.census?.code === '5915020' ? stockNotes(UBC_AREA) : [],
+    notes: ubc ? stockNotes(UBC_AREA) : [],
+    service: ubc ? serviceCall(UBC_AREA) : undefined,
     notesArea: store.demographics.census ? store.demographics.census.area : 'the store area',
   };
 }
