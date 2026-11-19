@@ -449,6 +449,18 @@
   font-size: 14px;
 }
 
+.note--service {
+  margin-bottom: 6px;
+  padding: 10px 12px;
+  border: 0;
+  background: var(--surface-2);
+  border-radius: var(--radius-m);
+}
+
+.note--service .eyebrow {
+  margin: 0 0 2px;
+}
+
 .note__call {
   font-weight: 600;
 }

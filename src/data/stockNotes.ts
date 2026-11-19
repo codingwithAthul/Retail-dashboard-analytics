@@ -153,7 +153,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Older than most of Vancouver',
       evidence: `${lead ? `${lead} residents is` : `${pct(seniors)} of residents are`} 65 or older${lead ? ` (${pct(seniors)})` : ''}, against ${pct(m.seniors)} across Metro Vancouver.`,
-      detail: `${gapToMetro(seniors, m.seniors, 'seniors')}: give home health care, incontinence and mobility aids a full bay, and offer blister packs and medication reviews at the pharmacy.`,
+      detail: `${gapToMetro(seniors, m.seniors, 'seniors')}: give home health care, incontinence and mobility aids a full bay next to the pharmacy, where patients wait.`,
       categories: ['Pharmacy', 'OTC health'],
       strength: (seniors - m.seniors) / 4,
     });
@@ -295,5 +295,111 @@ function typicalNote(area: AreaNumbers): StockNote {
       : 'The census figures here sit close to Metro Vancouver.',
     detail: `Run the standard Shoppers range as it is.${lean} If this store needs changes, its own sales will show them; the census does not.`,
     categories: [],
+  };
+}
+
+/**
+ * The pharmacy service a store should lead with, from the same census figures. Pharmacy
+ * and health care services are Shoppers Drug Mart's fastest-growing line, and BC
+ * pharmacists have prescribed for minor ailments and contraception since 1 June 2023;
+ * see Research/13-shoppers-strategy.md.
+ */
+export interface ServiceCall extends StockNote {
+  /** A few words for the Pharmacy row of the stock calls, e.g. "medication reviews". */
+  lead: string;
+}
+
+export function serviceCall(area: AreaNumbers): ServiceCall {
+  const m = METRO as Required<{ [K in Exclude<keyof AreaNumbers, 'homeLanguages'>]: number }> & AreaNumbers;
+  const options: (ServiceCall & { strength: number })[] = [];
+
+  // Lower bars than the shelf notes: a service needs fewer patients to fill a booking list
+  // than a category needs to fill a bay.
+  const seniors = area.seniors;
+  if (seniors != null && seniors >= m.seniors + 2) {
+    options.push({
+      title: 'Lead with medication reviews',
+      lead: 'medication reviews and blister packs',
+      evidence: `${pct(seniors)} of residents are 65 or older, against ${pct(m.seniors)} across Metro Vancouver. Older patients are more likely to take several medicines.`,
+      detail: `${gapToMetro(seniors, m.seniors, 'seniors')}: book medication reviews and offer blister packs to anyone on several medicines, and run flu shot clinics every fall.`,
+      categories: ['Pharmacy'],
+      strength: (seniors - m.seniors) / 4,
+    });
+  }
+
+  const age = area.medianAge;
+  const temporary = area.nonPermanentResidents;
+  const youngBy = age != null && age <= m.medianAge - 3 ? (m.medianAge - age) / 3 : 0;
+  const studentsBy = temporary != null && temporary >= m.nonPermanentResidents + 4 ? (temporary - m.nonPermanentResidents) / 4 : 0;
+  if (youngBy > 0 || studentsBy > 0) {
+    const byStudents = studentsBy >= youngBy;
+    options.push({
+      title: 'Lead with minor ailments and contraception',
+      lead: 'minor ailments and contraception',
+      evidence: byStudents
+        ? `${pct(temporary!)} of residents are on temporary permits, mostly students and workers, against ${pct(m.nonPermanentResidents)} across Metro Vancouver. Since June 2023, BC pharmacists can prescribe for 21 minor ailments and for contraception.`
+        : `Half the residents are younger than ${age!.toFixed(1)}, against ${m.medianAge.toFixed(1)} across Metro Vancouver. Since June 2023, BC pharmacists can prescribe for 21 minor ailments and for contraception.`,
+      detail: `${
+        byStudents
+          ? gapToMetro(temporary!, m.nonPermanentResidents, 'students and temporary residents')
+          : `Residents are about ${Math.round(m.medianAge - age!)} years younger than Metro`
+      }: put pharmacist prescribing for contraception, UTIs and acne on the door and in the PC Health app, and keep same-day slots open.`,
+      categories: ['Pharmacy'],
+      strength: Math.max(youngBy, studentsBy),
+    });
+  }
+
+  const families = area.householdsWithChildren;
+  if (families != null && families >= m.householdsWithChildren + 3) {
+    options.push({
+      title: 'Lead with same-day care for families',
+      lead: 'same-day care for pink eye, rashes and hives',
+      evidence: `${pct(families)} of households have children at home, against ${pct(m.householdsWithChildren)} across Metro Vancouver. BC pharmacists can assess and prescribe for pink eye, rashes and hives.`,
+      detail: `${gapToMetro(families, m.householdsWithChildren, 'households with children')}: promote same-day pharmacist visits for pink eye, rashes and hives, and run family flu shot days in the fall.`,
+      categories: ['Pharmacy'],
+      strength: (families - m.householdsWithChildren) / 5,
+    });
+  }
+
+  // A common home language changes how a service is delivered, not which one: it is added
+  // to the strongest call, or becomes the call where nothing else stands out.
+  const [top] = area.homeLanguages;
+  const metroShare = m.homeLanguages.find((l) => l.name === top?.name)?.share ?? 0;
+  const language = top && top.share >= 8 && top.share >= metroShare * 2 ? top : undefined;
+  const noOfficial = area.noEnglishOrFrench;
+  const barrier = noOfficial != null && noOfficial >= m.noEnglishOrFrench + 2;
+  const languageEvidence = language
+    ? `${pct(language.share)} of residents speak ${language.name} most often at home, against ${pct(metroShare)} across Metro Vancouver.` +
+      (barrier ? ` ${pct(noOfficial!)} speak neither English nor French (Metro ${pct(m.noEnglishOrFrench)}).` : '')
+    : '';
+  const listLanguages = 'say which languages the pharmacists speak, on the door and when patients book';
+
+  if (options.length === 0) {
+    if (language) {
+      return {
+        title: `Lead with care in ${language.name}`,
+        lead: `consultations in ${language.name}`,
+        evidence: languageEvidence,
+        detail: `${gapToMetro(language.share, metroShare, `${language.name} speakers`)}: book medication reviews and minor-ailment visits in ${language.name}, and ${listLanguages}.`,
+        categories: ['Pharmacy'],
+      };
+    }
+    return {
+      title: 'Offer the full services list',
+      lead: 'the full services list',
+      evidence: 'No age group or household type here is far enough from Metro Vancouver to favour one service.',
+      detail:
+        "Offer the standard list: flu shots in the fall, minor ailments and contraception, and medication reviews. This store's own bookings will show which one to push; the census does not.",
+      categories: ['Pharmacy'],
+    };
+  }
+  const { strength: _, ...best } = options.sort((a, b) => b.strength - a.strength)[0];
+  if (!language) return best;
+  return {
+    ...best,
+    title: `${best.title} in ${language.name}`,
+    lead: `${best.lead} in ${language.name}`,
+    evidence: `${best.evidence} ${languageEvidence}`,
+    detail: `${best.detail} ${gapToMetro(language.share, metroShare, `${language.name} speakers`)}: offer these in ${language.name} too, and ${listLanguages}.`,
   };
 }

@@ -1,4 +1,4 @@
-import { MAX_NOTES, METRO, UBC_AREA, stockNotes, type AreaNumbers } from './stockNotes';
+import { MAX_NOTES, METRO, UBC_AREA, serviceCall, stockNotes, type AreaNumbers } from './stockNotes';
 import { fsaArea, fsaNumbers } from './fsaCensus';
 import { VANCOUVER_LISTINGS } from './vancouverListings';
 
@@ -26,7 +26,7 @@ describe('stock notes from the neighbourhood census', () => {
     expect(note.title).toBe('Older than most of Vancouver');
     expect(note.evidence).toBe('About 1 in 4 residents is 65 or older (25.2%), against 17.4% across Metro Vancouver.');
     expect(note.detail).toBe(
-      'About 45% more seniors than Metro: give home health care, incontinence and mobility aids a full bay, and offer blister packs and medication reviews at the pharmacy.',
+      'About 45% more seniors than Metro: give home health care, incontinence and mobility aids a full bay next to the pharmacy, where patients wait.',
     );
     expect(note.categories).toContain('OTC health');
   });
@@ -110,5 +110,58 @@ describe('stock notes from the neighbourhood census', () => {
       expect(notes.length, l.id).toBeGreaterThan(0);
       for (const n of notes) expect(n.evidence, l.id).toMatch(/Metro/);
     }
+  });
+});
+
+describe('pharmacy service call from the neighbourhood census', () => {
+  it('offers the full list where no group stands out', () => {
+    const call = serviceCall(METRO);
+    expect(call.title).toBe('Offer the full services list');
+    expect(call.detail).toMatch(/^Offer the standard list: flu shots in the fall, minor ailments and contraception, and medication reviews\./);
+  });
+
+  it('leads with medication reviews where seniors are many', () => {
+    const call = serviceCall(like({ seniors: 25.2 }));
+    expect(call.title).toBe('Lead with medication reviews');
+    expect(call.detail).toMatch(/^About 45% more seniors than Metro: book medication reviews/);
+    expect(call.categories).toEqual(['Pharmacy']);
+  });
+
+  it('leads with minor ailments and contraception for young areas and students', () => {
+    const young = serviceCall(like({ medianAge: 33.4 }));
+    expect(young.title).toBe('Lead with minor ailments and contraception');
+    expect(young.detail).toMatch(/^Residents are about 7 years younger than Metro: put pharmacist prescribing for contraception/);
+    expect(young.evidence).toMatch(/Since June 2023, BC pharmacists can prescribe for 21 minor ailments and for contraception\.$/);
+    const students = serviceCall(like({ nonPermanentResidents: 18.5 }));
+    expect(students.detail).toMatch(/^About 3\.5 times Metro's share of students and temporary residents:/);
+  });
+
+  it('adds a common home language to the call, or leads with it alone', () => {
+    const mandarin = [{ name: 'Mandarin', share: 16.1 }];
+    const both = serviceCall(like({ seniors: 24.2, homeLanguages: mandarin }));
+    expect(both.title).toBe('Lead with medication reviews in Mandarin');
+    expect(both.detail).toMatch(/About 3 times Metro's share of Mandarin speakers: offer these in Mandarin too/);
+    const alone = serviceCall(like({ homeLanguages: [{ name: 'Cantonese', share: 15 }] }));
+    expect(alone.title).toBe('Lead with care in Cantonese');
+    expect(alone.detail).toMatch(/^About 3 times Metro's share of Cantonese speakers: book medication reviews and minor-ailment visits in Cantonese/);
+  });
+
+  it('leads with same-day care in family areas', () => {
+    expect(serviceCall(like({ householdsWithChildren: 34 })).title).toBe('Lead with same-day care for families');
+  });
+
+  it('picks the strongest signal when several fire', () => {
+    expect(serviceCall(like({ seniors: 22, medianAge: 30 })).title).toBe('Lead with minor ailments and contraception');
+    expect(serviceCall(like({ seniors: 30, medianAge: 37 })).title).toBe('Lead with medication reviews');
+  });
+
+  it('gives every Vancouver store and the UBC stores a call', () => {
+    const titles = new Set(
+      VANCOUVER_LISTINGS.map((l) => fsaNumbers(l))
+        .filter((a): a is AreaNumbers => a != null)
+        .map((a) => serviceCall(a).title),
+    );
+    expect(titles.size).toBeGreaterThan(1);
+    expect(serviceCall(UBC_AREA).title).toBe('Lead with minor ailments and contraception in Mandarin');
   });
 });

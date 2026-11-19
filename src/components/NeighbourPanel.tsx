@@ -164,6 +164,17 @@ function StockNotes({ data }: { data: Neighbours }) {
         moving shelf space.
       </p>
       <ul className="note-list">
+        {data.service && (
+          <li className="note note--service">
+            <p className="eyebrow">At the pharmacy counter</p>
+            <strong>{data.service.title}</strong>
+            <p className="note__evidence">{data.service.evidence}</p>
+            <p>
+              <span className="note__call">Call: </span>
+              {data.service.detail}
+            </p>
+          </li>
+        )}
         {data.notes.map((n) => (
           <li key={n.title} className="note">
             <strong>{n.title}</strong>
