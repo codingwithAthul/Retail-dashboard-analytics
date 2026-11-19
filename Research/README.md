@@ -16,6 +16,7 @@ Background research that shapes the dashboard. Every fact is tied to a source li
 | [10-nearby-pharmacies-and-supermarkets.md](10-nearby-pharmacies-and-supermarkets.md) | Pharmacies, supermarkets and Loblaw banners within a 10-minute walk of each Vancouver store |
 | [11-what-nearby-stores-sell.md](11-what-nearby-stores-sell.md) | What each nearby chain mainly sells, and the avoid / differentiate / compete call per category |
 | [12-stock-notes.md](12-stock-notes.md) | What the neighbourhood census suggests a store should stock |
+| [13-shoppers-strategy.md](13-shoppers-strategy.md) | Shoppers Drug Mart's mission, strategy and customers, and the gaps it showed in this dashboard |
 
 ## Confidence labels
 
