@@ -55,7 +55,7 @@ Pharmacy and health care services are Shoppers Drug Mart's fastest-growing line,
 
 The bars are lower than the shelf rules because a service needs fewer patients to fill a booking list than a category needs to fill a bay. Where several fire, the strongest wins, measured the same way as the notes.
 
-Across the 29 Vancouver stores: minor ailments and contraception at 9 (downtown, the West End, Mount Pleasant, Dunbar and Marine Drive), medication reviews at 5 (three of them in Cantonese or Mandarin), care in Cantonese or Mandarin alone at 6, and the full list at 9. Both UBC stores: minor ailments and contraception in Mandarin.
+Across the 29 Vancouver stores: minor ailments and contraception at 9 (downtown, the West End, Mount Pleasant, Dunbar and Marine Drive), medication reviews at 6 (four of them in Cantonese or Mandarin), care in Cantonese or Mandarin alone at 5, and the full list at 9. Both UBC stores: minor ailments and contraception in Mandarin.
 
 ## What it shows across the 29 Vancouver stores
 
