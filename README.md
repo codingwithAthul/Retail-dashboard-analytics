@@ -1,71 +1,82 @@
 # Store Insights
 
-A store analytics dashboard for retail head office. Open one page, pick a store on the map, and see what kind of store it is, who shops there, what sells, who competes nearby, and who runs it.
+**Store-level retail analytics for Shoppers Drug Mart in Metro Vancouver.** Pick a store on the map and see who lives around it, what it sells, who competes within a short walk, and what it should stock as a result.
 
-It covers **31 Shoppers Drug Mart stores in Vancouver**:
-
-- **Two full store profiles** at the University of British Columbia: **#2247 Wesbrook Village** (5968 Webber Lane) and **#2273 University of BC** (5940 University Blvd), with demographics, sales, competitors and a printable brief.
-- **29 City of Vancouver stores** from public directories, each address checked against a second public source ([how](Research/08-vancouver-sdm-stores.md)). They are on the map and in search; their profiles come later.
-
-The project's scope is Metro Vancouver: Shoppers Drug Mart first, then other Loblaw banners.
-
-**Live demo:** https://codingwithathul.github.io/Retail-dashboard-analytics/
+**[Open the live dashboard](https://codingwithathul.github.io/Retail-dashboard-analytics/)** · No login, no install, works on a phone.
 
 ![Sales tab](docs/screenshots/sales.png)
 
-## What it shows
+## Why it exists
 
-| View | Answers |
+Head office sees a network. A store manager sees one street. Decisions about range, space and services sit between the two, and they depend on three local facts: who lives nearby, what the neighbours already sell, and how the store is trading. Store Insights puts those three facts on one page per store and ends each finding with a call a manager can act on.
+
+## What it covers
+
+- **31 Shoppers Drug Mart stores in Vancouver** on one map, searchable by store number, street, postal code or neighbourhood.
+- **Two full store profiles** at the University of British Columbia (#2247 Wesbrook Village and #2273 University Blvd): demographics, sales, competitors and a one-page printable brief.
+- **29 City of Vancouver stores** with a light profile: a checked address, the 2021 census for the store's postal area against Metro Vancouver, and every pharmacy and supermarket within a 10-minute walk.
+
+Scope is Metro Vancouver: Shoppers Drug Mart first, then other Loblaw banners.
+
+## What a manager gets
+
+| Question | Where it is answered |
 |---|---|
-| **Overview** | Map of every store; close pins group until you zoom in. Search by store number, name, street, postal code or area. Store summary, format, hours, Key Differentiators, Store Leadership, pharmacy services. Directory stores show their checked address, local area, the 2021 census for their postal area, and the nearest profiled store. A second panel on the right (tabs on phones) shows the neighbours: pharmacies and supermarkets within a 10-minute walk with what each mainly sells and which categories it draws shoppers for (Loblaw banners marked), a stock call per category (avoid / differentiate / compete), and stock notes from the neighbourhood census. |
-| **Demographics** | Who shops here (segments, age profile), why they come back, what is nearby, area facts with sources, and the 2021 census for the area against Metro Vancouver. |
-| **Sales** | Last-12-month sales and growth, transactions, average basket, monthly trend vs last year, category mix, best-selling items, busiest weekdays. |
-| **Competitors** | Nearby competitors with distance, who sells what, and a Compete / Differentiate / Avoid call for each category. |
-| **Compare** | Choose two stores and see them side by side: headline numbers, where each should specialise, category mix, main customers, weekly rhythm, competitors. The pair is kept in the link (`#/compare/2273/2247`). |
-| **Network** | Where the network overlaps: for every store, the other Shoppers Drug Mart stores and the sister Loblaw banners (No Frills, T&T, Your Independent Grocer, Loblaws City Market) within a 10-minute walk, with three headline numbers (`#/network`). |
-| **Store brief** | One printable page per store for a meeting or a store visit. Prints or saves as PDF on a single Letter sheet. |
+| Who shops here, and how is this area different from Metro Vancouver? | **Demographics**, and the census card on every store |
+| How is the store trading, and what drives the basket? | **Sales**: trend against last year, category mix, best sellers, busiest days |
+| Who competes within walking distance, and for which categories? | **Competitors** and the **Nearby** panel |
+| What should this store stock more of, less of, or leave to the neighbours? | **What to stock** and **Stock notes**: a compete / differentiate / avoid call per category, each tied to the figure behind it |
+| How do two stores compare? | **Compare**: any two stores side by side, kept in a shareable link |
+| Where do our own stores overlap? | **Network**: other Shoppers Drug Mart stores and sister Loblaw banners within a 10-minute walk of each store |
+| What do I bring to a store visit? | **Store brief**: one printable Letter page per store |
 
-Example insight: the Wesbrook store sits one block from a Save-On-Foods, so the Competitors tab recommends **avoiding fresh grocery** there and putting the space into beauty and health services instead.
+Example: the Wesbrook Village store sits one block from a full-line supermarket, so the dashboard recommends ceding fresh grocery and putting that space into beauty and health services.
 
 ![Demographics tab, dark appearance](docs/screenshots/demographics.png)
 
 ![Compare page](docs/screenshots/compare.png)
 
-![Store brief](docs/screenshots/brief.png)
+## Method
+
+1. **Locate.** Store addresses come from public store pages and directories, each cross-checked against a second public source. Positions that could not be checked are marked approximate. ([notes](Research/08-vancouver-sdm-stores.md))
+2. **Describe the trade area.** Statistics Canada 2021 census for each store's postal area (by census subdivision at UBC), always shown next to the Metro Vancouver figure so the difference is the finding. ([notes](Research/09-census-by-postal-area.md))
+3. **Map the neighbours.** Pharmacies and supermarkets within 800 m from OpenStreetMap, each matched to a sourced profile of what that chain mainly sells. ([notes](Research/10-nearby-pharmacies-and-supermarkets.md), [what they sell](Research/11-what-nearby-stores-sell.md))
+4. **Make the call.** Each category gets compete, differentiate or avoid, and each stock note states the local figure, the Metro figure, and what to do. ([notes](Research/12-stock-notes.md))
+5. **Label confidence.** Every fact on screen is marked *Verified*, *Estimate* or *Sample data* and links to its source.
+
+All research notes and sources are in [`/Research`](Research/README.md).
 
 ## Data policy
 
-- **Store facts** (address, hours, services) come from public store pages. **Area facts** come from UBC and the Statistics Canada 2021 census (by census subdivision for UBC, by postal area for the other Vancouver stores). Each is marked *Verified* and linked to its source.
-- **Directory stores** are labelled as public-directory listings. Map positions come from OpenStreetMap; positions that could not be checked against a second point are marked approximate.
-- **Customer segment shares** are *Estimates* built from public research.
-- **Sales figures are synthetic sample data**, built by the [data pipeline](pipeline/README.md) from a fixed seed so they are the same on every run. They are labelled *Sample data* on screen and are **not** real store sales. Real store exports can replace them without code changes.
-- **No employee names** are published. Store Leadership fields are placeholders.
-
-Full research notes and sources are in [`/Research`](Research/README.md).
+- **No internal Loblaw or Shoppers Drug Mart data is used.** Store facts and area facts are public and linked to their sources.
+- **Sales figures are synthetic sample data**, generated from a fixed seed by the [data pipeline](pipeline/README.md) and labelled *Sample data* on screen. Real store exports can replace them without code changes: see [Using real store data](docs/importing-real-data.md).
+- **Customer segment shares are estimates** built from public research, and labelled as such.
+- **No employee names are published.** Store Leadership fields are placeholders.
 
 ## Data pipeline
 
 ```
 raw CSVs ──► validate ──► transform ──► src/data/generated/sales.json ──► dashboard
+public sources (StatCan census, OpenStreetMap) ──► etl census / etl nearby ──► dashboard
 ```
 
-A Python and pandas pipeline in [`/pipeline`](pipeline/README.md) builds every sales number in the dashboard from daily, product-level data in a star schema ([data dictionary](docs/data-dictionary.md)). It checks the data before using it: types, keys, ranges, and totals that must reconcile. Real store exports can replace the sample data: see [Using real store data](docs/importing-real-data.md).
+A Python and pandas pipeline in [`/pipeline`](pipeline/README.md) builds every sales number from daily, product-level data in a star schema ([data dictionary](docs/data-dictionary.md)). It validates types, keys, ranges and reconciling totals before anything reaches the dashboard, and CI fails if the published data file is out of date.
 
-## Design
+## Engineering
 
-Follows Apple's Human Interface Guidelines: system font, system colours, solid content cards with frosted glass only on floating chrome, one-line takeaway above each chart, light and dark appearance from the operating system, and status shown with words and icons, not colour alone. See [`Research/05-apple-design-language.md`](Research/05-apple-design-language.md).
+| Part | Choice |
+|---|---|
+| App | React 19, TypeScript (strict), Vite |
+| Map | Leaflet with OpenStreetMap tiles, no API key |
+| Charts | Recharts |
+| Data | Python, pandas |
+| Tests | Vitest and Testing Library (units, components), Playwright (desktop and phone), pytest (pipeline) |
+| Quality gate | Lighthouse CI: every page must score 100 for accessibility or the build fails |
+| Hosting | GitHub Pages, deployed by GitHub Actions on every release |
 
-## Technology
+**Design** follows Apple's Human Interface Guidelines: system font and colours, a one-line takeaway above each chart, light and dark appearance from the operating system, and status shown with words and icons, never colour alone. ([notes](Research/05-apple-design-language.md))
 
-| Part | Choice | Why |
-|---|---|---|
-| App | React 19, TypeScript (strict), Vite | Typed, fast, standard |
-| Map | Leaflet with OpenStreetMap tiles | Free, no API key |
-| Charts | Recharts | Declarative charts for React |
-| Data | Python, pandas | Standard tools for data cleaning and aggregation |
-| Tests | Vitest, Testing Library, Playwright, pytest | Unit, component, browser (desktop and phone) and data tests in CI |
-| Quality | Lighthouse CI | Every page must score 100 for accessibility, or CI fails |
-| Hosting | GitHub Pages via GitHub Actions | Anyone can open a link, no licence needed |
+**Delivery** is versioned: feature branches merge into `dev`, each release goes to `main` through a pull request, and every release is tagged and recorded in the [changelog](CHANGELOG.md).
 
 ## Run locally
 
@@ -74,27 +85,34 @@ npm install
 npm run dev        # http://localhost:5173/Retail-dashboard-analytics/
 npm test           # unit and component tests
 npm run e2e        # browser tests, desktop and phone
-npx @lhci/cli@0.15.1 autorun   # Lighthouse on every page (after a build)
 npm run build      # type check and production build
+npx @lhci/cli@0.15.1 autorun   # Lighthouse on every page (after a build)
 ```
+
+Pipeline: see [`pipeline/README.md`](pipeline/README.md).
 
 ## Project structure
 
 ```
 src/
-  data/        store profiles, directory listings, census, competitors, sources, sales data from the pipeline
-  components/  map, badges, KPI tiles, sections
-  views/       overview, demographics, sales, competitors
+  data/        store profiles, directory listings, census, neighbours, stock calls, generated sales
+  components/  map, neighbours panel, search, badges, KPI tiles, sections
+  views/       overview, demographics, sales, competitors, compare, network, store brief
   lib/         geo, pin clustering, formatting, routing
   styles/      design tokens and layout
-pipeline/      Python data pipeline: schema, generator, validation, transform
-docs/          data dictionary, screenshots
+pipeline/      Python pipeline: schema, sample generator, validation, census and nearby-place ETL
+docs/          data dictionary, importing real data, screenshots
 Research/      sourced research notes
+e2e/           Playwright browser tests
 ```
 
 ## Roadmap
 
-Planned versions are tracked as GitHub Issues, starting with the [roadmap](../../issues/3): more Vancouver stores (v3.0), a Power BI companion model (v3.1), insights from public data (v3.2), forecasting (v4.0), generated store profiles (v5.0), all Metro Vancouver stores (v5.1) and other Loblaw banners in Metro Vancouver (v6.0).
+Planned work is tracked in GitHub Issues, starting with the [roadmap](../../issues/3): a Power BI companion model, forecasting, and wider coverage across Metro Vancouver and other Loblaw banners.
+
+## Author
+
+Built by [Athul Sasidharan](https://github.com/codingwithAthul), UBC Master of Data Science. [Portfolio](https://codingwithathul.github.io) · [LinkedIn](https://www.linkedin.com/in/athul-sasidharan-48a1ba195/)
 
 ## Disclaimer
 
