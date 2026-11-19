@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.1 (2026-11-19)
+
+A clearer README.
+
+- **README rewritten** for recruiters and head office readers: what the dashboard answers, a five-step method linked to the research notes, the data policy, and how it is built and tested
+
 ## 2.7.0 (2026-11-16)
 
 Stock notes in plain words.
