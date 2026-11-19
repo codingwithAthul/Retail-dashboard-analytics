@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.8.0 (2026-11-19)
 
 Lined up with Shoppers Drug Mart's strategy.
 
