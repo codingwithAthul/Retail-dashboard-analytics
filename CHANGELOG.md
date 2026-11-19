@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.8.0 (2026-11-19)
+
+Lined up with Shoppers Drug Mart's strategy.
+
+- **Pharmacy services call**: pharmacy and health care services are Shoppers' fastest-growing line (same-store sales +7.5% against +1.3% for the front store in Q2 2026), and BC pharmacists have prescribed for minor ailments and contraception since June 2023. Every store now gets the service its neighbourhood points to: medication reviews, minor ailments and contraception, same-day care for families, or the service in a common home language. It leads the Stock notes tab and is named in the Pharmacy row of What to stock, which used to say the same thing at every store
+- **Own brands where they fit**: Quo Beauty in young areas, PC Optimum points offers next to Life Brand and no name in price-sensitive ones
+- **Research**: Shoppers' mission, strategy and customers, with the gap review that led to these changes (`Research/13-shoppers-strategy.md`)
+
 ## 2.7.1 (2026-11-19)
 
 A clearer README.

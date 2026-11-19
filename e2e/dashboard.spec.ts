@@ -74,6 +74,7 @@ test.describe('overview', () => {
     await page.getByRole('tab', { name: 'Stock notes' }).click();
     await expect(page.getByText('Mostly people living alone')).toBeVisible();
     await expect(page.getByText(/57\.2% of households are one person/)).toBeVisible();
+    await expect(page.getByText('Lead with minor ailments and contraception')).toBeVisible();
   });
 
   test('keeps the store and its neighbours side by side on wide screens, as tabs on phones', async ({ page }, testInfo) => {

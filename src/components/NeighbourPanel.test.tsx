@@ -31,7 +31,22 @@ describe('NeighbourPanel', () => {
     expect(panel).toHaveTextContent('postal area V6G');
     expect(screen.getByText('Mostly people living alone')).toBeInTheDocument();
     expect(screen.getByText(/of households are one person, against 29\.0% across Metro Vancouver/)).toBeInTheDocument();
-    expect(within(panel).getAllByText('Call:', { exact: false }).length).toBe(DENMAN.notes.length);
+    expect(within(panel).getAllByText('Call:', { exact: false }).length).toBe(DENMAN.notes.length + 1);
+  });
+
+  it('leads the stock notes with the pharmacy service the census points to', () => {
+    render(<NeighbourPanel data={DENMAN} />);
+    fireEvent.click(screen.getByRole('tab', { name: 'Stock notes' }));
+    const first = within(screen.getByRole('tabpanel')).getAllByRole('listitem')[0];
+    expect(first).toHaveTextContent('At the pharmacy counter');
+    expect(first).toHaveTextContent(DENMAN.service!.title);
+  });
+
+  it('names that service in the Pharmacy stock call', () => {
+    render(<NeighbourPanel data={DENMAN} />);
+    fireEvent.click(screen.getByRole('tab', { name: 'What to stock' }));
+    const row = within(screen.getByRole('table', { name: /Stock calls/ })).getByRole('rowheader', { name: 'Pharmacy' }).closest('tr')!;
+    expect(row).toHaveTextContent(`compete on services, led by ${DENMAN.service!.lead} (see Stock notes)`);
   });
 
   it('moves between tabs with the arrow keys', () => {
