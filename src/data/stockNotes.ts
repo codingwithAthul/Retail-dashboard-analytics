@@ -164,7 +164,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
     found.push({
       title: 'Younger than most of Vancouver',
       evidence: `Half the residents are younger than ${age.toFixed(1)}. Across Metro Vancouver the midpoint is ${m.medianAge.toFixed(1)}.`,
-      detail: `Residents are about ${Math.round(m.medianAge - age)} years younger than Metro: give more facings to skin care, trend cosmetics, sexual health and cold drinks, and take them from home health care.`,
+      detail: `Residents are about ${Math.round(m.medianAge - age)} years younger than Metro: give more facings to skin care, Quo Beauty and trend cosmetics, sexual health and cold drinks, and take them from home health care.`,
       categories: ['Beauty', 'Personal care', 'Convenience food'],
       strength: (m.medianAge - age) / 3,
     });
@@ -228,7 +228,7 @@ export function stockNotes(area: AreaNumbers): StockNote[] {
         byShare
           ? gapToMetro(low!, m.lowIncome, 'people on a low income')
           : `Incomes are about ${Math.round((1 - income! / m.medianHouseholdIncome) * 100)}% below Metro`
-      }: lead with Life Brand and no name and keep flyer deals at the front, but don't drop the national brands.`,
+      }: lead with Life Brand and no name, keep flyer deals and PC Optimum points offers at the front, but don't drop the national brands.`,
       categories: ['Personal care', 'Household', 'OTC health'],
       strength: byShare ? (low! - m.lowIncome) / 5 : (1 - income! / m.medianHouseholdIncome) / 0.2,
     });

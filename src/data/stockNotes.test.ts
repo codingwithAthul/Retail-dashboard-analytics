@@ -72,11 +72,11 @@ describe('stock notes from the neighbourhood census', () => {
       like({ nonPermanentResidents: 12 }),
     ].map((a) => stockNotes(a)[0].detail);
     expect(calls).toEqual([
-      'Residents are about 6 years younger than Metro: give more facings to skin care, trend cosmetics, sexual health and cold drinks, and take them from home health care.',
+      'Residents are about 6 years younger than Metro: give more facings to skin care, Quo Beauty and trend cosmetics, sexual health and cold drinks, and take them from home health care.',
       "About 34% more households with children than Metro: keep diapers, formula and children's cold and fever medicine fully stocked, and never let them run out.",
       'About twice Metro\'s share of one-person households: sell single-serve meals and small packs of paper towel and detergent, but don\'t give space to bulk packs.',
       'Incomes are about 33% above Metro: give prestige beauty, premium vitamins and natural health more space, but keep Life Brand on the shelf.',
-      'About twice Metro\'s share of people on a low income: lead with Life Brand and no name and keep flyer deals at the front, but don\'t drop the national brands.',
+      'About twice Metro\'s share of people on a low income: lead with Life Brand and no name, keep flyer deals and PC Optimum points offers at the front, but don\'t drop the national brands.',
       "About 2.5 times Metro's share of students and temporary residents: stock travel sizes and first-apartment basics, and build stock before late August, when new students arrive.",
     ]);
   });
