@@ -8,7 +8,7 @@
 
 ## Why it exists
 
-Head office sees a network. A store manager sees one street. Decisions about range, space and services sit between the two, and they depend on three local facts: who lives nearby, what the neighbours already sell, and how the store is trading. Store Insights puts those three facts on one page per store and ends each finding with a call a manager can act on.
+What a store should stock depends on three local facts: who lives nearby, what the neighbours already sell, and how the store is trading. They usually sit in three places: a census site, a map and a sales report. Store Insights puts them on one page per store, and each finding ends with a call a manager can act on.
 
 ## What it covers
 
@@ -18,7 +18,7 @@ Head office sees a network. A store manager sees one street. Decisions about ran
 
 Scope is Metro Vancouver: Shoppers Drug Mart first, then other Loblaw banners.
 
-## What a manager gets
+## What it answers
 
 | Question | Where it is answered |
 |---|---|
