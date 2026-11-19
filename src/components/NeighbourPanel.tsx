@@ -160,8 +160,8 @@ function StockNotes({ data }: { data: Neighbours }) {
         <ConfidenceBadge level="inferred" />
       </div>
       <p className="muted">
-        2021 census for {data.notesArea}, against Metro Vancouver. Check each call against this store&rsquo;s sales before
-        moving shelf space.
+        2021 census for {data.notesArea}, against Metro Vancouver. Check each call against this store&rsquo;s sales and bookings before
+        acting on it.
       </p>
       <ul className="note-list">
         {data.service && (
