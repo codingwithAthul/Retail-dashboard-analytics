@@ -38,7 +38,7 @@ Research gathered 2026-11-19. It checks the dashboard against what Shoppers Drug
 
 No public source gives SDM's customer profile by age, sex or income. What can be said:
 
-- **Patients**: everyone who fills a prescription, weighted toward older people. SDM planned its growth around ageing Canadians as far back as 2009 [02, source 4] (Verified).
+- **Patients**: everyone who fills a prescription, weighted toward older people. SDM planned its growth around ageing Canadians as far back as 2009 (see [02](02-sdm-store-formats.md), source 4) (Verified).
 - **Beauty shoppers, mostly women**: SDM's beauty launches and its women's health programs (Shoppers LOVE YOU) target women [19], [23] (Inferred from targeting, not from a customer split).
 - **Convenience trips**: urban stores with long hours, for top-ups and grab-and-go (see [02](02-sdm-store-formats.md)).
 - **PC Optimum members**: nearly two-thirds of Canadian adults [22], so membership says little about who a store's shoppers are; the purchase data would.
@@ -47,7 +47,7 @@ No public source gives SDM's customer profile by age, sex or income. What can be
 
 | Area | Before | Gap against the strategy | Change made |
 |---|---|---|---|
-| Stock notes | Every call was about shelves. Pharmacy services appeared only inside the seniors note | Services are SDM's fastest-growing line and BC has allowed pharmacist prescribing since 2023. The dashboard told a manager what to shelve but not which service to lead with | Each store now gets a **pharmacy services call** from its census: medication reviews where seniors are many, minor ailments and contraception where residents are young or on student permits, same-day care for families' common ailments, and the standard list elsewhere. It is the first item on the Stock notes tab |
+| Stock notes | Every call was about shelves. Pharmacy services appeared only inside the seniors note | Services are SDM's fastest-growing line and BC has allowed pharmacist prescribing since 2023. The dashboard told a manager what to shelve but not which service to lead with | Each store now gets a **pharmacy services call** from its census: medication reviews where seniors are many, minor ailments and contraception where residents are young or on student permits, same-day care for families' common ailments, the service in a common home language, and the standard list elsewhere. It is the first item on the Stock notes tab. Rules in [12](12-stock-notes.md) |
 | What to stock: Pharmacy row | The same sentence at all 29 stores ("compete on services") | Not specific to the store | The row now names the service the census points to |
 | Own brands | Life Brand and no name in the price calls | Quo Beauty (SDM's own beauty line) and PC Optimum offers were missing where they fit best | Young areas: Quo Beauty named next to trend cosmetics. Price-sensitive areas: PC Optimum points offers added to the call |
 | Food | Fresh grocery "Avoid" next to a supermarket; grab-and-go where no meal counter is close | Already in line: SDM is not becoming a grocer, and its food refresh adds value and multicultural products | No change. The language note's call to carry familiar food brands matches the refresh |

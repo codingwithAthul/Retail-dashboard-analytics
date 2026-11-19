@@ -22,13 +22,13 @@ Metro Vancouver (Vancouver CMA 933): median age 40.8, median household income $9
 
 | Note | Fires when | Call | Categories |
 |---|---|---|---|
-| Older than most of Vancouver | 65+ share is 4 points or more above Metro | Full bay of home health care, incontinence and mobility aids; blister packs and medication reviews | Pharmacy, OTC health |
-| Younger than most of Vancouver | Median age is 3 or more years below Metro | More facings for skin care, trend cosmetics, sexual health, cold drinks; fewer for home health care | Beauty, Personal care, Convenience food |
+| Older than most of Vancouver | 65+ share is 4 points or more above Metro | Full bay of home health care, incontinence and mobility aids next to the pharmacy (medication reviews moved to the services call below) | Pharmacy, OTC health |
+| Younger than most of Vancouver | Median age is 3 or more years below Metro | More facings for skin care, Quo Beauty and trend cosmetics, sexual health, cold drinks; fewer for home health care | Beauty, Personal care, Convenience food |
 | A family neighbourhood | Households with children are 5 points or more above Metro | Diapers, formula and children's cold and fever medicine at full depth; lunch-box snacks | Personal care, OTC health, Convenience food |
 | Few children | Under-15 share is 5 points or more below Metro (and the family rule did not fire) | Cut baby care to the basics; give the space to adult personal care | Personal care |
 | Mostly people living alone | One-person households are 10 points or more above Metro | Small sizes, single-serve meals; bulk packs will sit | Household, Convenience food |
 | Higher incomes | Median household income is at least 125% of Metro's | More space for prestige beauty, premium vitamins, natural health | Beauty, OTC health |
-| Price matters here | Low-income share is 5 points or more above Metro, or household income is at most 80% of Metro's where most people do not live alone | Lead with Life Brand and no name, flyer deals up front, PC Optimum at the till | Personal care, Household, OTC health |
+| Price matters here | Low-income share is 5 points or more above Metro, or household income is at most 80% of Metro's where most people do not live alone | Lead with Life Brand and no name, flyer deals and PC Optimum points offers up front | Personal care, Household, OTC health |
 | Many speak [language] at home | The top home language is spoken by 8% or more of residents and at least twice its Metro share | A staff member who speaks it on each pharmacy shift ("Have" when 3 points more than Metro speak neither English nor French, otherwise "Try to have"); the beauty and food brands these shoppers know | Pharmacy, Beauty, Convenience food |
 | Many students and newcomers | Non-permanent residents are 4 points or more above Metro | Travel sizes, first-apartment basics, stock up before late August | Personal care, Household, Convenience food |
 | A typical Vancouver neighbourhood | None of the above | Run the standard range; changes should come from the store's own sales. Shows the store's income, families, seniors and median age next to Metro's, and says when incomes lean a little above or below Metro (10% or more) | (none) |
@@ -40,6 +40,22 @@ Each rule has a strength: how far the figure is past its threshold. A store show
 Shares people can picture are written as "About 1 in 4" with the exact figure in brackets. The median age is written as "Half the residents are younger than 33.4".
 
 Household income is low where most people live alone, because a one-person household has one income. So in those areas only the low-income share (which is adjusted for household size) can raise "Price matters here".
+
+## Pharmacy services call (added 2026-11-19)
+
+Pharmacy and health care services are Shoppers Drug Mart's fastest-growing line, and BC pharmacists have prescribed for 21 minor ailments and for contraception since 1 June 2023 ([13](13-shoppers-strategy.md)). Every store with census data now gets one services call, shown first on the Stock notes tab under "At the pharmacy counter" and named in the Pharmacy row of What to stock. Code: `serviceCall` in `src/data/stockNotes.ts`.
+
+| Call | Fires when | What to do |
+|---|---|---|
+| Lead with medication reviews | 65+ share is 2 points or more above Metro | Book medication reviews, blister packs for anyone on several medicines, flu shot clinics every fall |
+| Lead with minor ailments and contraception | Median age 3 or more years below Metro, or non-permanent residents 4 points or more above | Put pharmacist prescribing for contraception, UTIs and acne on the door and in the PC Health app; keep same-day slots |
+| Lead with same-day care for families | Households with children 3 points or more above Metro | Same-day pharmacist visits for pink eye, rashes and hives; family flu shot days |
+| ... in [language] | The main home language passes the language rule above | Added to the strongest call: offer the service in that language and say which languages the pharmacists speak. With no other call, it becomes "Lead with care in [language]" |
+| Offer the full services list | None of the above | The standard list; the store's own bookings decide which to push |
+
+The bars are lower than the shelf rules because a service needs fewer patients to fill a booking list than a category needs to fill a bay. Where several fire, the strongest wins, measured the same way as the notes.
+
+Across the 29 Vancouver stores: minor ailments and contraception at 9 (downtown, the West End, Mount Pleasant, Dunbar and Marine Drive), medication reviews at 5 (three of them in Cantonese or Mandarin), care in Cantonese or Mandarin alone at 6, and the full list at 9. Both UBC stores: minor ailments and contraception in Mandarin.
 
 ## What it shows across the 29 Vancouver stores
 
