@@ -8,6 +8,12 @@ Lined up with Shoppers Drug Mart's strategy.
 - **Own brands where they fit**: Quo Beauty in young areas, PC Optimum points offers next to Life Brand and no name in price-sensitive ones
 - **Research**: Shoppers' mission, strategy and customers, with the gap review that led to these changes (`Research/13-shoppers-strategy.md`)
 
+## 2.7.1 (2026-11-19)
+
+A clearer README.
+
+- **README rewritten** for recruiters and head office readers: what the dashboard answers, a five-step method linked to the research notes, the data policy, and how it is built and tested
+
 ## 2.7.0 (2026-11-16)
 
 Stock notes in plain words.
