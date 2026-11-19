@@ -2,7 +2,7 @@
   "name": "retail-dashboard-analytics",
   "private": true,
   "version": "2.7.0",
-  "description": "Store analytics dashboard for Shoppers Drug Mart locations in Vancouver (portfolio project).",
+  "description": "Store-level retail analytics for Shoppers Drug Mart in Metro Vancouver: trade-area census, nearby competitors, sales and stock calls (portfolio project).",
   "type": "module",
   "scripts": {
     "dev": "vite",
